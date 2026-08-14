@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -354,13 +354,13 @@ const PRODUCTS: Product[] = [
     id: 'samsung-s25-ultra',
     name: 'Samsung Galaxy S25 Ultra 256GB',
     price: '$ 3.399.999',
-    image: '/Samsung GalaxyS25 Ultra1.avif',
+    image: '/samsung_s25_ultra1.avif',
     images: [
-      '/Samsung GalaxyS25 Ultra1.avif',
-      '/Samsung GalaxyS25 Ultra2.avif',
-      '/Samsung GalaxyS25 Ultra3.avif',
-      '/Samsung GalaxyS25 Ultra4.avif',
-      '/Samsung GalaxyS25 Ultra5.avif',
+      '/samsung_s25_ultra1.avif',
+      '/samsung_s25_ultra2.avif',
+      '/samsung_s25_ultra3.avif',
+      '/samsung_s25_ultra4.avif',
+      '/samsung_s25_ultra5.avif',
     ],
     description: 'El nuevo Samsung Galaxy S25 Ultra eleva la experiencia móvil con su procesador Octa-Core de 4.47GHz, 12GB de memoria RAM, pantalla Dynamic AMOLED 2X Quad HD+ a 120Hz con soporte S Pen integrado y un revolucionario sistema de cámaras cuádruple de 200 MP.',
     features: [
@@ -916,7 +916,7 @@ function HomeScreen({
       {/* Header */}
       <header className="sticky top-0 z-30 bg-[#F5F1E8]/95 backdrop-blur border-b border-[#E0DBD0]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14 sm:h-16">
-          <div className="flex items-center gap-2.5 cursor-pointer">
+          <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => { window.location.hash = '#/' }}>
             <LionLogo size={32} />
             <span className="text-[20px] sm:text-[22px] font-bold tracking-tight text-[#111111]"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
@@ -1163,7 +1163,7 @@ function HomeScreen({
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-10">
             {/* Brand */}
             <div className="lg:col-span-2">
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-2 mb-3 cursor-pointer" onClick={() => { window.location.hash = '#/' }}>
                 <LionLogo size={30} />
                 <span className="font-bold text-[20px] text-[#111111]"
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}>FAMVAR</span>
@@ -1253,7 +1253,7 @@ function CategoryScreen({
               className="w-9 h-9 rounded-xl bg-white border border-[#E0DBD0] flex items-center justify-center text-[#111111] hover:bg-[#F5F1E8] transition-colors shrink-0">
               <ArrowLeft />
             </button>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 cursor-pointer" onClick={() => { window.location.hash = '#/' }}>
               <LionLogo size={26} />
               <span className="text-[13px] text-[#8A8580] font-medium hidden sm:block"
                 style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -1370,7 +1370,8 @@ function ProductDetailScreen({
             className="w-9 h-9 rounded-xl bg-white border border-[#E0DBD0] flex items-center justify-center text-[#111111] hover:bg-[#F5F1E8] transition-colors shrink-0">
             <ArrowLeft />
           </button>
-          <span className="text-[15px] font-semibold text-[#111111] truncate"
+          <span className="text-[15px] font-semibold text-[#111111] truncate cursor-pointer"
+            onClick={() => { window.location.hash = '#/' }}
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
             {product.name}
           </span>
@@ -1620,28 +1621,57 @@ function ProductDetailScreen({
 // ─── Root ─────────────────────────────────────────────────────────────────────
 
 export default function App() {
-  const [view, setView] = useState<View>('home')
-  const [selectedCategory, setSelectedCategory] = useState<Category | null>(null)
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [currentHash, setCurrentHash] = useState<string>(() => window.location.hash || '#/')
+
+  useEffect(() => {
+    function handleHashChange() {
+      setCurrentHash(window.location.hash || '#/')
+    }
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
+  // Enrutamiento seguro basado en URL Hash
+  let view: View = 'home'
+  let selectedCategory: Category | null = null
+  let selectedProduct: Product | null = null
+
+  if (currentHash.startsWith('#/categoria/')) {
+    const catId = currentHash.replace('#/categoria/', '')
+    const foundCat = CATEGORIES.find((c) => c.id === catId)
+    if (foundCat) {
+      view = 'category'
+      selectedCategory = foundCat
+    }
+  } else if (currentHash.startsWith('#/producto/')) {
+    const prodId = currentHash.replace('#/producto/', '')
+    const foundProd = PRODUCTS.find((p) => p.id === prodId)
+    if (foundProd) {
+      view = 'product'
+      selectedProduct = foundProd
+    }
+  }
 
   function goToCategory(cat: Category) {
-    setSelectedCategory(cat)
-    setView('category')
+    window.location.hash = `#/categoria/${cat.id}`
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   function goToProduct(product: Product) {
-    setSelectedProduct(product)
-    setView('product')
+    window.location.hash = `#/producto/${product.id}`
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   function goBack() {
-    if (view === 'product') {
-      setView('category')
+    if (view === 'product' && selectedProduct) {
+      const cat = CATEGORIES.find((c) => c.id === selectedProduct?.category)
+      if (cat) {
+        window.location.hash = `#/categoria/${cat.id}`
+      } else {
+        window.location.hash = '#/'
+      }
     } else {
-      setView('home')
-      setSelectedCategory(null)
+      window.location.hash = '#/'
     }
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
