@@ -33,6 +33,7 @@ interface Product {
   description: string
   features?: ProductFeature[]
   status: 'new' | 'used' | 'out' | null
+  availability?: 'stock' | 'order' | null
   category: string
   featured?: boolean
   specs?: ProductSpec[]
@@ -683,12 +684,381 @@ const PRODUCTS: Product[] = [
     featured: true,
   },
   {
-    id: 'stanley-quencher',
-    name: 'Stanley Quencher 40oz',
-    price: '$85.000',
-    image: 'https://images.unsplash.com/photo-1544568100-847a948585b9?w=600&h=600&fit=crop&auto=format',
-    description: 'Vaso Stanley Quencher H2.0 40oz. Acero inoxidable, mantiene frío/calor 24hs. Con manija y sorbete.',
+    id: 'iphone-15-pro',
+    name: 'iPhone 15 Pro',
+    price: '$ 1.050.000',
+    image: '/iphone15pro.avif',
+    images: [
+      '/iphone15pro.avif',
+    ],
+    description: 'El iPhone 15 Pro es el primer iPhone diseñado en titanio de calidad aeroespacial. Equipado con el revolucionario chip A17 Pro, Botón de Acción personalizable y un versátil sistema de cámaras Pro de 48 MP con múltiples distancias focales.',
+    features: [
+      {
+        title: 'Diseño en Titanio Aeroespacial',
+        text: 'Fabricado con titanio de calidad aeroespacial, la misma aleación que se usa en las naves espaciales. Marco súper resistente y ligero con los bordes más delgados jamás vistos en un iPhone.',
+      },
+      {
+        title: 'Chip A17 Pro & Gaming',
+        text: 'El chip A17 Pro inaugura una nueva era para los gráficos móviles. Disfruta de un rendimiento sin precedentes y trazado de rayos por aceleración de hardware para juegos de nivel de consola.',
+      },
+      {
+        title: 'Sistema de Cámaras Pro de 48 MP',
+        text: 'Explora hasta 7 objetivos profesionales en tu bolsillo. Sensor principal de 48 MP con superalta resolución por defecto y teleobjetivo de 3 aumentos con estabilización óptica.',
+      },
+      {
+        title: 'Botón de Acción & USB-C Superrápido',
+        text: 'El nuevo Botón de Acción te da acceso directo a tu función favorita. Además, el conector USB-C compatible con USB 3 ofrece transferencias de datos ultra rápidas de hasta 10 Gb/s.',
+      },
+    ],
+    specGroups: [
+      {
+        category: 'Dimensiones y peso',
+        items: [
+          'Alto: 14.66 cm',
+          'Ancho: 7.06 cm',
+          'Grosor: 0.825 cm',
+          'Peso: 187 g',
+        ],
+      },
+      {
+        category: 'Pantalla',
+        items: [
+          'Pantalla Super Retina XDR OLED de 6.1 pulgadas (15.5 cm) en diagonal',
+          'Resolución de 2.556 por 1.179 píxeles a 460 p/p',
+          'Dynamic Island y Pantalla siempre activa',
+          'Tecnología ProMotion con frecuencia adaptativa de hasta 120 Hz',
+          'Pantalla HDR, True Tone y Gama cromática amplia (P3)',
+          'Brillo máximo de 1.000 nits (típico), pico de 1.600 nits (HDR) y pico de 2.000 nits (exteriores)',
+        ],
+      },
+      {
+        category: 'Chip',
+        items: [
+          'Chip A17 Pro',
+          'CPU de 6 núcleos (2 de rendimiento y 4 de eficiencia)',
+          'GPU de 6 núcleos con trazado de rayos por aceleración de hardware',
+          'Neural Engine de 16 núcleos',
+        ],
+      },
+      {
+        category: 'Cámara',
+        items: [
+          'Sistema de cámaras Pro de 48 MP',
+          'Principal de 48 MP: 24 mm, apertura de ƒ/1.78, OIS por desplazamiento del sensor de 2ª generación y 100 % Focus Pixels',
+          'Ultra gran angular de 12 MP: 13 mm, apertura de ƒ/2.2, campo de visión de 120° y Focus Pixels',
+          'Teleobjetivo x3 de 12 MP: 77 mm, apertura de ƒ/2.8 y estabilización óptica de imagen',
+          'Zoom óptico de acercamiento x3, zoom óptico de alejamiento x2 y rango de zoom óptico x6',
+          'Zoom digital hasta x15',
+          'Flash True Tone adaptativo y HDR Inteligente 5',
+        ],
+      },
+      {
+        category: 'Conectividad y USB',
+        items: [
+          'Conector USB-C compatible con USB 3 (transferencia de hasta 10 Gb/s)',
+          '5G (sub-6 GHz y mmWave)',
+          'Wi-Fi 6E (802.11ax)',
+          'Bluetooth 5.3',
+          'Chip de Ultra Ancho de Banda (UWB) de segunda generación',
+          'NFC con modo de lectura',
+        ],
+      },
+      {
+        category: 'Batería y Carga',
+        items: [
+          'Hasta 23 horas de reproducción de video',
+          'Carga rápida: Hasta un 50 % de carga en 30 minutos con un adaptador de 20 W o superior',
+          'Carga inalámbrica MagSafe de hasta 15 W y Qi de hasta 7.5 W',
+        ],
+      },
+      {
+        category: 'Sensores y Botón de Acción',
+        items: [
+          'Botón de Acción personalizable (Silencioso, Cámara, Linterna, Nota de Voz, Traducir, Lupa, Atajos)',
+          'Face ID',
+          'Escáner LiDAR',
+          'Barómetro y Giroscopio de alto rango dinámico',
+          'Acelerómetro de fuerza g alta y Sensor de proximidad',
+        ],
+      },
+      {
+        category: 'Sistema Operativo y Seguridad',
+        items: [
+          'iOS 17 (actualizable a iOS 18)',
+          'Emergencia SOS vía satélite',
+          'Detección de accidentes',
+        ],
+      },
+    ],
+    status: 'used',
+    category: 'celulares',
+    featured: true,
+  },
+  {
+    id: 'iphone-12-purpura',
+    name: 'iPhone 12 Púrpura',
+    price: '$ 430.000',
+    image: '/iphone12.avif',
+    images: [
+      '/iphone12.avif',
+    ],
+    description: 'El iPhone 12 en su icónico acabado Púrpura combina una pantalla Super Retina XDR de 6,1 pulgadas, chip A14 Bionic con Neural Engine, tecnología 5G ultra rápida, resistencia frontal Ceramic Shield y sistema avanzado de doble cámara de 12 MP con Modo Noche en todas sus lentes.',
+    features: [
+      {
+        title: 'Acabado Púrpura & Ceramic Shield',
+        text: 'Chasis de aluminio de calidad aeroespacial en acabado Púrpura con frente de Ceramic Shield, cuatro veces más resistente a las caídas que cualquier otro vidrio de smartphone.',
+      },
+      {
+        title: 'Pantalla Super Retina XDR OLED',
+        text: 'Pantalla OLED de 6,1 pulgadas con contraste de 2.000.000:1, tecnología True Tone y brillo pico de 1.200 nits en HDR para negros intensos y blancos brillantes.',
+      },
+      {
+        title: 'Chip A14 Bionic & Conectividad 5G',
+        text: 'El primer chip de 5 nanómetros en la industria para velocidades de procesamiento descomunales, descargas ultra rápidas con 5G y máxima eficiencia de batería.',
+      },
+      {
+        title: 'Sistema Dual de Cámara de 12 MP',
+        text: 'Cámaras gran angular y ultra gran angular con Modo Noche en todas las lentes, Deep Fusion, HDR Inteligente 3 y grabación de video en 4K Dolby Vision a 30 fps.',
+      },
+    ],
+    specGroups: [
+      {
+        category: 'Dimensiones y peso',
+        items: [
+          'Alto: 14.67 cm',
+          'Ancho: 7.15 cm',
+          'Grosor: 0.74 cm',
+          'Peso: 162 g',
+        ],
+      },
+      {
+        category: 'Pantalla',
+        items: [
+          'Pantalla Super Retina XDR OLED de 6.1 pulgadas (15.5 cm) en diagonal',
+          'Resolución de 2.532 por 1.170 píxeles a 460 p/p',
+          'Pantalla HDR, True Tone y Gama cromática amplia (P3)',
+          'Brillo máximo de 625 nits (típico) y pico de 1.200 nits (HDR)',
+          'Cubierta oleófuga antihuellas',
+        ],
+      },
+      {
+        category: 'Chip',
+        items: [
+          'Chip A14 Bionic',
+          'CPU de 6 núcleos (2 de rendimiento y 4 de eficiencia)',
+          'GPU de 4 núcleos',
+          'Neural Engine de 16 núcleos',
+        ],
+      },
+      {
+        category: 'Cámara',
+        items: [
+          'Sistema de cámara dual de 12 MP (gran angular ƒ/1.6 y ultra gran angular ƒ/2.4)',
+          'Modo Noche y Deep Fusion en todas las lentes',
+          'Estabilización óptica de imagen en cámara gran angular',
+          'Zoom óptico de alejamiento x2 y zoom digital hasta x5',
+          'Grabación de vídeo en HDR con Dolby Vision hasta 4K a 30 fps',
+        ],
+      },
+      {
+        category: 'Conectividad y MagSafe',
+        items: [
+          '5G (sub-6 GHz)',
+          'Wi-Fi 6 (802.11ax) con MIMO 2x2',
+          'Bluetooth 5.0 y NFC con modo de lectura',
+          'Compatible con accesorios y cargadores inalámbricos MagSafe de hasta 15 W',
+        ],
+      },
+      {
+        category: 'Batería y Carga',
+        items: [
+          'Hasta 17 horas de reproducción de video',
+          'Carga rápida: Hasta un 50 % de carga en 30 minutos con un adaptador de 20 W o superior',
+          'Conector Lightning',
+        ],
+      },
+      {
+        category: 'Resistencia al Agua y Polvo',
+        items: [
+          'Clasificación IP68 (hasta 6 metros de profundidad durante un máximo de 30 minutos)',
+        ],
+      },
+      {
+        category: 'Sistema Operativo y Seguridad',
+        items: [
+          'iOS 17 (compatible con iOS 18)',
+          'Reconocimiento facial Face ID mediante cámara TrueDepth',
+        ],
+      },
+    ],
+    status: 'used',
+    category: 'celulares',
+    featured: true,
+  },
+  {
+    id: 'iphone-14',
+    name: 'iPhone 14',
+    price: '$ 650.000',
+    image: '/iphone14.avif',
+    images: [
+      '/iphone14.avif',
+    ],
+    description: 'El iPhone 14 incluye una pantalla Super Retina XDR de 6,1 pulgadas, chip A15 Bionic ultra potente con GPU de 5 núcleos, avanzado sistema de dos cámaras de 12 MP con Photonic Engine para fotos sorprendentes en poca luz, y mayor autonomía de batería.',
+    features: [
+      {
+        title: 'Pantalla Super Retina XDR OLED',
+        text: 'Pantalla OLED de 6,1 pulgadas con tecnología True Tone, gama cromática amplia P3 y hasta 1.200 nits de brillo pico en HDR.',
+      },
+      {
+        title: 'Chip A15 Bionic con GPU de 5 Núcleos',
+        text: 'Potencia de sobra para ejecutar aplicaciones exigentes y juegos de alta carga gráfica con eficiencia térmica optimizada.',
+      },
+      {
+        title: 'Photonic Engine & Cámaras de 12 MP',
+        text: 'Fotos espectaculares con luz baja gracias a la cámara principal de 12 MP con sensor más grande y apertura ƒ/1.5, acompañado de ultra gran angular y Modo Acción.',
+      },
+      {
+        title: 'Seguridad de Vanguardia & Batería',
+        text: 'Detección de Accidentes, Emergencia SOS vía satélite y batería para todo el día con hasta 20 horas de reproducción de video.',
+      },
+    ],
+    specGroups: [
+      {
+        category: 'Dimensiones y peso',
+        items: [
+          'Alto: 14.67 cm',
+          'Ancho: 7.15 cm',
+          'Grosor: 0.78 cm',
+          'Peso: 172 g',
+        ],
+      },
+      {
+        category: 'Pantalla',
+        items: [
+          'Pantalla Super Retina XDR OLED de 6,1 pulgadas (15,4 cm) en diagonal',
+          'Resolución de 2.532 por 1.170 píxeles a 460 p/p',
+          'Pantalla HDR, True Tone y Gama cromática amplia (P3)',
+          'Brillo máximo de 800 nits (típico) y pico de 1.200 nits (HDR)',
+        ],
+      },
+      {
+        category: 'Chip',
+        items: [
+          'Chip A15 Bionic',
+          'CPU de 6 núcleos (2 de rendimiento y 4 de eficiencia)',
+          'GPU de 5 núcleos',
+          'Neural Engine de 16 núcleos',
+        ],
+      },
+      {
+        category: 'Cámara',
+        items: [
+          'Sistema de cámara dual de 12 MP (principal de 12 MP 26 mm ƒ/1.5 y ultra gran angular de 12 MP 13 mm ƒ/2.4)',
+          'Photonic Engine, Deep Fusion y Modo Noche en todas las cámaras',
+          'Modo Acción para estabilización de video y Modo Cine en 4K HDR a 30 fps',
+          'Zoom óptico de alejamiento x2 y zoom digital hasta x5',
+        ],
+      },
+      {
+        category: 'Conectividad y MagSafe',
+        items: [
+          '5G (sub-6 GHz)',
+          'Wi-Fi 6 (802.11ax) con MIMO 2x2',
+          'Bluetooth 5.3 y NFC con modo de lectura',
+          'Compatible con accesorios y cargadores MagSafe de hasta 15 W',
+        ],
+      },
+      {
+        category: 'Batería y Carga',
+        items: [
+          'Hasta 20 horas de reproducción de video',
+          'Carga rápida: Hasta un 50 % de carga en 30 minutos con adaptador de 20 W o superior',
+          'Conector Lightning',
+        ],
+      },
+      {
+        category: 'Resistencia y Seguridad',
+        items: [
+          'Clasificación IP68 (hasta 6 metros durante 30 minutos)',
+          'Frente de Ceramic Shield',
+          'Detección de Accidentes y Emergencia SOS vía satélite',
+        ],
+      },
+      {
+        category: 'Sistema Operativo',
+        items: [
+          'iOS 16 (compatible con iOS 18)',
+          'Reconocimiento facial Face ID mediante cámara TrueDepth',
+        ],
+      },
+    ],
+    status: 'used',
+    category: 'celulares',
+    featured: true,
+  },
+  {
+    id: 'stanley-mate-system-violeta',
+    name: 'Termo Stanley Mate System Violeta Metalizado',
+    price: '$ 182.000',
+    image: '/Termo-Stanley-violeta1.avif',
+    images: [
+      '/Termo-Stanley-violeta1.avif',
+      '/Termo-Stanley-violeta2.avif',
+    ],
+    description: 'El icónico Termo Stanley Mate System de la nueva colección en acabado Violeta Metalizado con tapón giratorio de vertido continuo. Mantiene tus bebidas calientes y frías hasta por 24 horas gracias a la doble pared de acero inoxidable reciclado 18/8 con aislamiento por vacío.',
+    features: [
+      {
+        title: 'Aislamiento por Vacío de Doble Pared',
+        text: 'Tecnología legendaria Stanley en acero inoxidable reciclado 18/8 que mantiene tus bebidas calientes y frías durante 24 horas completas.',
+      },
+      {
+        title: 'Tapón Giratorio Cebador',
+        text: 'Tapón giratorio para vertido suave y preciso + tapa aislada multifunción que sirve como taza o mate para beber en cualquier aventura.',
+      },
+      {
+        title: 'Construcción 100% A Prueba de Fugas',
+        text: 'Estructura ultrarresistente diseñada a prueba de fugas, apta para lavavajillas y 100 % libre de BPA.',
+      },
+      {
+        title: 'Diseño Compacto & Envío Incluido',
+        text: 'Dimensiones compactas de 30 cm x 9 cm fácil de sostener con una mano (peso 950 g). ¡Incluye envío a toda Argentina desde FAMVAR!',
+      },
+    ],
+    specGroups: [
+      {
+        category: 'Generales y Diseño',
+        items: [
+          'Colección: Nueva Colección Mate System',
+          'Color / Acabado: Violeta Metalizado',
+          'Tapa / Tapón: Tapa aislada (funciona como taza) + Tapón giratorio cebador',
+          'Material: Acero inoxidable reciclado 18/8 libre de BPA',
+        ],
+      },
+      {
+        category: 'Rendimiento Térmico',
+        items: [
+          'Mantiene Caliente: Hasta 24 horas',
+          'Mantiene Frío: Hasta 24 horas',
+        ],
+      },
+      {
+        category: 'Dimensiones y Peso',
+        items: [
+          'Dimensiones: 30 cm x 9 cm',
+          'Peso: 950 g',
+        ],
+      },
+      {
+        category: 'Garantía y Servicios',
+        items: [
+          'A prueba de fugas: Sí',
+          'Apto para lavavajillas: Sí',
+          'Envío incluido: A toda Argentina desde FAMVAR',
+        ],
+      },
+    ],
     status: 'new',
+    availability: 'stock',
     category: 'termos',
     featured: true,
   },
@@ -756,84 +1126,12 @@ const PRODUCTS: Product[] = [
       },
     ],
     status: 'out',
+    availability: 'order',
     category: 'termos',
     featured: true,
   },
-  {
-    id: 'iphone-13-usado',
-    name: 'iPhone 13 256GB',
-    price: '$750.000',
-    image: 'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=600&h=600&fit=crop&auto=format',
-    description: 'iPhone 13 256GB Medianoche. Excelente estado, batería 89%, desbloqueado. Con caja y accesorios.',
-    status: 'used',
-    category: 'celulares',
-    featured: true,
-  },
-  {
-    id: 'airpods-pro',
-    name: 'AirPods Pro 2ª gen',
-    price: '$420.000',
-    image: 'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=600&h=600&fit=crop&auto=format',
-    description: 'AirPods Pro (2ª generación) con cancelación activa de ruido, audio espacial y chip H2. Sellados.',
-    status: 'new',
-    category: 'variedad',
-    featured: true,
-  },
-  {
-    id: 'cargador-usbc',
-    name: 'Cargador 65W GaN USB-C',
-    price: '$28.000',
-    image: 'https://images.unsplash.com/photo-1585338447937-7082f8fc763d?w=600&h=600&fit=crop&auto=format',
-    description: 'Cargador compacto GaN 65W con puerto USB-C. Carga rápida para celulares, tablets y notebooks.',
-    status: null,
-    category: 'cargadores',
-    featured: true,
-  },
-  {
-    id: 'funda-magsafe',
-    name: 'Funda MagSafe iPhone 15',
-    price: '$18.500',
-    image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=600&fit=crop&auto=format',
-    description: 'Funda de silicona compatible con MagSafe para iPhone 15 / 15 Pro. Varios colores disponibles.',
-    status: null,
-    category: 'fundas',
-  },
-  {
-    id: 'samsung-a54-usado',
-    name: 'Samsung Galaxy A54',
-    price: '$420.000',
-    image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&auto=format',
-    description: 'Samsung Galaxy A54 128GB Blanco. Usado, estado 9/10. Cámara 50MP, batería 5000mAh.',
-    status: 'used',
-    category: 'celulares',
-  },
-  {
-    id: 'funda-samsung',
-    name: 'Funda Samsung S24 Ultra',
-    price: '$15.000',
-    image: 'https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=600&h=600&fit=crop&auto=format',
-    description: 'Funda transparente reforzada para Samsung Galaxy S24 Ultra. Protección antishock, bordes elevados.',
-    status: null,
-    category: 'fundas',
-  },
-  {
-    id: 'cargador-inalambrico',
-    name: 'Cargador inalámbrico 15W',
-    price: '$19.500',
-    image: 'https://images.unsplash.com/photo-1625772452859-1c03d884e463?w=600&h=600&fit=crop&auto=format',
-    description: 'Base de carga inalámbrica 15W compatible con iPhone y Samsung. Con indicador LED.',
-    status: null,
-    category: 'cargadores',
-  },
-  {
-    id: 'taza-automatica',
-    name: 'Taza mezcladora automática',
-    price: '$24.000',
-    image: 'https://images.unsplash.com/photo-1559496417-e7f25cb247f3?w=600&h=600&fit=crop&auto=format',
-    description: 'Taza inteligente con motor mezclador automático. Ideal para café, proteína o matcha. Carga USB.',
-    status: null,
-    category: 'termos',
-  },
+
+
 ]
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
@@ -954,25 +1252,89 @@ function ChevronDownIcon({ size = 18 }: { size?: number }) {
   )
 }
 
+function MapPinIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  )
+}
+
+function InstagramIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  )
+}
+
 // ─── Shared Components ───────────────────────────────────────────────────────
 
-function StatusBadge({ status }: { status: Product['status'] }) {
-  if (!status) return null
-  const styles: Record<string, string> = {
+function getEffectiveAvailability(product: Product): 'stock' | 'order' | null {
+  if (product.availability) return product.availability
+  if (product.category !== 'celulares') return null
+  if (product.status === 'out') return 'order'
+  if (product.status === 'new') return 'order'
+  if (product.status === 'used') return 'stock'
+  return null
+}
+
+function ProductBadges({ product, inline = false }: { product: Product; inline?: boolean }) {
+  if (!product.status) return null
+
+  const isCelulares = product.category === 'celulares'
+  const availability = getEffectiveAvailability(product)
+
+  const statusStyles: Record<string, string> = {
     new: 'bg-[#B5502F] text-white',
     used: 'bg-[#8A8580] text-white',
     out: 'bg-red-600 text-white',
   }
-  const labels: Record<string, string> = {
-    new: 'Nuevo',
+
+  const statusLabels: Record<string, string> = {
+    new: isCelulares ? 'Sellado' : 'Nuevo',
     used: 'Usado',
-    out: 'A pedido',
+    out: 'Sin stock',
   }
+
+  const availStyles: Record<string, string> = {
+    stock: 'bg-[#2E7D32] text-white',
+    order: 'bg-[#111111] text-white',
+  }
+  const availLabels: Record<string, string> = {
+    stock: 'En stock',
+    order: 'A pedido',
+  }
+
+  const containerClasses = inline
+    ? 'flex flex-wrap gap-1.5 items-center'
+    : 'absolute top-2 left-2 flex flex-col items-start gap-1 z-10'
+
+  const showStatusBadge = isCelulares || !product.availability || product.status === 'used' || product.status === 'out'
+  const showAvailBadge = isCelulares ? !!availability : !!product.availability
+
   return (
-    <span className={`absolute top-2 left-2 text-[10px] font-semibold px-2 py-0.5 rounded-full tracking-wide ${styles[status]}`}
-      style={{ fontFamily: 'Inter, sans-serif' }}>
-      {labels[status]}
-    </span>
+    <div className={containerClasses}>
+      {showStatusBadge && (
+        <span
+          className={`text-[10px] font-semibold px-2 py-0.5 rounded-full tracking-wide shadow-sm ${statusStyles[product.status]}`}
+          style={{ fontFamily: 'Inter, sans-serif' }}
+        >
+          {statusLabels[product.status]}
+        </span>
+      )}
+      {showAvailBadge && availability && (
+        <span
+          className={`text-[10px] font-semibold px-2 py-0.5 rounded-full tracking-wide shadow-sm ${availStyles[availability]}`}
+          style={{ fontFamily: 'Inter, sans-serif' }}
+        >
+          {availLabels[availability]}
+        </span>
+      )}
+    </div>
   )
 }
 
@@ -1022,7 +1384,7 @@ function ProductCard({ product, onSelect }: { product: Product; onSelect: (p: Pr
     >
       <div className="relative w-full aspect-square bg-[#F0EDE6]">
         <img src={product.image} alt={product.name} className="w-full h-full object-cover" loading="lazy" />
-        <StatusBadge status={product.status} />
+        <ProductBadges product={product} />
       </div>
       <div className="p-3 flex flex-col gap-2 flex-1">
         <p className="text-[13px] font-semibold leading-snug text-[#111111] line-clamp-2"
@@ -1074,7 +1436,6 @@ function HomeScreen({
       <header className="sticky top-0 z-30 bg-[#F5F1E8]/95 backdrop-blur border-b border-[#E0DBD0]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14 sm:h-16">
           <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => { window.location.hash = '#/' }}>
-            <LionLogo size={32} />
             <span className="text-[20px] sm:text-[22px] font-bold tracking-tight text-[#111111]"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               FAMVAR
@@ -1321,13 +1682,12 @@ function HomeScreen({
             {/* Brand */}
             <div className="lg:col-span-2">
               <div className="flex items-center gap-2 mb-3 cursor-pointer" onClick={() => { window.location.hash = '#/' }}>
-                <LionLogo size={30} />
                 <span className="font-bold text-[20px] text-[#111111]"
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}>FAMVAR</span>
               </div>
               <p className="text-[14px] text-[#8A8580] leading-relaxed max-w-xs"
                 style={{ fontFamily: 'Inter, sans-serif' }}>
-                Familia + Variedad. Celulares nuevos y usados, accesorios y productos importados con envío a todo el país.
+                Celulares nuevos y usados, accesorios y productos 100% importados, con envío a todo el país.
               </p>
             </div>
             {/* Info */}
@@ -1336,12 +1696,47 @@ function HomeScreen({
                 style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 Contacto
               </h4>
-              <ul className="space-y-2 text-[13px] text-[#8A8580]"
+              <ul className="space-y-2.5 text-[13px] text-[#8A8580]"
                 style={{ fontFamily: 'Inter, sans-serif' }}>
-                <li>📍 La Escondida, Chaco</li>
-                <li>📦 Envíos a todo el país</li>
-                <li>💬 WhatsApp: +54 9 362 407-6857</li>
-                <li>📸 @famvar</li>
+                <li className="flex items-center gap-2 text-[#8A8580]">
+                  <MapPinIcon size={16} />
+                  <span>La Escondida, Chaco</span>
+                </li>
+                <li className="flex items-center gap-2 text-[#8A8580]">
+                  <TruckIcon size={16} />
+                  <span>Envíos a todo el país</span>
+                </li>
+                <li className="pt-0.5 pb-0.5">
+                  <a
+                    href="https://wa.me/5493624076857?text=Hola%20FAMVAR!%20Quiero%20hacer%20una%20consulta."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-[#B5502F] text-white text-xs font-semibold px-3 py-1.5 rounded-xl hover:opacity-90 transition-opacity"
+                  >
+                    <WhatsAppIcon size={15} />
+                    <span>Escribinos por WhatsApp</span>
+                  </a>
+                </li>
+                <li className="flex flex-col gap-1.5 pt-0.5">
+                  <a
+                    href="https://instagram.com/famvar.importados"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[#8A8580] hover:text-[#B5502F] transition-colors"
+                  >
+                    <InstagramIcon size={16} />
+                    <span>@famvar.importados</span>
+                  </a>
+                  <a
+                    href="https://instagram.com/luca.escobar.9250"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[#8A8580] hover:text-[#B5502F] transition-colors"
+                  >
+                    <InstagramIcon size={16} />
+                    <span>@luca.escobar.9250</span>
+                  </a>
+                </li>
               </ul>
             </div>
             {/* Categories */}
@@ -1365,7 +1760,15 @@ function HomeScreen({
           {/* Bottom bar */}
           <div className="pt-6 border-t border-[#E0DBD0] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <p className="text-[12px] text-[#8A8580]/60" style={{ fontFamily: 'Inter, sans-serif' }}>
-              © 2025 FAMVAR — Familia + Variedad
+              © 2025 FAMVAR — Todos los derechos reservados. Diseñado por{' '}
+              <a
+                href="https://heytrama.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-[#B5502F] transition-colors"
+              >
+                heytrama
+              </a>
             </p>
             <div className="flex items-center gap-2 text-[#B5502F]">
               <TruckIcon size={14} />
@@ -1411,7 +1814,6 @@ function CategoryScreen({
               <ArrowLeft />
             </button>
             <div className="flex items-center gap-2 cursor-pointer" onClick={() => { window.location.hash = '#/' }}>
-              <LionLogo size={26} />
               <span className="text-[13px] text-[#8A8580] font-medium hidden sm:block"
                 style={{ fontFamily: 'Inter, sans-serif' }}>
                 FAMVAR /
@@ -1448,8 +1850,7 @@ function CategoryScreen({
             <div>
               <p className="text-[13px] sm:text-[14px] text-[#F5F1E8]/90 leading-relaxed"
                 style={{ fontFamily: 'Inter, sans-serif' }}>
-                <span className="font-semibold text-[#F5F1E8]">Vendemos a pedido.</span>{' '}
-                Consultanos por el modelo que buscás — iPhone o Samsung, nuevos o usados. Si no está en la grilla, lo conseguimos igual.
+                <span className="font-semibold text-[#F5F1E8]">Tenemos usados en stock, listos para entregar</span> — y conseguimos sellados a pedido. Consultanos por el modelo que buscás, lo tengamos en la grilla o no.
               </p>
             </div>
           </div>
@@ -1545,9 +1946,7 @@ function ProductDetailScreen({
               <img src={selectedImg} alt={product.name}
                 className="w-full h-full object-cover transition-all duration-300" />
               {product.status && (
-                <div className="absolute top-4 left-4">
-                  <StatusBadge status={product.status} />
-                </div>
+                <ProductBadges product={product} />
               )}
             </div>
 
@@ -1572,7 +1971,7 @@ function ProductDetailScreen({
           <div className="lg:pt-2">
             {product.status && (
               <div className="mb-3">
-                <StatusBadge status={product.status} />
+                <ProductBadges product={product} inline />
               </div>
             )}
             <h1 className="text-[26px] sm:text-[34px] font-bold leading-tight text-[#111111] mb-2"
