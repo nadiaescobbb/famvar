@@ -465,6 +465,96 @@ const PRODUCTS: Product[] = [
     featured: true,
   },
   {
+    id: 'samsung-s26-ultra',
+    name: 'Samsung Galaxy S26 Ultra',
+    price: '$ 3.399.999',
+    image: '/samsung-s26-ultra.avif',
+    images: [
+      '/samsung-s26-ultra.avif',
+    ],
+    storageOptions: [
+      { size: '256GB', price: '$ 3.399.999' },
+      { size: '512GB', price: '$ 3.699.999' },
+      { size: '1TB', price: '$ 4.399.999' },
+    ],
+    description: 'El nuevo Samsung Galaxy S26 Ultra revoluciona la gama alta con el procesador Snapdragon 8 Elite Gen 5, pantalla de 6,9" con tecnología de privacidad integrada, cámara principal de 200 MP y Super Fast Charging 3.0 con 31 horas de reproducción de video.',
+    features: [
+      {
+        title: 'Procesador Snapdragon 8 Elite Gen 5',
+        text: 'Equipado con la máxima potencia de la arquitectura Snapdragon 8 Elite Gen 5 (Octa-Core hasta 4.74GHz) para rendimiento gaming y multitarea sin límites.',
+      },
+      {
+        title: 'Pantalla de 6,9” con Privacidad Integrada',
+        text: 'Pantalla AMOLED de 6,9 pulgadas (174.9 mm) a 120Hz con tecnología de privacidad integrada directamente en el panel.',
+      },
+      {
+        title: 'Cámara Gran Angular de 200 MP',
+        text: 'Sistema cuádruple de cámaras de 200.0 MP + 50.0 MP + 50.0 MP + 10.0 MP para capturas ultra detalladas en cualquier condición de luz.',
+      },
+      {
+        title: 'Super Fast Charging 3.0 & Autonomía',
+        text: 'Carga super rápida 3.0 que alcanza el 75% de batería en solo 30 minutos, con hasta 31 horas de reproducción continua de video.',
+      },
+    ],
+    specGroups: [
+      {
+        category: 'Procesador',
+        items: [
+          'Procesador: Snapdragon 8 Elite Gen 5',
+          'Velocidad de CPU: Octa-Core 4.74GHz, 3.6GHz',
+        ],
+      },
+      {
+        category: 'Pantalla',
+        items: [
+          'Tamaño de pantalla: 174.9 mm (6.9" full rectangle)',
+          'Tecnología de privacidad integrada',
+          'Soporte S Pen: Sí',
+        ],
+      },
+      {
+        category: 'Almacenamiento y Memoria',
+        items: [
+          'Capacidades disponibles: 256GB - 512GB - 1TB',
+        ],
+      },
+      {
+        category: 'Cámaras',
+        items: [
+          'Cámara Trasera (Cuádruple): 200.0 MP + 50.0 MP + 50.0 MP + 10.0 MP',
+          'Cámara Frontal: 12.0 MP',
+        ],
+      },
+      {
+        category: 'Batería y Carga',
+        items: [
+          'Capacidad de Batería: 5,000 mAh',
+          'Super Fast Charging 3.0 (75% en 30 minutos)',
+          'Autonomía: Hasta 31 horas de reproducción de video',
+          'Pin de Carga: USB Type-C',
+        ],
+      },
+      {
+        category: 'Conectividad y SIM',
+        items: [
+          'SIM: Nano-SIM (4FF), SIM Integrada (eSIM)',
+          'Redes: 5G Sub6 (FDD/TDD), 4G LTE (FDD/TDD), 3G WCDMA, 2G GSM',
+          'NFC: Sí',
+        ],
+      },
+      {
+        category: 'Certificaciones y Adicionales',
+        items: [
+          'Ramatel ID: H-33258',
+          'Compatible con S Pen: Sí',
+        ],
+      },
+    ],
+    status: 'new',
+    category: 'celulares',
+    featured: true,
+  },
+  {
     id: 'iphone-16',
     name: 'iPhone 16',
     price: '$ 2.299.990',
