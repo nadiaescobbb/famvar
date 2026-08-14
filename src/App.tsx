@@ -1282,6 +1282,18 @@ function getEffectiveAvailability(product: Product): 'stock' | 'order' | null {
   return null
 }
 
+function sortProductsByAvailability(productsList: Product[]): Product[] {
+  return [...productsList].sort((a, b) => {
+    const availA = getEffectiveAvailability(a)
+    const availB = getEffectiveAvailability(b)
+
+    const rankA = availA === 'stock' ? 1 : availA === 'order' ? 2 : 3
+    const rankB = availB === 'stock' ? 1 : availB === 'order' ? 2 : 3
+
+    return rankA - rankB
+  })
+}
+
 function ProductBadges({ product, inline = false }: { product: Product; inline?: boolean }) {
   if (!product.status) return null
 
@@ -1419,7 +1431,7 @@ function HomeScreen({
   onSelectCategory: (cat: Category) => void
   onSelectProduct: (p: Product) => void
 }) {
-  const featuredProducts = PRODUCTS.filter((p) => p.featured)
+  const featuredProducts = sortProductsByAvailability(PRODUCTS.filter((p) => p.featured))
 
   return (
     <div className="min-h-screen bg-[#F5F1E8]">
@@ -1796,10 +1808,12 @@ function CategoryScreen({
 }) {
   const [search, setSearch] = useState('')
 
-  const products = PRODUCTS.filter(
-    (p) =>
-      p.category === category.id &&
-      (search === '' || p.name.toLowerCase().includes(search.toLowerCase()))
+  const products = sortProductsByAvailability(
+    PRODUCTS.filter(
+      (p) =>
+        p.category === category.id &&
+        (search === '' || p.name.toLowerCase().includes(search.toLowerCase()))
+    )
   )
 
   return (
