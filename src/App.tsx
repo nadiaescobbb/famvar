@@ -351,11 +351,129 @@ const PRODUCTS: Product[] = [
     featured: true,
   },
   {
-    id: 'iphone-15',
-    name: 'iPhone 15 128GB',
-    price: '$1.250.000',
-    image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&h=600&fit=crop&auto=format',
-    description: 'iPhone 15 128GB Negro. Chip A16 Bionic, cámara 48MP, Dynamic Island. Sellado, con garantía de fábrica.',
+    id: 'iphone-16',
+    name: 'iPhone 16',
+    price: '$ 2.299.990',
+    image: '/IPHONE161.avif',
+    images: [
+      '/IPHONE161.avif',
+      '/IPHONE162.avif',
+      '/IPHONE163.avif',
+    ],
+    storageOptions: [
+      { size: '128GB', price: '$ 2.299.990' },
+      { size: '256GB', price: '$ 2.419.990' },
+      { size: '512GB', price: '$ 2.699.990' },
+    ],
+    description: 'El iPhone 16 está diseñado para Apple Intelligence. Con chip A18 Bionic, nuevo sistema de cámara Fusion de 48 MP con ultra gran angular macro y teleobjetivo 2x, chasis de aluminio de calidad aeroespacial y Ceramic Shield de última generación.',
+    features: [
+      {
+        title: 'Diseñado para Apple Intelligence',
+        text: 'Apple Intelligence es un sistema de inteligencia personal que te ayuda a redactar, expresarte y hacer tus tareas diarias sin esfuerzo. Cuenta con revolucionarias prestaciones de privacidad para que nadie más pueda acceder a tus datos. Ni siquiera Apple.',
+      },
+      {
+        title: 'Cámara',
+        text: 'El sistema de cámaras del iPhone 16 es un triunfo seguro tanto en las distancias cortas como en las largas. La cámara Fusion de 48 Mpx te ofrece una resolución impresionante y, con el teleobjetivo de dos aumentos de calidad óptica, puedes acercarte a la acción sin moverte del sitio. Por otro lado, el ultra gran angular te permite hacer desde las fotos macro más extremas hasta panorámicas donde cabe todo un paisaje. Es como llevar cuatro objetivos en el bolsillo.',
+      },
+      {
+        title: 'Diseño resistente',
+        text: 'El diseño del iPhone 16 cuenta con una carcasa en aluminio de calidad aeroespacial y una parte trasera de vidrio tintado en masa tan resistente como irresistible. La parte delantera está fabricada con Ceramic Shield de última generación, un material el doble de duro que cualquier vidrio en un smartphone. Y su nuevo diseño interno disipa el calor de manera más eficaz para ofrecer un rendimiento de primer nivel.',
+      },
+      {
+        title: 'Autonomía',
+        text: 'El iPhone 16 se ha diseñado para dar espacio a una batería más grande. Si a eso le sumas la eficiencia del chip A18, el resultado es un subidón en autonomía aun con todas las nuevas prestaciones. Spoiler: se vienen maratones de juegos y series.',
+      },
+    ],
+    specGroups: [
+      {
+        category: 'Dimensiones y peso',
+        items: [
+          'Alto: 147.6 mm',
+          'Ancho: 71.6 mm',
+          'Grosor: 7.8 mm',
+          'Peso: 170 g',
+        ],
+      },
+      {
+        category: 'Pantalla',
+        items: [
+          'Pantalla Super Retina XDR OLED de 6.1 pulgadas',
+          'Resolución de 2556 x 1179 píxeles a 460 ppi',
+          'Dynamic Island y True Tone',
+          'Gama cromática amplia (P3)',
+          'Brillo máximo de 1000 nits; hasta 2000 nits en exteriores',
+        ],
+      },
+      {
+        category: 'Chip',
+        items: [
+          'A18 Bionic',
+          'CPU de 6 núcleos',
+          'GPU de 5 núcleos',
+          'Neural Engine de 16 núcleos',
+        ],
+      },
+      {
+        category: 'Cámara',
+        items: [
+          'Sistema de cámara dual de 48 MP',
+          'Ultra gran angular de 12 MP',
+          'Zoom óptico de acercamiento x2',
+          'Zoom digital hasta x10',
+          'Photonic Engine, Modo Noche, Deep Fusion, HDR Inteligente 5',
+        ],
+      },
+      {
+        category: 'Conectividad',
+        items: [
+          '5G',
+          'Wi-Fi 6',
+          'Bluetooth 5.3',
+          'Ultra Wideband (UWB) chip U2',
+        ],
+      },
+      {
+        category: 'Batería y Carga',
+        items: [
+          'Hasta 22 horas de reproducción de video',
+          'Carga rápida con adaptador de 20 W o superior',
+          'Carga inalámbrica MagSafe de hasta 15 W',
+          'Puerto USB-C',
+        ],
+      },
+      {
+        category: 'Resistencia al Agua y Polvo',
+        items: [
+          'Clasificación IP68 (hasta 6 metros por 30 minutos)',
+        ],
+      },
+      {
+        category: 'Sistema Operativo',
+        items: [
+          'iOS 18',
+        ],
+      },
+      {
+        category: 'Seguridad',
+        items: [
+          'Face ID',
+          'Protección de datos con encriptación de extremo a extremo',
+        ],
+      },
+      {
+        category: 'Audio',
+        items: [
+          'Audio espacial',
+          'Dolby Atmos',
+        ],
+      },
+      {
+        category: 'Accesorios Compatibles',
+        items: [
+          'Compatible con cargadores MagSafe',
+        ],
+      },
+    ],
     status: 'new',
     category: 'celulares',
     featured: true,
