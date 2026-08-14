@@ -988,10 +988,6 @@ function ProductDetailScreen({
                       <span className="block text-[14px] font-bold" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                         {opt.size}
                       </span>
-                      <span className={`block text-[11px] font-semibold mt-0.5 ${selectedStorage?.size === opt.size ? 'text-[#F5C842]' : 'text-[#B5502F]'
-                        }`} style={{ fontFamily: 'Inter, sans-serif' }}>
-                        {opt.price}
-                      </span>
                     </button>
                   ))}
                 </div>
