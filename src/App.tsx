@@ -696,7 +696,13 @@ const PRODUCTS: Product[] = [
     id: 'stanley-classic-hot-coral',
     name: 'Termo Stanley Clásico 950ml Con Manija - Hot Coral',
     price: 'A pedido por WPP',
-    image: 'https://images.unsplash.com/photo-1544568100-847a948585b9?w=600&h=600&fit=crop&auto=format',
+    image: '/STANLEY-coral-1.avif',
+    images: [
+      '/STANLEY-coral-1.avif',
+      '/STANLEY-coral-2.avif',
+      '/STANLEY-coral-3.avif',
+      '/STANLEY-coral-4.avif',
+    ],
     description: 'El Termo Mate Stanley Classic 950 ml con Asa y tapón cebador es un producto icónico diseñado para mantener tus bebidas calientes o frías durante 24 horas y heladas hasta 5 días. Construcción en acero inoxidable 18/8 con aislamiento al vacío legendario.',
     features: [
       {
