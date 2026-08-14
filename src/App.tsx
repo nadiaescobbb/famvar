@@ -693,6 +693,67 @@ const PRODUCTS: Product[] = [
     featured: true,
   },
   {
+    id: 'stanley-classic-hot-coral',
+    name: 'Termo Stanley Clásico 950ml Con Manija - Hot Coral',
+    price: 'A pedido por WPP',
+    image: 'https://images.unsplash.com/photo-1544568100-847a948585b9?w=600&h=600&fit=crop&auto=format',
+    description: 'El Termo Mate Stanley Classic 950 ml con Asa y tapón cebador es un producto icónico diseñado para mantener tus bebidas calientes o frías durante 24 horas y heladas hasta 5 días. Construcción en acero inoxidable 18/8 con aislamiento al vacío legendario.',
+    features: [
+      {
+        title: 'Aislamiento Térmico Legendario',
+        text: 'Aislamiento al vacío de doble pared que mantiene bebidas calientes durante 24 horas, frías durante 24 horas y heladas hasta por 5 días.',
+      },
+      {
+        title: 'Tapón Cebador Picosuave',
+        text: 'Tapón giratorio de vertido suave y preciso ideal para cebar mate sin derrames. Incluye tapa aislada multifunción que sirve como taza.',
+      },
+      {
+        title: 'Diseño Ergonómico con Asa',
+        text: 'Formato delgado fácil de sostener con una mano, equipado con manija lateral resistente para transporte cómodo en cualquier viaje.',
+      },
+      {
+        title: 'Construcción Inoxidable 18/8 - Hot Coral',
+        text: 'Acero inoxidable de calidad alimentaria libre de BPA, ultra resistente a golpes en un vibrante acabado Hot Coral.',
+      },
+    ],
+    specGroups: [
+      {
+        category: 'Generales y Diseño',
+        items: [
+          'Serie: Classic',
+          'Capacidad: 950 ml',
+          'Color: Hot Coral',
+          'Material: Acero inoxidable 18/8 libre de BPA',
+        ],
+      },
+      {
+        category: 'Rendimiento Térmico',
+        items: [
+          'Mantiene Caliente: 24 horas',
+          'Mantiene Frío: 24 horas',
+          'Mantiene Helado: 5 días',
+        ],
+      },
+      {
+        category: 'Tapón y Accesorios',
+        items: [
+          'Tapón cebador con vertido suave de precisión',
+          'Tapa aislada multifunción (funciona como taza)',
+          'Asa lateral de agarre seguro integrada',
+        ],
+      },
+      {
+        category: 'Disponibilidad',
+        items: [
+          'AGOTADO EN STOCK INMEDIATO — Podés hacer tu pedido a través de WhatsApp.',
+        ],
+      },
+    ],
+    status: 'out',
+    category: 'termos',
+    featured: true,
+  },
+  {
     id: 'iphone-13-usado',
     name: 'iPhone 13 256GB',
     price: '$750.000',
@@ -899,7 +960,7 @@ function StatusBadge({ status }: { status: Product['status'] }) {
   const labels: Record<string, string> = {
     new: 'Nuevo',
     used: 'Usado',
-    out: 'Sin stock',
+    out: 'A pedido',
   }
   return (
     <span className={`absolute top-2 left-2 text-[10px] font-semibold px-2 py-0.5 rounded-full tracking-wide ${styles[status]}`}
