@@ -907,7 +907,6 @@ function HomeScreen({
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Productos Destacados
             </h2>
-            <span className="text-xs text-[#B5502F] font-semibold">Stock Inmediato</span>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
