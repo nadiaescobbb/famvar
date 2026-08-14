@@ -234,6 +234,123 @@ const PRODUCTS: Product[] = [
     featured: true,
   },
   {
+    id: 'iphone-17-pro',
+    name: 'iPhone 17 Pro',
+    price: '$ 3.499.990',
+    image: '/iphone17pro1.avif',
+    images: [
+      '/iphone17pro1.avif',
+      '/iphone17pro2.avif',
+    ],
+    storageOptions: [
+      { size: '256GB', price: '$ 3.499.990' },
+      { size: '512GB', price: '$ 4.199.990' },
+      { size: '1TB', price: '$ 4.799.990' },
+    ],
+    description: 'El nuevo iPhone 17 Pro redefine la potencia en un formato compacto de 6,3". Con su nueva estructura Unibody de aluminio forjado térmicamente, refrigeración por cámara de vapor soldada por láser con chip A19 Pro y un avanzado sistema de cámaras Pro Fusion con zoom óptico x16.',
+    features: [
+      {
+        title: 'Diseño',
+        text: 'El iPhone 17 Pro llega pisando fuerte con un rediseño total desde la propia base. Su nueva estructura Unibody de aluminio forjado térmicamente eleva la resistencia, el rendimiento y la autonomía a una nueva dimensión. Todo un hito de la ingeniería para crear los modelos de iPhone más potentes de la historia.',
+      },
+      {
+        title: 'Cámara',
+        text: 'El sistema de cámaras del iPhone 17 Pro está pensado para que puedas llevar tu creatividad muy lejos. Incluye el teleobjetivo de mayor alcance en un iPhone, con un equivalente de hasta 200 mm de distancia focal, así como nuestro diseño en tetraprisma de última generación y un sensor un 56 % más grande. Vas a tener mucho terreno por explorar con un rango de zoom óptico de 16 aumentos. Además, las fotos con poca luz son toda una revelación y los vídeos, simplemente de película.',
+      },
+      {
+        title: 'Rendimiento',
+        text: 'Gracias a su avanzada tecnología de refrigeración, el iPhone 17 Pro es capaz de manejar archivos y gráficos monumentales y seguir tan fresco. Apple ha diseñado una cámara de vapor soldada por láser que une fuerzas con la estructura Unibody de aluminio para disipar el calor del chip A19 Pro de manera eficiente. ¿El resultado? Un rendimiento superior que no baja el ritmo. Este prodigio de la gestión térmica nos ha permitido crear el iPhone más potente de todos los tiempos.',
+      },
+      {
+        title: 'Chip A19 Pro',
+        text: 'El chip de Apple del iPhone 17 Pro ofrece la mayor potencia que haya tenido un iPhone. Atrévete con esos proyectos y juegos que siempre piden más y más.',
+      },
+    ],
+    specGroups: [
+      {
+        category: 'Dimensiones y peso',
+        items: [
+          'Alto: 15 cm',
+          'Ancho: 7,19 cm',
+          'Grosor: 0,88 cm',
+          'Peso: 204 g',
+        ],
+      },
+      {
+        category: 'Pantalla',
+        items: [
+          'Pantalla Super Retina XDR',
+          'Pantalla OLED de 6,3 pulgadas (15,93 cm) en diagonal',
+          'Resolución de 2.622 por 1.206 píxeles a 460 p/p',
+          'Dynamic Island y Pantalla siempre activa',
+          'Tecnología ProMotion con frecuencia de actualización adaptativa de hasta 120 Hz',
+          'Pantalla HDR, True Tone y Gama cromática amplia (P3)',
+          'Respuesta háptica y Contraste de 2.000.000:1 (típico)',
+          'Brillo máximo de 1.000 nits (típico), pico de brillo de 1.600 nits (HDR), pico de brillo de 3.000 nits (en exteriores) y brillo mínimo de 1 nit',
+          'Cubierta oleófuga antihuellas y Película antirreflectante',
+          'Compatible con la presentación simultánea de múltiples idiomas y grupos de caracteres',
+        ],
+      },
+      {
+        category: 'Chip',
+        items: [
+          'Chip A19 Pro',
+          'CPU de 6 núcleos (2 de rendimiento y 4 de eficiencia)',
+          'GPU de 6 núcleos con aceleradores neuronales',
+          'Neural Engine de 16 núcleos',
+          'Trazado de rayos por aceleración de hardware',
+        ],
+      },
+      {
+        category: 'Cámara',
+        items: [
+          'Sistema de cámaras Pro Fusion de 48 Mpx',
+          'Cámara principal Fusion de 48 Mpx: 24 mm, apertura de ƒ/1,78, estabilización óptica de imagen por desplazamiento del sensor de segunda generación, 100 % Focus Pixels y compatibilidad con fotos de superalta resolución (24 y 48 Mpx)',
+          'Teleobjetivo x2 de calidad óptica de 12 Mpx: 48 mm, apertura de ƒ/1,78, estabilización óptica de imagen por desplazamiento del sensor de segunda generación y 100 % Focus Pixels',
+          'Ultra gran angular Fusion de 48 Mpx: 13 mm, apertura de ƒ/2,2, campo de visión de 120°, Hybrid Focus Pixels y compatibilidad con fotos de superalta resolución (48 Mpx)',
+          'Teleobjetivo Fusion de 48 Mpx: 100 mm (x4), apertura de ƒ/2,8, Hybrid Focus Pixels, estabilización óptica de imagen por desplazamiento del sensor en 3D con enfoque automático y diseño en tetraprisma',
+          'Teleobjetivo x8 de calidad óptica de 12 Mpx: 200 mm, apertura de ƒ/2,8, Hybrid Focus Pixels, estabilización óptica de imagen por desplazamiento del sensor en 3D con enfoque automático y diseño en tetraprisma',
+          'Zoom óptico de acercamiento x8, zoom óptico de alejamiento x2 y rango de zoom óptico x16',
+          'Zoom digital hasta x40',
+          'Objetivo por defecto personalizable (cámara principal Fusion)',
+          'Flash True Tone adaptativo y HDR Inteligente 5',
+        ],
+      },
+      {
+        category: 'Conectividad',
+        items: [
+          '5G',
+          'Wi-Fi 7',
+          'Bluetooth 6',
+          'Ultra Wideband (UWB) chip U2',
+        ],
+      },
+      {
+        category: 'Batería y Carga',
+        items: [
+          'Hasta 31 horas de reproducción de video',
+          'Carga rápida: Hasta un 50 % de carga en 20 minutos con un adaptador de 40 W o superior (se vende por separado) y un cable de carga USB‑C. Hasta un 50 % de carga en 30 minutos con un adaptador de 30 W o superior y un cargador MagSafe (ambos se venden por separado)',
+          'Carga inalámbrica con cargadores MagSafe de hasta 25 W',
+        ],
+      },
+      {
+        category: 'Sensores',
+        items: [
+          'Face ID',
+          'Escáner LiDAR',
+          'Barómetro',
+          'Giroscopio de alto rango dinámico',
+          'Acelerómetro de fuerza g alta',
+          'Sensor de proximidad',
+          'Doble sensor de luz ambiental',
+        ],
+      },
+    ],
+    status: 'new',
+    category: 'celulares',
+    featured: true,
+  },
+  {
     id: 'iphone-15',
     name: 'iPhone 15 128GB',
     price: '$1.250.000',
@@ -1097,7 +1214,7 @@ function ProductDetailScreen({
                     Almacenamiento
                   </h2>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <div className="grid grid-cols-3 gap-2.5">
                   {product.storageOptions.map((opt) => (
                     <button
                       key={opt.size}
