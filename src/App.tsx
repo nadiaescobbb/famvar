@@ -4,15 +4,22 @@ import { useState } from 'react'
 
 type View = 'home' | 'category' | 'product'
 
+interface ProductSpec {
+  label: string
+  value: string
+}
+
 interface Product {
   id: string
   name: string
   price: string
   image: string
+  images?: string[]
   description: string
   status: 'new' | 'used' | 'out' | null
   category: string
   featured?: boolean
+  specs?: ProductSpec[]
 }
 
 interface Category {
@@ -60,6 +67,33 @@ const CATEGORIES: Category[] = [
 ]
 
 const PRODUCTS: Product[] = [
+  {
+    id: 'iphone-17-pro-max',
+    name: 'iPhone 17 Pro Max 256GB',
+    price: '$1.850.000',
+    image: '/iphone17promax1.avif',
+    images: [
+      '/iphone17promax1.avif',
+      '/iphone17promax2.avif',
+      '/iphone17promax3.avif',
+    ],
+    description: 'El nuevo iPhone 17 Pro Max redefine la potencia y el diseño. Equipado con el revolucionario chip A19 Pro en arquitectura de 2nm, chasis de titanio ultraligero y el sistema de cámaras Pro más avanzado hasta la fecha con zoom óptico 6x y grabación 4K ProRes a 120 fps. Pantalla Super Retina XDR de 6.9" ProMotion 120Hz con brillo de pico de 3000 nits y Dynamic Island mejorada. Sellado en caja con garantía de fábrica Apple.',
+    status: 'new',
+    category: 'celulares',
+    featured: true,
+    specs: [
+      { label: 'Pantalla', value: '6.9" Super Retina XDR OLED ProMotion 120Hz (3000 nits)' },
+      { label: 'Procesador', value: 'Chip A19 Pro (2nm) de 6 núcleos con Neural Engine' },
+      { label: 'Cámara Principal', value: 'Triple 48 MP (Principal + Ultra Gran Angular + Telefoto 6x)' },
+      { label: 'Cámara Frontal', value: '24 MP TrueDepth con autofoco y modo Retrato 4K' },
+      { label: 'Almacenamiento', value: '256 GB NVMe' },
+      { label: 'Construcción', value: 'Titanio de grado aeroespacial y vidrio Ceramic Shield II' },
+      { label: 'Batería', value: 'Hasta 33 horas de reproducción de video (Carga rápida 50% en 25 min)' },
+      { label: 'Conectividad', value: '5G Sub-6GHz, Wi-Fi 7, Bluetooth 5.4, USB-C 3.2 (10Gbps)' },
+      { label: 'Sistema Operativo', value: 'iOS 19 con soporte para Apple Intelligence' },
+      { label: 'Garantía', value: '12 Meses de Garantía Oficial Apple' },
+    ],
+  },
   {
     id: 'iphone-15',
     name: 'iPhone 15 128GB',
@@ -237,6 +271,23 @@ function CreditCardIcon({ size = 16 }: { size?: number }) {
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
       <line x1="1" y1="10" x2="23" y2="10" />
+    </svg>
+  )
+}
+
+function CpuIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="4" y="4" width="16" height="16" rx="2" />
+      <rect x="9" y="9" width="6" height="6" />
+      <line x1="9" y1="1" x2="9" y2="4" />
+      <line x1="15" y1="1" x2="15" y2="4" />
+      <line x1="9" y1="20" x2="9" y2="23" />
+      <line x1="15" y1="20" x2="15" y2="23" />
+      <line x1="20" y1="9" x2="23" y2="9" />
+      <line x1="20" y1="15" x2="23" y2="15" />
+      <line x1="1" y1="9" x2="4" y2="9" />
+      <line x1="1" y1="15" x2="4" y2="15" />
     </svg>
   )
 }
@@ -772,6 +823,9 @@ function ProductDetailScreen({
   product: Product
   onBack: () => void
 }) {
+  const gallery = product.images && product.images.length > 0 ? product.images : [product.image]
+  const [selectedImg, setSelectedImg] = useState<string>(gallery[0])
+
   return (
     <div className="min-h-screen bg-[#F5F1E8]">
 
@@ -791,15 +845,33 @@ function ProductDetailScreen({
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
         {/* Two-column on desktop */}
-        <div className="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-start">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-start mb-10">
 
-          {/* Image */}
-          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-[#ECEAE3] aspect-square mb-6 lg:mb-0">
-            <img src={product.image} alt={product.name}
-              className="w-full h-full object-cover" />
-            {product.status && (
-              <div className="absolute top-4 left-4">
-                <StatusBadge status={product.status} />
+          {/* Gallery Container */}
+          <div className="flex flex-col gap-3 mb-6 lg:mb-0">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-[#E8E4DB] aspect-square shadow-sm">
+              <img src={selectedImg} alt={product.name}
+                className="w-full h-full object-cover transition-all duration-300" />
+              {product.status && (
+                <div className="absolute top-4 left-4">
+                  <StatusBadge status={product.status} />
+                </div>
+              )}
+            </div>
+
+            {/* Thumbnails */}
+            {gallery.length > 1 && (
+              <div className="flex gap-2.5 overflow-x-auto pb-1">
+                {gallery.map((imgUrl, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSelectedImg(imgUrl)}
+                    className={`w-20 h-20 rounded-xl overflow-hidden border-2 bg-white shrink-0 transition-all ${selectedImg === imgUrl ? 'border-[#B5502F] scale-95 shadow-sm' : 'border-[#E8E4DB] opacity-70 hover:opacity-100'
+                      }`}
+                  >
+                    <img src={imgUrl} alt={`${product.name} - ${idx + 1}`} className="w-full h-full object-cover" />
+                  </button>
+                ))}
               </div>
             )}
           </div>
@@ -811,7 +883,7 @@ function ProductDetailScreen({
                 <StatusBadge status={product.status} />
               </div>
             )}
-            <h1 className="text-[26px] sm:text-[32px] font-bold leading-tight text-[#111111] mb-2"
+            <h1 className="text-[26px] sm:text-[34px] font-bold leading-tight text-[#111111] mb-2"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               {product.name}
             </h1>
@@ -820,10 +892,11 @@ function ProductDetailScreen({
               {product.price}
             </p>
 
-            <div className="bg-white rounded-2xl p-4 sm:p-5 border border-[#E8E4DB] mb-6">
-              <h2 className="text-[11px] font-semibold tracking-widest uppercase text-[#8A8580] mb-2"
+            {/* Información del producto */}
+            <div className="bg-white rounded-2xl p-5 border border-[#E8E4DB] mb-6 shadow-sm">
+              <h2 className="text-[12px] font-bold tracking-widest uppercase text-[#B5502F] mb-2"
                 style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                Descripción
+                Información del Producto
               </h2>
               <p className="text-[14px] sm:text-[15px] text-[#111111] leading-relaxed"
                 style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -832,7 +905,7 @@ function ProductDetailScreen({
             </div>
 
             <div className="flex items-center gap-2 mb-6 text-[#8A8580]">
-              <TruckIcon size={15} />
+              <TruckIcon size={16} />
               <span className="text-[13px]" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Envío a todo el país · La Escondida, Chaco
               </span>
@@ -846,6 +919,42 @@ function ProductDetailScreen({
             </p>
           </div>
         </div>
+
+        {/* Especificaciones técnicas */}
+        {product.specs && product.specs.length > 0 && (
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E4DB] shadow-sm">
+            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-[#E8E4DB]">
+              <div className="w-9 h-9 rounded-xl bg-[#111111] text-[#F5F1E8] flex items-center justify-center shrink-0">
+                <CpuIcon size={18} />
+              </div>
+              <div>
+                <h2 className="text-[18px] sm:text-[20px] font-bold text-[#111111]"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                  Especificaciones técnicas
+                </h2>
+                <p className="text-[12px] text-[#8A8580]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Detalles y componentes oficiales de {product.name}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+              {product.specs.map((spec, idx) => (
+                <div key={idx} className="flex flex-col py-2.5 border-b border-[#F5F1E8] last:border-b-0">
+                  <span className="text-[12px] font-semibold text-[#8A8580] uppercase tracking-wider mb-0.5"
+                    style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                    {spec.label}
+                  </span>
+                  <span className="text-[14px] font-bold text-[#111111]"
+                    style={{ fontFamily: 'Inter, sans-serif' }}>
+                    {spec.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
       </div>
     </div>
   )
