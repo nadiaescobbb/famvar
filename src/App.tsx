@@ -277,7 +277,7 @@ function WhatsAppButton({
   const msg = product
     ? `Hola FAMVAR! Me interesa: *${product.name}* (${product.price}). ¿Tienen disponibilidad?`
     : 'Hola FAMVAR! Quiero hacer una consulta.'
-  const href = `https://wa.me/5493624000000?text=${encodeURIComponent(msg)}`
+  const href = `https://wa.me/5493624076857?text=${encodeURIComponent(msg)}`
   const sizeClasses = {
     sm: 'py-2 px-3 text-xs gap-1.5',
     md: 'py-2.5 px-3 text-sm gap-2',
@@ -366,7 +366,7 @@ function HomeScreen({
                 </button>
               ))}
             </nav>
-            <a href="https://wa.me/5493624000000" target="_blank" rel="noopener noreferrer"
+            <a href="https://wa.me/5493624076857" target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-1.5 bg-[#B5502F] text-white text-sm font-semibold px-3.5 py-2 rounded-xl hover:opacity-90 transition-opacity"
               style={{ fontFamily: 'Inter, sans-serif' }}>
               <WhatsAppIcon size={16} />
@@ -616,7 +616,7 @@ function HomeScreen({
                 style={{ fontFamily: 'Inter, sans-serif' }}>
                 <li>📍 La Escondida, Chaco</li>
                 <li>📦 Envíos a todo el país</li>
-                <li>💬 Atención por WhatsApp</li>
+                <li>💬 WhatsApp: +54 9 362 407-6857</li>
                 <li>📸 @famvar</li>
               </ul>
             </div>
