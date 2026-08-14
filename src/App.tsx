@@ -9,6 +9,11 @@ interface ProductSpec {
   value: string
 }
 
+interface SpecGroup {
+  category: string
+  items: string[]
+}
+
 interface StorageOption {
   size: string
   price: string
@@ -31,6 +36,7 @@ interface Product {
   category: string
   featured?: boolean
   specs?: ProductSpec[]
+  specGroups?: SpecGroup[]
   storageOptions?: StorageOption[]
 }
 
@@ -115,21 +121,117 @@ const PRODUCTS: Product[] = [
         text: 'El chip de Apple del iPhone 17 Pro Max ofrece la mayor potencia que haya tenido un iPhone. Atrévete con esos proyectos y juegos que siempre piden más y más.',
       },
     ],
+    specGroups: [
+      {
+        category: 'Dimensiones y peso',
+        items: [
+          'Alto: 16,34 cm',
+          'Ancho: 7,8 cm',
+          'Grosor: 0,88 cm',
+          'Peso: 231 g',
+        ],
+      },
+      {
+        category: 'Pantalla',
+        items: [
+          'Pantalla Super Retina XDR',
+          'Pantalla OLED de 6,9 pulgadas (17,42 cm) en diagonal',
+          'Resolución de 2.868 por 1.320 píxeles a 460 p/p',
+          'Dynamic Island y Pantalla siempre activa',
+          'Tecnología ProMotion con frecuencia de actualización adaptativa de hasta 120 Hz',
+          'Pantalla HDR, True Tone y Gama cromática amplia (P3)',
+          'Respuesta háptica y Contraste de 2.000.000:1 (típico)',
+          'Brillo máximo de 1.000 nits (típico), pico de brillo de 1.600 nits (HDR), pico de brillo de 3.000 nits (en exteriores) y brillo mínimo de 1 nit',
+          'Cubierta oleófuga antihuellas y Película antirreflectante',
+          'Compatible con la presentación simultánea de múltiples idiomas y grupos de caracteres',
+        ],
+      },
+      {
+        category: 'Chip',
+        items: [
+          'Chip A19 Pro',
+          'CPU de 6 núcleos (2 de rendimiento y 4 de eficiencia)',
+          'GPU de 6 núcleos con aceleradores neuronales',
+          'Neural Engine de 16 núcleos',
+          'Trazado de rayos por aceleración de hardware',
+        ],
+      },
+      {
+        category: 'Cámara',
+        items: [
+          'Sistema de cámaras Pro Fusion de 48 Mpx',
+          'Cámara principal Fusion de 48 Mpx: 24 mm, apertura de ƒ/1,78, estabilización óptica de imagen por desplazamiento del sensor de segunda generación, 100 % Focus Pixels y compatibilidad con fotos de superalta resolución (24 y 48 Mpx)',
+          'Teleobjetivo x2 de calidad óptica de 12 Mpx: 48 mm, apertura de ƒ/1,78, estabilización óptica de imagen por desplazamiento del sensor de segunda generación y 100 % Focus Pixels',
+          'Ultra gran angular Fusion de 48 Mpx: 13 mm, apertura de ƒ/2,2, campo de visión de 120°, Hybrid Focus Pixels y compatibilidad con fotos de superalta resolución (48 Mpx)',
+          'Teleobjetivo Fusion de 48 Mpx: 100 mm (x4), apertura de ƒ/2,8, Hybrid Focus Pixels, estabilización óptica de imagen por desplazamiento del sensor en 3D con enfoque automático y diseño en tetraprisma',
+          'Teleobjetivo x8 de calidad óptica de 12 Mpx: 200 mm, apertura de ƒ/2,8, Hybrid Focus Pixels, estabilización óptica de imagen por desplazamiento del sensor en 3D con enfoque automático y diseño en tetraprisma',
+          'Zoom óptico de acercamiento x8, zoom óptico de alejamiento x2 y rango de zoom óptico x16',
+          'Zoom digital hasta x40',
+          'Objetivo por defecto personalizable (cámara principal Fusion)',
+          'Flash True Tone adaptativo y HDR Inteligente 5',
+        ],
+      },
+      {
+        category: 'Conectividad',
+        items: [
+          '5G',
+          'Wi-Fi 7',
+          'Bluetooth 6',
+          'Ultra Wideband (UWB) chip U2',
+        ],
+      },
+      {
+        category: 'Batería y Carga',
+        items: [
+          'Hasta 37 horas de reproducción de video',
+          'Carga rápida: Hasta un 50 % de carga en 20 minutos con un adaptador de 40 W o superior (se vende por separado) y un cable de carga USB‑C. Hasta un 50 % de carga en 30 minutos con un adaptador de 30 W o superior y un cargador MagSafe (ambos se venden por separado)',
+          'Carga inalámbrica con cargadores MagSafe de hasta 25 W',
+        ],
+      },
+      {
+        category: 'Sensores',
+        items: [
+          'Face ID',
+          'Escáner LiDAR',
+          'Barómetro',
+          'Giroscopio de alto rango dinámico',
+          'Acelerómetro de fuerza g alta',
+          'Sensor de proximidad',
+          'Doble sensor de luz ambiental',
+        ],
+      },
+      {
+        category: 'Sistema Operativo',
+        items: [
+          'iOS 26',
+        ],
+      },
+      {
+        category: 'Seguridad',
+        items: [
+          'Emergencia SOS vía satélite',
+          'Detección de accidentes',
+        ],
+      },
+      {
+        category: 'Reproducción de audio',
+        items: [
+          'Formatos compatibles: AAC, APAC, MP3, Apple Lossless, FLAC, Dolby Digital, Dolby Digital Plus y Dolby Atmos (entre otros)',
+          'Audio espacial',
+          'Límite de volumen configurable por el usuario',
+        ],
+      },
+      {
+        category: 'Contenido de la caja',
+        items: [
+          'iPhone con iOS 26',
+          'Cable de carga USB‑C (1 m)',
+        ],
+      },
+    ],
     status: 'new',
     category: 'celulares',
     featured: true,
-    specs: [
-      { label: 'Pantalla', value: '6.9" Super Retina XDR OLED ProMotion 120Hz (3000 nits)' },
-      { label: 'Procesador', value: 'Chip A19 Pro (2nm) de 6 núcleos con Neural Engine' },
-      { label: 'Cámara Principal', value: 'Triple 48 MP (Principal + Ultra Gran Angular + Telefoto 6x / 16x zoom)' },
-      { label: 'Cámara Frontal', value: '24 MP TrueDepth con autofoco y modo Retrato 4K' },
-      { label: 'Opciones de Almacenamiento', value: '256GB / 512GB / 1TB / 2TB NVMe' },
-      { label: 'Construcción & Refrigeración', value: 'Unibody de aluminio forjado y cámara de vapor soldada por láser' },
-      { label: 'Batería', value: 'Hasta 33 horas de reproducción de video (Carga rápida 50% en 25 min)' },
-      { label: 'Conectividad', value: '5G Sub-6GHz, Wi-Fi 7, Bluetooth 5.4, USB-C 3.2 (10Gbps)' },
-      { label: 'Sistema Operativo', value: 'iOS 19 con soporte para Apple Intelligence' },
-      { label: 'Garantía', value: '12 Meses de Garantía Oficial Apple' },
-    ],
   },
   {
     id: 'iphone-15',
@@ -344,6 +446,14 @@ function SparklesIcon({ size = 16 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 3v3m0 12v3M3 12h3m12 0h3m-3.5-6.5l-2.1 2.1m-6.8 6.8l-2.1 2.1m0-11l2.1 2.1m6.8 6.8l2.1 2.1" />
+    </svg>
+  )
+}
+
+function ChevronDownIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="6 9 12 15 18 9" />
     </svg>
   )
 }
@@ -896,8 +1006,20 @@ function ProductDetailScreen({
   const [selectedStorage, setSelectedStorage] = useState<StorageOption | null>(
     product.storageOptions && product.storageOptions.length > 0 ? product.storageOptions[0] : null
   )
+  const [openAccordion, setOpenAccordion] = useState<Record<string, boolean>>({
+    'Dimensiones y peso': true,
+    'Pantalla': true,
+    'Chip': true,
+  })
 
   const activePrice = selectedStorage ? selectedStorage.price : product.price
+
+  function toggleAccordion(catName: string) {
+    setOpenAccordion((prev) => ({
+      ...prev,
+      [catName]: !prev[catName],
+    }))
+  }
 
   return (
     <div className="min-h-screen bg-[#F5F1E8]">
@@ -1064,8 +1186,60 @@ function ProductDetailScreen({
           </div>
         )}
 
-        {/* Especificaciones técnicas */}
-        {product.specs && product.specs.length > 0 && (
+        {/* Especificaciones técnicas (Formato Acordeón) */}
+        {product.specGroups && product.specGroups.length > 0 ? (
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E4DB] shadow-sm">
+            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-[#E8E4DB]">
+              <div className="w-9 h-9 rounded-xl bg-[#111111] text-[#F5F1E8] flex items-center justify-center shrink-0">
+                <CpuIcon size={18} />
+              </div>
+              <div>
+                <h2 className="text-[18px] sm:text-[20px] font-bold text-[#111111]"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                  Especificaciones técnicas
+                </h2>
+                <p className="text-[12px] text-[#8A8580]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Ficha técnica oficial y componentes de {product.name}
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              {product.specGroups.map((group) => {
+                const isOpen = openAccordion[group.category] ?? false
+                return (
+                  <div key={group.category} className="border border-[#E8E4DB] rounded-2xl overflow-hidden bg-[#F5F1E8]/30 transition-all">
+                    <button
+                      onClick={() => toggleAccordion(group.category)}
+                      className="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-[#F5F1E8]/70 transition-colors"
+                    >
+                      <span className="text-[15px] font-bold text-[#111111]"
+                        style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                        {group.category}
+                      </span>
+                      <span className={`transform transition-transform duration-200 text-[#B5502F] ${isOpen ? 'rotate-180' : ''}`}>
+                        <ChevronDownIcon size={20} />
+                      </span>
+                    </button>
+
+                    {isOpen && (
+                      <div className="px-5 pb-5 pt-1 border-t border-[#E8E4DB]/60 bg-white">
+                        <ul className="space-y-2.5">
+                          {group.items.map((item, i) => (
+                            <li key={i} className="text-[13px] sm:text-[14px] text-[#111111] leading-relaxed flex items-start gap-2.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#B5502F] mt-2 shrink-0" />
+                              <span style={{ fontFamily: 'Inter, sans-serif' }}>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        ) : product.specs && product.specs.length > 0 ? (
           <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E4DB] shadow-sm">
             <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-[#E8E4DB]">
               <div className="w-9 h-9 rounded-xl bg-[#111111] text-[#F5F1E8] flex items-center justify-center shrink-0">
@@ -1097,7 +1271,7 @@ function ProductDetailScreen({
               ))}
             </div>
           </div>
-        )}
+        ) : null}
 
       </div>
     </div>
