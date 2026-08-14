@@ -76,6 +76,7 @@ const PRODUCTS: Product[] = [
       '/iphone17promax1.avif',
       '/iphone17promax2.avif',
       '/iphone17promax3.avif',
+      '/iphone17promax4.avif',
     ],
     description: 'El nuevo iPhone 17 Pro Max redefine la potencia y el diseño. Equipado con el revolucionario chip A19 Pro en arquitectura de 2nm, chasis de titanio ultraligero y el sistema de cámaras Pro más avanzado hasta la fecha con zoom óptico 6x y grabación 4K ProRes a 120 fps. Pantalla Super Retina XDR de 6.9" ProMotion 120Hz con brillo de pico de 3000 nits y Dynamic Island mejorada. Sellado en caja con garantía de fábrica Apple.',
     status: 'new',
