@@ -354,8 +354,12 @@ const PRODUCTS: Product[] = [
     id: 'samsung-s25-ultra',
     name: 'Samsung Galaxy S25 Ultra 256GB',
     price: '$ 3.399.999',
-    image: '/Samsung GalaxyS25 Ultra5.avif',
+    image: '/Samsung GalaxyS25 Ultra1.avif',
     images: [
+      '/Samsung GalaxyS25 Ultra1.avif',
+      '/Samsung GalaxyS25 Ultra2.avif',
+      '/Samsung GalaxyS25 Ultra3.avif',
+      '/Samsung GalaxyS25 Ultra4.avif',
       '/Samsung GalaxyS25 Ultra5.avif',
     ],
     description: 'El nuevo Samsung Galaxy S25 Ultra eleva la experiencia móvil con su procesador Octa-Core de 4.47GHz, 12GB de memoria RAM, pantalla Dynamic AMOLED 2X Quad HD+ a 120Hz con soporte S Pen integrado y un revolucionario sistema de cámaras cuádruple de 200 MP.',
