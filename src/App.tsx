@@ -14,6 +14,11 @@ interface StorageOption {
   price: string
 }
 
+interface ProductFeature {
+  title: string
+  text: string
+}
+
 interface Product {
   id: string
   name: string
@@ -21,6 +26,7 @@ interface Product {
   image: string
   images?: string[]
   description: string
+  features?: ProductFeature[]
   status: 'new' | 'used' | 'out' | null
   category: string
   featured?: boolean
@@ -90,17 +96,35 @@ const PRODUCTS: Product[] = [
       { size: '1TB', price: '$ 5.139.990' },
       { size: '2TB', price: '$ 6.429.990' },
     ],
-    description: 'El nuevo iPhone 17 Pro Max redefine la potencia y el diseño. Equipado con el revolucionario chip A19 Pro en arquitectura de 2nm, chasis de titanio ultraligero y el sistema de cámaras Pro más avanzado hasta la fecha con zoom óptico 6x y grabación 4K ProRes a 120 fps. Pantalla Super Retina XDR de 6.9" ProMotion 120Hz con brillo de pico de 3000 nits y Dynamic Island mejorada. Sellado en caja con garantía de fábrica Apple.',
+    description: 'El nuevo iPhone 17 Pro Max redefine la potencia y el diseño. Con su nueva estructura Unibody de aluminio forjado térmicamente, cámara de vapor para disipación del chip A19 Pro y un sistema de cámaras en tetraprisma de 16x aumentos, representa el hito más grande de ingeniería en la historia del iPhone.',
+    features: [
+      {
+        title: 'Diseño',
+        text: 'El iPhone 17 Pro Max llega pisando fuerte con un rediseño total desde la propia base. Su nueva estructura Unibody de aluminio forjado térmicamente eleva la resistencia, el rendimiento y la autonomía a una nueva dimensión. Todo un hito de la ingeniería para crear los modelos de iPhone más potentes de la historia.',
+      },
+      {
+        title: 'Cámara',
+        text: 'El sistema de cámaras del iPhone 17 Pro Max está pensado para que puedas llevar tu creatividad muy lejos. Incluye el teleobjetivo de mayor alcance en un iPhone, con un equivalente de hasta 200 mm de distancia focal, así como nuestro diseño en tetraprisma de última generación y un sensor un 56 % más grande. Vas a tener mucho terreno por explorar con un rango de zoom óptico de 16 aumentos. Además, las fotos con poca luz son toda una revelación y los vídeos, simplemente de película.',
+      },
+      {
+        title: 'Rendimiento',
+        text: 'Gracias a su avanzada tecnología de refrigeración, el iPhone 17 Pro Max es capaz de manejar archivos y gráficos monumentales y seguir tan fresco. Apple ha diseñado una cámara de vapor soldada por láser que une fuerzas con la estructura Unibody de aluminio para disipar el calor del chip A19 Pro de manera eficiente. ¿El resultado? Un rendimiento superior que no baja el ritmo. Este prodigio de la gestión térmica nos ha permitido crear el iPhone más potente de todos los tiempos.',
+      },
+      {
+        title: 'Chip A19 Pro',
+        text: 'El chip de Apple del iPhone 17 Pro Max ofrece la mayor potencia que haya tenido un iPhone. Atrévete con esos proyectos y juegos que siempre piden más y más.',
+      },
+    ],
     status: 'new',
     category: 'celulares',
     featured: true,
     specs: [
       { label: 'Pantalla', value: '6.9" Super Retina XDR OLED ProMotion 120Hz (3000 nits)' },
       { label: 'Procesador', value: 'Chip A19 Pro (2nm) de 6 núcleos con Neural Engine' },
-      { label: 'Cámara Principal', value: 'Triple 48 MP (Principal + Ultra Gran Angular + Telefoto 6x)' },
+      { label: 'Cámara Principal', value: 'Triple 48 MP (Principal + Ultra Gran Angular + Telefoto 6x / 16x zoom)' },
       { label: 'Cámara Frontal', value: '24 MP TrueDepth con autofoco y modo Retrato 4K' },
       { label: 'Opciones de Almacenamiento', value: '256GB / 512GB / 1TB / 2TB NVMe' },
-      { label: 'Construcción', value: 'Titanio de grado aeroespacial y vidrio Ceramic Shield II' },
+      { label: 'Construcción & Refrigeración', value: 'Unibody de aluminio forjado y cámara de vapor soldada por láser' },
       { label: 'Batería', value: 'Hasta 33 horas de reproducción de video (Carga rápida 50% en 25 min)' },
       { label: 'Conectividad', value: '5G Sub-6GHz, Wi-Fi 7, Bluetooth 5.4, USB-C 3.2 (10Gbps)' },
       { label: 'Sistema Operativo', value: 'iOS 19 con soporte para Apple Intelligence' },
@@ -312,6 +336,14 @@ function HardDriveIcon({ size = 16 }: { size?: number }) {
       <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
       <line x1="6" y1="16" x2="6.01" y2="16" />
       <line x1="10" y1="16" x2="10.01" y2="16" />
+    </svg>
+  )
+}
+
+function SparklesIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3v3m0 12v3M3 12h3m12 0h3m-3.5-6.5l-2.1 2.1m-6.8 6.8l-2.1 2.1m0-11l2.1 2.1m6.8 6.8l2.1 2.1" />
     </svg>
   )
 }
@@ -966,11 +998,11 @@ function ProductDetailScreen({
               </div>
             )}
 
-            {/* Información del producto */}
+            {/* Información del producto (resumen principal) */}
             <div className="bg-white rounded-2xl p-5 border border-[#E8E4DB] mb-6 shadow-sm">
               <h2 className="text-[12px] font-bold tracking-widest uppercase text-[#B5502F] mb-2"
                 style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                Información del Producto
+                Resumen del Producto
               </h2>
               <p className="text-[14px] sm:text-[15px] text-[#111111] leading-relaxed"
                 style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -999,6 +1031,42 @@ function ProductDetailScreen({
             </p>
           </div>
         </div>
+
+        {/* Pilares destacados de Información del Producto */}
+        {product.features && product.features.length > 0 && (
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E4DB] shadow-sm mb-8">
+            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-[#E8E4DB]">
+              <div className="w-9 h-9 rounded-xl bg-[#B5502F] text-white flex items-center justify-center shrink-0">
+                <SparklesIcon size={18} />
+              </div>
+              <div>
+                <h2 className="text-[18px] sm:text-[20px] font-bold text-[#111111]"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                  Información del Producto
+                </h2>
+                <p className="text-[12px] text-[#8A8580]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Aspectos destacados de diseño, cámaras y potencia
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {product.features.map((feat, idx) => (
+                <div key={idx} className="bg-[#F5F1E8]/50 p-5 rounded-2xl border border-[#E8E4DB] flex flex-col gap-2">
+                  <h3 className="text-[15px] font-bold text-[#111111] flex items-center gap-2"
+                    style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                    <span className="w-2 h-2 rounded-full bg-[#B5502F]" />
+                    {feat.title}
+                  </h3>
+                  <p className="text-[13px] sm:text-[14px] text-[#8A8580] leading-relaxed"
+                    style={{ fontFamily: 'Inter, sans-serif' }}>
+                    {feat.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Especificaciones técnicas */}
         {product.specs && product.specs.length > 0 && (
