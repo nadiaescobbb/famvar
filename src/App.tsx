@@ -12,6 +12,7 @@ interface Product {
   description: string
   status: 'new' | 'used' | 'out' | null
   category: string
+  featured?: boolean
 }
 
 interface Category {
@@ -67,33 +68,57 @@ const PRODUCTS: Product[] = [
     description: 'iPhone 15 128GB Negro. Chip A16 Bionic, cámara 48MP, Dynamic Island. Sellado, con garantía de fábrica.',
     status: 'new',
     category: 'celulares',
+    featured: true,
   },
   {
     id: 'samsung-s24',
-    name: 'Samsung Galaxy S24',
-    price: '$980.000',
+    name: 'Samsung Galaxy S24 Ultra',
+    price: '$1.480.000',
     image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&h=600&fit=crop&auto=format',
-    description: 'Samsung Galaxy S24 256GB Violeta. Snapdragon 8 Gen 3, pantalla 6.2" AMOLED. Sellado.',
+    description: 'Samsung Galaxy S24 Ultra 256GB Titanium. Snapdragon 8 Gen 3, pantalla 6.8" AMOLED, S-Pen.',
     status: 'new',
     category: 'celulares',
+    featured: true,
+  },
+  {
+    id: 'stanley-quencher',
+    name: 'Stanley Quencher 40oz',
+    price: '$85.000',
+    image: 'https://images.unsplash.com/photo-1544568100-847a948585b9?w=600&h=600&fit=crop&auto=format',
+    description: 'Vaso Stanley Quencher H2.0 40oz. Acero inoxidable, mantiene frío/calor 24hs. Con manija y sorbete.',
+    status: 'new',
+    category: 'termos',
+    featured: true,
   },
   {
     id: 'iphone-13-usado',
     name: 'iPhone 13 256GB',
     price: '$750.000',
     image: 'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=600&h=600&fit=crop&auto=format',
-    description: 'iPhone 13 256GB Medianoche. Excelente estado, batería 89%, desbloqueado. Con caja y accesorios originales.',
+    description: 'iPhone 13 256GB Medianoche. Excelente estado, batería 89%, desbloqueado. Con caja y accesorios.',
     status: 'used',
     category: 'celulares',
+    featured: true,
   },
   {
-    id: 'samsung-a54-usado',
-    name: 'Samsung Galaxy A54',
+    id: 'airpods-pro',
+    name: 'AirPods Pro 2ª gen',
     price: '$420.000',
-    image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&auto=format',
-    description: 'Samsung Galaxy A54 128GB Blanco. Usado, estado 9/10. Cámara 50MP, batería 5000mAh.',
-    status: 'used',
-    category: 'celulares',
+    image: 'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=600&h=600&fit=crop&auto=format',
+    description: 'AirPods Pro (2ª generación) con cancelación activa de ruido, audio espacial y chip H2. Sellados.',
+    status: 'new',
+    category: 'variedad',
+    featured: true,
+  },
+  {
+    id: 'cargador-usbc',
+    name: 'Cargador 65W GaN USB-C',
+    price: '$28.000',
+    image: 'https://images.unsplash.com/photo-1585338447937-7082f8fc763d?w=600&h=600&fit=crop&auto=format',
+    description: 'Cargador compacto GaN 65W con puerto USB-C. Carga rápida para celulares, tablets y notebooks.',
+    status: null,
+    category: 'cargadores',
+    featured: true,
   },
   {
     id: 'funda-magsafe',
@@ -105,6 +130,15 @@ const PRODUCTS: Product[] = [
     category: 'fundas',
   },
   {
+    id: 'samsung-a54-usado',
+    name: 'Samsung Galaxy A54',
+    price: '$420.000',
+    image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&auto=format',
+    description: 'Samsung Galaxy A54 128GB Blanco. Usado, estado 9/10. Cámara 50MP, batería 5000mAh.',
+    status: 'used',
+    category: 'celulares',
+  },
+  {
     id: 'funda-samsung',
     name: 'Funda Samsung S24 Ultra',
     price: '$15.000',
@@ -112,24 +146,6 @@ const PRODUCTS: Product[] = [
     description: 'Funda transparente reforzada para Samsung Galaxy S24 Ultra. Protección antishock, bordes elevados.',
     status: null,
     category: 'fundas',
-  },
-  {
-    id: 'funda-cuero',
-    name: 'Funda cuero universal',
-    price: '$22.000',
-    image: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&h=600&fit=crop&auto=format',
-    description: 'Funda tipo billetera en cuero vegano. Compatible con la mayoría de celulares. Compartimentos para tarjetas.',
-    status: 'out',
-    category: 'fundas',
-  },
-  {
-    id: 'cargador-usbc',
-    name: 'Cargador 65W GaN USB-C',
-    price: '$28.000',
-    image: 'https://images.unsplash.com/photo-1585338447937-7082f8fc763d?w=600&h=600&fit=crop&auto=format',
-    description: 'Cargador compacto GaN 65W con puerto USB-C. Carga rápida para celulares, tablets y notebooks.',
-    status: null,
-    category: 'cargadores',
   },
   {
     id: 'cargador-inalambrico',
@@ -141,15 +157,6 @@ const PRODUCTS: Product[] = [
     category: 'cargadores',
   },
   {
-    id: 'stanley-quencher',
-    name: 'Stanley Quencher 40oz',
-    price: '$85.000',
-    image: 'https://images.unsplash.com/photo-1544568100-847a948585b9?w=600&h=600&fit=crop&auto=format',
-    description: 'Vaso Stanley Quencher H2.0 40oz. Acero inoxidable, mantiene frío/calor 24hs. Con pitillo y asa.',
-    status: null,
-    category: 'termos',
-  },
-  {
     id: 'taza-automatica',
     name: 'Taza mezcladora automática',
     price: '$24.000',
@@ -157,24 +164,6 @@ const PRODUCTS: Product[] = [
     description: 'Taza inteligente con motor mezclador automático. Ideal para café, proteína o matcha. Carga USB.',
     status: null,
     category: 'termos',
-  },
-  {
-    id: 'airpods-pro',
-    name: 'AirPods Pro 2ª gen',
-    price: '$420.000',
-    image: 'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=600&h=600&fit=crop&auto=format',
-    description: 'AirPods Pro (2ª generación) con cancelación activa de ruido, audio espacial y chip H2. Sellados.',
-    status: 'new',
-    category: 'variedad',
-  },
-  {
-    id: 'cable-usbc',
-    name: 'Cable USB-C trenzado 2m',
-    price: '$8.500',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop&auto=format',
-    description: 'Cable USB-C a USB-C trenzado de nylon, 2 metros. Soporte de carga rápida hasta 100W.',
-    status: null,
-    category: 'variedad',
   },
 ]
 
@@ -230,6 +219,24 @@ function TruckIcon({ size = 16 }: { size?: number }) {
       <path d="M16 8h4l3 3v5h-7V8z" />
       <circle cx="5.5" cy="18.5" r="2.5" />
       <circle cx="18.5" cy="18.5" r="2.5" />
+    </svg>
+  )
+}
+
+function ShieldCheckIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <path d="M9 12l2 2 4-4" />
+    </svg>
+  )
+}
+
+function CreditCardIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+      <line x1="1" y1="10" x2="23" y2="10" />
     </svg>
   )
 }
@@ -318,14 +325,30 @@ function ProductCard({ product, onSelect }: { product: Product; onSelect: (p: Pr
 
 // ─── Screen: Home ────────────────────────────────────────────────────────────
 
-function HomeScreen({ onSelectCategory }: { onSelectCategory: (cat: Category) => void }) {
+function HomeScreen({
+  onSelectCategory,
+  onSelectProduct,
+}: {
+  onSelectCategory: (cat: Category) => void
+  onSelectProduct: (p: Product) => void
+}) {
+  const featuredProducts = PRODUCTS.filter((p) => p.featured)
+
   return (
     <div className="min-h-screen bg-[#F5F1E8]">
+
+      {/* Top Banner Bar */}
+      <div className="bg-[#111111] text-[#F5F1E8] text-xs py-2.5 px-4 text-center font-medium flex items-center justify-center gap-2">
+        <TruckIcon size={14} />
+        <span>Envíos a todo el país desde La Escondida, Chaco</span>
+        <span className="hidden sm:inline text-white/30">|</span>
+        <span className="hidden sm:inline text-[#F5F1E8]/80">Atención inmediata por WhatsApp</span>
+      </div>
 
       {/* Header */}
       <header className="sticky top-0 z-30 bg-[#F5F1E8]/95 backdrop-blur border-b border-[#E0DBD0]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14 sm:h-16">
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5 cursor-pointer">
             <LionLogo size={32} />
             <span className="text-[20px] sm:text-[22px] font-bold tracking-tight text-[#111111]"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
@@ -344,7 +367,7 @@ function HomeScreen({ onSelectCategory }: { onSelectCategory: (cat: Category) =>
               ))}
             </nav>
             <a href="https://wa.me/5493624000000" target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-1.5 bg-[#B5502F] text-white text-sm font-semibold px-3 py-2 rounded-xl hover:opacity-90 transition-opacity"
+              className="flex items-center gap-1.5 bg-[#B5502F] text-white text-sm font-semibold px-3.5 py-2 rounded-xl hover:opacity-90 transition-opacity"
               style={{ fontFamily: 'Inter, sans-serif' }}>
               <WhatsAppIcon size={16} />
               <span className="hidden sm:inline">Escribinos</span>
@@ -356,7 +379,7 @@ function HomeScreen({ onSelectCategory }: { onSelectCategory: (cat: Category) =>
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Hero */}
-        <section className="pt-10 pb-8 sm:pt-14 sm:pb-12 lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center lg:pt-20 lg:pb-16">
+        <section className="pt-10 pb-8 sm:pt-14 sm:pb-10 lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center lg:pt-16 lg:pb-12">
           <div>
             <div className="mb-3 flex items-center gap-2 text-[#B5502F]">
               <TruckIcon size={15} />
@@ -385,14 +408,14 @@ function HomeScreen({ onSelectCategory }: { onSelectCategory: (cat: Category) =>
             </div>
           </div>
 
-          {/* Hero image — visible only on lg+ */}
+          {/* Hero image using user custom banner */}
           <div className="hidden lg:block relative rounded-3xl overflow-hidden aspect-[4/3] bg-[#111111]">
             <img
-              src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=900&h=700&fit=crop&auto=format"
-              alt="Celulares FAMVAR"
-              className="w-full h-full object-cover opacity-80"
+              src="/bannerhome.avif"
+              alt="FAMVAR Banner Home"
+              className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#111111]/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#111111]/40 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 flex gap-2 flex-wrap">
               <span className="bg-[#B5502F] text-white text-xs font-bold px-3 py-1.5 rounded-full"
                 style={{ fontFamily: 'Inter, sans-serif' }}>iPhone</span>
@@ -404,15 +427,66 @@ function HomeScreen({ onSelectCategory }: { onSelectCategory: (cat: Category) =>
           </div>
         </section>
 
+        {/* Mobile Banner Image */}
+        <div className="lg:hidden mb-8 rounded-2xl overflow-hidden aspect-[16/9] bg-[#111111]">
+          <img
+            src="/bannerhome.avif"
+            alt="FAMVAR Banner Home"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Trust Badges Bar */}
+        <section className="mb-10 p-4 sm:p-5 bg-white rounded-2xl border border-[#E0DBD0] shadow-sm grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[#B5502F]/10 text-[#B5502F] flex items-center justify-center shrink-0">
+              <ShieldCheckIcon size={20} />
+            </div>
+            <div>
+              <h4 className="text-[13px] font-bold text-[#111111]" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                Equipos Garantizados
+              </h4>
+              <p className="text-[11px] text-[#8A8580]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Garantía oficial y propia
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 border-t sm:border-t-0 sm:border-l border-[#E0DBD0] pt-3 sm:pt-0 sm:pl-4">
+            <div className="w-10 h-10 rounded-xl bg-[#111111] text-white flex items-center justify-center shrink-0">
+              <TruckIcon size={20} />
+            </div>
+            <div>
+              <h4 className="text-[13px] font-bold text-[#111111]" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                Despachos Rápidos
+              </h4>
+              <p className="text-[11px] text-[#8A8580]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Correo Argentino / Andreani
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 border-t sm:border-t-0 sm:border-l border-[#E0DBD0] pt-3 sm:pt-0 sm:pl-4">
+            <div className="w-10 h-10 rounded-xl bg-[#B5502F] text-white flex items-center justify-center shrink-0">
+              <CreditCardIcon size={20} />
+            </div>
+            <div>
+              <h4 className="text-[13px] font-bold text-[#111111]" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                Medios de Pago
+              </h4>
+              <p className="text-[11px] text-[#8A8580]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Efectivo / Transferencia
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Category grid */}
-        <section className="pb-10 sm:pb-14">
+        <section className="pb-10 sm:pb-12">
           <h2 className="text-[13px] font-semibold tracking-widest uppercase text-[#8A8580] mb-4"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
             Categorías
           </h2>
 
-          {/* Mobile: big card + 2-col grid */}
-          {/* Tablet+: 5-col grid */}
+          {/* Desktop: 5-col grid */}
           <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-5 gap-4">
             {CATEGORIES.map((cat) => (
               <button key={cat.id} onClick={() => onSelectCategory(cat)}
@@ -480,6 +554,23 @@ function HomeScreen({ onSelectCategory }: { onSelectCategory: (cat: Category) =>
           </div>
         </section>
 
+        {/* Featured Products Section */}
+        <section className="pb-10 sm:pb-14">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-[13px] font-semibold tracking-widest uppercase text-[#8A8580]"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              Productos Destacados
+            </h2>
+            <span className="text-xs text-[#B5502F] font-semibold">Stock Inmediato</span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+            {featuredProducts.map((p) => (
+              <ProductCard key={p.id} product={p} onSelect={onSelectProduct} />
+            ))}
+          </div>
+        </section>
+
         {/* CTA strip */}
         <section className="mb-10 sm:mb-14 bg-[#111111] rounded-3xl px-6 py-8 sm:px-10 sm:py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
           <div>
@@ -538,7 +629,7 @@ function HomeScreen({ onSelectCategory }: { onSelectCategory: (cat: Category) =>
               <ul className="space-y-2" style={{ fontFamily: 'Inter, sans-serif' }}>
                 {CATEGORIES.map((cat) => (
                   <li key={cat.id}>
-                    <button className="text-[13px] text-[#8A8580] hover:text-[#B5502F] transition-colors">
+                    <button onClick={() => onSelectCategory(cat)} className="text-[13px] text-[#8A8580] hover:text-[#B5502F] transition-colors">
                       {cat.label}
                     </button>
                   </li>
@@ -770,11 +861,13 @@ export default function App() {
   function goToCategory(cat: Category) {
     setSelectedCategory(cat)
     setView('category')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   function goToProduct(product: Product) {
     setSelectedProduct(product)
     setView('product')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   function goBack() {
@@ -784,11 +877,17 @@ export default function App() {
       setView('home')
       setSelectedCategory(null)
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   return (
     <>
-      {view === 'home' && <HomeScreen onSelectCategory={goToCategory} />}
+      {view === 'home' && (
+        <HomeScreen
+          onSelectCategory={goToCategory}
+          onSelectProduct={goToProduct}
+        />
+      )}
       {view === 'category' && selectedCategory && (
         <CategoryScreen category={selectedCategory} onBack={goBack} onSelectProduct={goToProduct} />
       )}
