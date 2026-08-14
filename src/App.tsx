@@ -1,7 +1,800 @@
-export default function App() {
+import { useState } from 'react'
+
+// ─── Types ───────────────────────────────────────────────────────────────────
+
+type View = 'home' | 'category' | 'product'
+
+interface Product {
+  id: string
+  name: string
+  price: string
+  image: string
+  description: string
+  status: 'new' | 'used' | 'out' | null
+  category: string
+}
+
+interface Category {
+  id: string
+  label: string
+  image: string
+  count: string
+  isPhones?: boolean
+}
+
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const CATEGORIES: Category[] = [
+  {
+    id: 'celulares',
+    label: 'Celulares',
+    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&h=600&fit=crop&auto=format',
+    count: 'iPhone · Samsung · a pedido',
+    isPhones: true,
+  },
+  {
+    id: 'fundas',
+    label: 'Fundas',
+    image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=400&fit=crop&auto=format',
+    count: 'Para todos los modelos',
+  },
+  {
+    id: 'cargadores',
+    label: 'Cargadores',
+    image: 'https://images.unsplash.com/photo-1585338447937-7082f8fc763d?w=600&h=400&fit=crop&auto=format',
+    count: 'USB-C · Lightning · Inalámbrico',
+  },
+  {
+    id: 'termos',
+    label: 'Termos y vasos',
+    image: 'https://images.unsplash.com/photo-1544568100-847a948585b9?w=600&h=400&fit=crop&auto=format',
+    count: 'Stanley · Tazas automáticas',
+  },
+  {
+    id: 'variedad',
+    label: 'Variedad',
+    image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&h=400&fit=crop&auto=format',
+    count: 'Productos importados',
+  },
+]
+
+const PRODUCTS: Product[] = [
+  {
+    id: 'iphone-15',
+    name: 'iPhone 15 128GB',
+    price: '$1.250.000',
+    image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&h=600&fit=crop&auto=format',
+    description: 'iPhone 15 128GB Negro. Chip A16 Bionic, cámara 48MP, Dynamic Island. Sellado, con garantía de fábrica.',
+    status: 'new',
+    category: 'celulares',
+  },
+  {
+    id: 'samsung-s24',
+    name: 'Samsung Galaxy S24',
+    price: '$980.000',
+    image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&h=600&fit=crop&auto=format',
+    description: 'Samsung Galaxy S24 256GB Violeta. Snapdragon 8 Gen 3, pantalla 6.2" AMOLED. Sellado.',
+    status: 'new',
+    category: 'celulares',
+  },
+  {
+    id: 'iphone-13-usado',
+    name: 'iPhone 13 256GB',
+    price: '$750.000',
+    image: 'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=600&h=600&fit=crop&auto=format',
+    description: 'iPhone 13 256GB Medianoche. Excelente estado, batería 89%, desbloqueado. Con caja y accesorios originales.',
+    status: 'used',
+    category: 'celulares',
+  },
+  {
+    id: 'samsung-a54-usado',
+    name: 'Samsung Galaxy A54',
+    price: '$420.000',
+    image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&auto=format',
+    description: 'Samsung Galaxy A54 128GB Blanco. Usado, estado 9/10. Cámara 50MP, batería 5000mAh.',
+    status: 'used',
+    category: 'celulares',
+  },
+  {
+    id: 'funda-magsafe',
+    name: 'Funda MagSafe iPhone 15',
+    price: '$18.500',
+    image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=600&fit=crop&auto=format',
+    description: 'Funda de silicona compatible con MagSafe para iPhone 15 / 15 Pro. Varios colores disponibles.',
+    status: null,
+    category: 'fundas',
+  },
+  {
+    id: 'funda-samsung',
+    name: 'Funda Samsung S24 Ultra',
+    price: '$15.000',
+    image: 'https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=600&h=600&fit=crop&auto=format',
+    description: 'Funda transparente reforzada para Samsung Galaxy S24 Ultra. Protección antishock, bordes elevados.',
+    status: null,
+    category: 'fundas',
+  },
+  {
+    id: 'funda-cuero',
+    name: 'Funda cuero universal',
+    price: '$22.000',
+    image: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&h=600&fit=crop&auto=format',
+    description: 'Funda tipo billetera en cuero vegano. Compatible con la mayoría de celulares. Compartimentos para tarjetas.',
+    status: 'out',
+    category: 'fundas',
+  },
+  {
+    id: 'cargador-usbc',
+    name: 'Cargador 65W GaN USB-C',
+    price: '$28.000',
+    image: 'https://images.unsplash.com/photo-1585338447937-7082f8fc763d?w=600&h=600&fit=crop&auto=format',
+    description: 'Cargador compacto GaN 65W con puerto USB-C. Carga rápida para celulares, tablets y notebooks.',
+    status: null,
+    category: 'cargadores',
+  },
+  {
+    id: 'cargador-inalambrico',
+    name: 'Cargador inalámbrico 15W',
+    price: '$19.500',
+    image: 'https://images.unsplash.com/photo-1625772452859-1c03d884e463?w=600&h=600&fit=crop&auto=format',
+    description: 'Base de carga inalámbrica 15W compatible con iPhone y Samsung. Con indicador LED.',
+    status: null,
+    category: 'cargadores',
+  },
+  {
+    id: 'stanley-quencher',
+    name: 'Stanley Quencher 40oz',
+    price: '$85.000',
+    image: 'https://images.unsplash.com/photo-1544568100-847a948585b9?w=600&h=600&fit=crop&auto=format',
+    description: 'Vaso Stanley Quencher H2.0 40oz. Acero inoxidable, mantiene frío/calor 24hs. Con pitillo y asa.',
+    status: null,
+    category: 'termos',
+  },
+  {
+    id: 'taza-automatica',
+    name: 'Taza mezcladora automática',
+    price: '$24.000',
+    image: 'https://images.unsplash.com/photo-1559496417-e7f25cb247f3?w=600&h=600&fit=crop&auto=format',
+    description: 'Taza inteligente con motor mezclador automático. Ideal para café, proteína o matcha. Carga USB.',
+    status: null,
+    category: 'termos',
+  },
+  {
+    id: 'airpods-pro',
+    name: 'AirPods Pro 2ª gen',
+    price: '$420.000',
+    image: 'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=600&h=600&fit=crop&auto=format',
+    description: 'AirPods Pro (2ª generación) con cancelación activa de ruido, audio espacial y chip H2. Sellados.',
+    status: 'new',
+    category: 'variedad',
+  },
+  {
+    id: 'cable-usbc',
+    name: 'Cable USB-C trenzado 2m',
+    price: '$8.500',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop&auto=format',
+    description: 'Cable USB-C a USB-C trenzado de nylon, 2 metros. Soporte de carga rápida hasta 100W.',
+    status: null,
+    category: 'variedad',
+  },
+]
+
+// ─── Icons ───────────────────────────────────────────────────────────────────
+
+function WhatsAppIcon({ size = 20 }: { size?: number }) {
   return (
-    <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">
-      <h1 className="text-3xl font-bold">famvar</h1>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  )
+}
+
+function LionLogo({ size = 36 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="20" fill="#111111" />
+      <ellipse cx="20" cy="21" rx="12" ry="10" fill="#B5502F" />
+      <ellipse cx="20" cy="21" rx="8" ry="7" fill="#F5C842" />
+      <polygon points="11,14 14,19 8,19" fill="#B5502F" />
+      <polygon points="29,14 32,19 26,19" fill="#B5502F" />
+      <circle cx="17" cy="20" r="1.5" fill="#111111" />
+      <circle cx="23" cy="20" r="1.5" fill="#111111" />
+      <ellipse cx="20" cy="24" rx="2" ry="1.2" fill="#B5502F" />
+      <path d="M18 25.5 Q20 27 22 25.5" stroke="#111111" strokeWidth="0.8" fill="none" strokeLinecap="round" />
+      <circle cx="17.6" cy="19.4" r="0.4" fill="white" />
+      <circle cx="23.6" cy="19.4" r="0.4" fill="white" />
+    </svg>
+  )
+}
+
+function ArrowLeft() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M19 12H5M12 5l-7 7 7 7" />
+    </svg>
+  )
+}
+
+function SearchIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="11" cy="11" r="8" />
+      <path d="M21 21l-4.35-4.35" />
+    </svg>
+  )
+}
+
+function TruckIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="1" y="3" width="15" height="13" rx="1" />
+      <path d="M16 8h4l3 3v5h-7V8z" />
+      <circle cx="5.5" cy="18.5" r="2.5" />
+      <circle cx="18.5" cy="18.5" r="2.5" />
+    </svg>
+  )
+}
+
+// ─── Shared Components ───────────────────────────────────────────────────────
+
+function StatusBadge({ status }: { status: Product['status'] }) {
+  if (!status) return null
+  const styles: Record<string, string> = {
+    new: 'bg-[#B5502F] text-white',
+    used: 'bg-[#8A8580] text-white',
+    out: 'bg-red-600 text-white',
+  }
+  const labels: Record<string, string> = {
+    new: 'Nuevo',
+    used: 'Usado',
+    out: 'Sin stock',
+  }
+  return (
+    <span className={`absolute top-2 left-2 text-[10px] font-semibold px-2 py-0.5 rounded-full tracking-wide ${styles[status]}`}
+      style={{ fontFamily: 'Inter, sans-serif' }}>
+      {labels[status]}
+    </span>
+  )
+}
+
+function WhatsAppButton({
+  label = 'Consultar por WhatsApp',
+  product,
+  full = false,
+  size = 'md',
+}: {
+  label?: string
+  product?: Product
+  full?: boolean
+  size?: 'sm' | 'md' | 'lg'
+}) {
+  const msg = product
+    ? `Hola FAMVAR! Me interesa: *${product.name}* (${product.price}). ¿Tienen disponibilidad?`
+    : 'Hola FAMVAR! Quiero hacer una consulta.'
+  const href = `https://wa.me/5493624000000?text=${encodeURIComponent(msg)}`
+  const sizeClasses = {
+    sm: 'py-2 px-3 text-xs gap-1.5',
+    md: 'py-2.5 px-3 text-sm gap-2',
+    lg: 'py-4 px-6 text-base gap-2.5',
+  }
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`flex items-center justify-center bg-[#B5502F] text-white font-semibold rounded-xl transition-opacity hover:opacity-90 active:opacity-75 ${full ? 'w-full' : ''} ${sizeClasses[size]}`}
+      style={{ fontFamily: 'Inter, sans-serif' }}
+    >
+      <WhatsAppIcon size={size === 'lg' ? 22 : size === 'sm' ? 15 : 18} />
+      {label}
+    </a>
+  )
+}
+
+function ProductCard({ product, onSelect }: { product: Product; onSelect: (p: Product) => void }) {
+  return (
+    <div
+      className="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#E8E4DB] flex flex-col cursor-pointer hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200"
+      onClick={() => onSelect(product)}
+    >
+      <div className="relative w-full aspect-square bg-[#F0EDE6]">
+        <img src={product.image} alt={product.name} className="w-full h-full object-cover" loading="lazy" />
+        <StatusBadge status={product.status} />
+      </div>
+      <div className="p-3 flex flex-col gap-2 flex-1">
+        <p className="text-[13px] font-semibold leading-snug text-[#111111] line-clamp-2"
+          style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+          {product.name}
+        </p>
+        <p className="text-[#B5502F] font-bold text-base" style={{ fontFamily: 'Inter, sans-serif' }}>
+          {product.price}
+        </p>
+        <div className="mt-auto" onClick={(e) => e.stopPropagation()}>
+          <WhatsAppButton product={product} label="Consultar" full size="sm" />
+        </div>
+      </div>
     </div>
+  )
+}
+
+// ─── Screen: Home ────────────────────────────────────────────────────────────
+
+function HomeScreen({ onSelectCategory }: { onSelectCategory: (cat: Category) => void }) {
+  return (
+    <div className="min-h-screen bg-[#F5F1E8]">
+
+      {/* Header */}
+      <header className="sticky top-0 z-30 bg-[#F5F1E8]/95 backdrop-blur border-b border-[#E0DBD0]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14 sm:h-16">
+          <div className="flex items-center gap-2.5">
+            <LionLogo size={32} />
+            <span className="text-[20px] sm:text-[22px] font-bold tracking-tight text-[#111111]"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              FAMVAR
+            </span>
+          </div>
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Nav links visible on desktop */}
+            <nav className="hidden md:flex items-center gap-6 mr-4">
+              {CATEGORIES.map((cat) => (
+                <button key={cat.id} onClick={() => onSelectCategory(cat)}
+                  className="text-sm text-[#8A8580] hover:text-[#111111] font-medium transition-colors"
+                  style={{ fontFamily: 'Inter, sans-serif' }}>
+                  {cat.label}
+                </button>
+              ))}
+            </nav>
+            <a href="https://wa.me/5493624000000" target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-1.5 bg-[#B5502F] text-white text-sm font-semibold px-3 py-2 rounded-xl hover:opacity-90 transition-opacity"
+              style={{ fontFamily: 'Inter, sans-serif' }}>
+              <WhatsAppIcon size={16} />
+              <span className="hidden sm:inline">Escribinos</span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Hero */}
+        <section className="pt-10 pb-8 sm:pt-14 sm:pb-12 lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center lg:pt-20 lg:pb-16">
+          <div>
+            <div className="mb-3 flex items-center gap-2 text-[#B5502F]">
+              <TruckIcon size={15} />
+              <span className="text-xs font-semibold tracking-widest uppercase"
+                style={{ fontFamily: 'Inter, sans-serif' }}>
+                Envíos a todo el país
+              </span>
+            </div>
+            <h1 className="text-[36px] sm:text-[48px] lg:text-[56px] font-bold leading-[1.1] text-[#111111] mb-4"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              Celulares,<br />
+              accesorios y<br />
+              <span className="text-[#B5502F]">mucha variedad.</span>
+            </h1>
+            <p className="text-[15px] sm:text-[16px] text-[#8A8580] leading-relaxed mb-6 max-w-md"
+              style={{ fontFamily: 'Inter, sans-serif' }}>
+              iPhone, Samsung, termos Stanley, fundas y más — nuevos, usados y a pedido. Todo con envío desde La Escondida, Chaco.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <WhatsAppButton label="Consultar ahora" size="lg" />
+              <button onClick={() => onSelectCategory(CATEGORIES[0])}
+                className="flex items-center gap-2 border border-[#111111] text-[#111111] font-semibold px-6 py-4 rounded-xl text-base hover:bg-[#111111] hover:text-[#F5F1E8] transition-colors"
+                style={{ fontFamily: 'Inter, sans-serif' }}>
+                Ver celulares
+              </button>
+            </div>
+          </div>
+
+          {/* Hero image — visible only on lg+ */}
+          <div className="hidden lg:block relative rounded-3xl overflow-hidden aspect-[4/3] bg-[#111111]">
+            <img
+              src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=900&h=700&fit=crop&auto=format"
+              alt="Celulares FAMVAR"
+              className="w-full h-full object-cover opacity-80"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#111111]/60 via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 flex gap-2 flex-wrap">
+              <span className="bg-[#B5502F] text-white text-xs font-bold px-3 py-1.5 rounded-full"
+                style={{ fontFamily: 'Inter, sans-serif' }}>iPhone</span>
+              <span className="bg-white/20 text-white text-xs font-bold px-3 py-1.5 rounded-full backdrop-blur"
+                style={{ fontFamily: 'Inter, sans-serif' }}>Samsung</span>
+              <span className="bg-white/20 text-white text-xs font-bold px-3 py-1.5 rounded-full backdrop-blur"
+                style={{ fontFamily: 'Inter, sans-serif' }}>A pedido</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Category grid */}
+        <section className="pb-10 sm:pb-14">
+          <h2 className="text-[13px] font-semibold tracking-widest uppercase text-[#8A8580] mb-4"
+            style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+            Categorías
+          </h2>
+
+          {/* Mobile: big card + 2-col grid */}
+          {/* Tablet+: 5-col grid */}
+          <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {CATEGORIES.map((cat) => (
+              <button key={cat.id} onClick={() => onSelectCategory(cat)}
+                className="rounded-2xl overflow-hidden relative bg-[#111111] text-left group"
+                style={{ aspectRatio: '3/4' }}>
+                <img src={cat.image} alt={cat.label}
+                  className="absolute inset-0 w-full h-full object-cover opacity-55 group-hover:opacity-70 group-hover:scale-105 transition-all duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/90 via-[#111111]/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <span className="block text-[15px] font-bold text-[#F5F1E8] leading-tight"
+                    style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                    {cat.label}
+                  </span>
+                  <span className="text-[#F5F1E8]/60 text-[10px] mt-0.5 block leading-tight"
+                    style={{ fontFamily: 'Inter, sans-serif' }}>
+                    {cat.count}
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile layout */}
+          <div className="md:hidden">
+            <button onClick={() => onSelectCategory(CATEGORIES[0])}
+              className="w-full mb-3 rounded-2xl overflow-hidden relative h-44 block text-left group">
+              <img src={CATEGORIES[0].image} alt={CATEGORIES[0].label}
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/90 via-[#111111]/40 to-transparent" />
+              <div className="absolute bottom-0 left-0 p-4">
+                <span className="block text-[22px] font-bold text-white leading-tight"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                  {CATEGORIES[0].label}
+                </span>
+                <span className="text-[#F5F1E8]/70 text-xs mt-0.5 block"
+                  style={{ fontFamily: 'Inter, sans-serif' }}>
+                  {CATEGORIES[0].count}
+                </span>
+              </div>
+              <div className="absolute top-3 right-3 bg-[#B5502F] text-white text-[10px] font-bold px-2 py-1 rounded-full"
+                style={{ fontFamily: 'Inter, sans-serif' }}>
+                A pedido
+              </div>
+            </button>
+            <div className="grid grid-cols-2 gap-3">
+              {CATEGORIES.slice(1).map((cat) => (
+                <button key={cat.id} onClick={() => onSelectCategory(cat)}
+                  className="rounded-2xl overflow-hidden relative h-32 text-left bg-[#111111] group">
+                  <img src={cat.image} alt={cat.label}
+                    className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-75 transition-opacity duration-200" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/80 to-transparent" />
+                  <div className="absolute bottom-0 left-0 p-3">
+                    <span className="block text-[16px] font-bold text-[#F5F1E8] leading-tight"
+                      style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                      {cat.label}
+                    </span>
+                    <span className="text-[#F5F1E8]/60 text-[10px] mt-0.5 block leading-tight"
+                      style={{ fontFamily: 'Inter, sans-serif' }}>
+                      {cat.count}
+                    </span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA strip */}
+        <section className="mb-10 sm:mb-14 bg-[#111111] rounded-3xl px-6 py-8 sm:px-10 sm:py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <div>
+            <h3 className="text-[20px] sm:text-[24px] font-bold text-[#F5F1E8] mb-1"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              ¿Buscás algo específico?
+            </h3>
+            <p className="text-[#8A8580] text-sm sm:text-base"
+              style={{ fontFamily: 'Inter, sans-serif' }}>
+              Escribinos y te conseguimos lo que necesitás. Respondemos al instante.
+            </p>
+          </div>
+          <div className="shrink-0">
+            <WhatsAppButton label="Consultar ahora" size="lg" />
+          </div>
+        </section>
+
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t border-[#E0DBD0] bg-[#F5F1E8]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-10">
+            {/* Brand */}
+            <div className="lg:col-span-2">
+              <div className="flex items-center gap-2 mb-3">
+                <LionLogo size={30} />
+                <span className="font-bold text-[20px] text-[#111111]"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif' }}>FAMVAR</span>
+              </div>
+              <p className="text-[14px] text-[#8A8580] leading-relaxed max-w-xs"
+                style={{ fontFamily: 'Inter, sans-serif' }}>
+                Familia + Variedad. Celulares nuevos y usados, accesorios y productos importados con envío a todo el país.
+              </p>
+            </div>
+            {/* Info */}
+            <div>
+              <h4 className="text-[12px] font-semibold tracking-widest uppercase text-[#111111] mb-3"
+                style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                Contacto
+              </h4>
+              <ul className="space-y-2 text-[13px] text-[#8A8580]"
+                style={{ fontFamily: 'Inter, sans-serif' }}>
+                <li>📍 La Escondida, Chaco</li>
+                <li>📦 Envíos a todo el país</li>
+                <li>💬 Atención por WhatsApp</li>
+                <li>📸 @famvar</li>
+              </ul>
+            </div>
+            {/* Categories */}
+            <div>
+              <h4 className="text-[12px] font-semibold tracking-widest uppercase text-[#111111] mb-3"
+                style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                Categorías
+              </h4>
+              <ul className="space-y-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+                {CATEGORIES.map((cat) => (
+                  <li key={cat.id}>
+                    <button className="text-[13px] text-[#8A8580] hover:text-[#B5502F] transition-colors">
+                      {cat.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom bar */}
+          <div className="pt-6 border-t border-[#E0DBD0] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <p className="text-[12px] text-[#8A8580]/60" style={{ fontFamily: 'Inter, sans-serif' }}>
+              © 2025 FAMVAR — Familia + Variedad
+            </p>
+            <div className="flex items-center gap-2 text-[#B5502F]">
+              <TruckIcon size={14} />
+              <span className="text-[12px] font-semibold" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Envíos a todo el país
+              </span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
+
+// ─── Screen: Category ────────────────────────────────────────────────────────
+
+function CategoryScreen({
+  category,
+  onBack,
+  onSelectProduct,
+}: {
+  category: Category
+  onBack: () => void
+  onSelectProduct: (p: Product) => void
+}) {
+  const [search, setSearch] = useState('')
+
+  const products = PRODUCTS.filter(
+    (p) =>
+      p.category === category.id &&
+      (search === '' || p.name.toLowerCase().includes(search.toLowerCase()))
+  )
+
+  return (
+    <div className="min-h-screen bg-[#F5F1E8]">
+
+      {/* Header */}
+      <header className="sticky top-0 z-30 bg-[#F5F1E8]/95 backdrop-blur border-b border-[#E0DBD0]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+          <div className="flex items-center gap-3 mb-3">
+            <button onClick={onBack}
+              className="w-9 h-9 rounded-xl bg-white border border-[#E0DBD0] flex items-center justify-center text-[#111111] hover:bg-[#F5F1E8] transition-colors shrink-0">
+              <ArrowLeft />
+            </button>
+            <div className="flex items-center gap-2">
+              <LionLogo size={26} />
+              <span className="text-[13px] text-[#8A8580] font-medium hidden sm:block"
+                style={{ fontFamily: 'Inter, sans-serif' }}>
+                FAMVAR /
+              </span>
+            </div>
+            <h1 className="text-[18px] sm:text-[20px] font-bold text-[#111111]"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              {category.label}
+            </h1>
+          </div>
+          {/* Search */}
+          <div className="relative max-w-lg">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#8A8580]">
+              <SearchIcon />
+            </span>
+            <input
+              type="text"
+              placeholder={`Buscar en ${category.label.toLowerCase()}...`}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full bg-white border border-[#E0DBD0] rounded-xl pl-9 pr-4 py-2.5 text-[14px] text-[#111111] placeholder:text-[#8A8580] outline-none focus:border-[#B5502F] transition-colors"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            />
+          </div>
+        </div>
+      </header>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        {/* Phones disclaimer */}
+        {category.isPhones && (
+          <div className="mb-6 bg-[#111111] rounded-2xl px-5 py-4 flex gap-3 items-start">
+            <span className="text-[#B5502F] text-xl shrink-0">📱</span>
+            <div>
+              <p className="text-[13px] sm:text-[14px] text-[#F5F1E8]/90 leading-relaxed"
+                style={{ fontFamily: 'Inter, sans-serif' }}>
+                <span className="font-semibold text-[#F5F1E8]">Vendemos a pedido.</span>{' '}
+                Consultanos por el modelo que buscás — iPhone o Samsung, nuevos o usados. Si no está en la grilla, lo conseguimos igual.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Product count */}
+        <p className="text-[12px] text-[#8A8580] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
+          {products.length} producto{products.length !== 1 ? 's' : ''}
+          {search && ` para "${search}"`}
+        </p>
+
+        {/* Grid: 2 cols mobile → 3 tablet → 4 desktop */}
+        {products.length === 0 ? (
+          <div className="text-center py-20 text-[#8A8580]" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <p className="text-4xl mb-3">🔍</p>
+            <p className="text-sm">No encontramos productos para "{search}"</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+            {products.map((p) => (
+              <ProductCard key={p.id} product={p} onSelect={onSelectProduct} />
+            ))}
+          </div>
+        )}
+
+        {/* Bottom CTA */}
+        <div className="mt-8 flex justify-center">
+          <WhatsAppButton
+            label={category.isPhones ? 'Pedir modelo específico' : `Consultar en ${category.label}`}
+            size="lg"
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Screen: Product Detail ───────────────────────────────────────────────────
+
+function ProductDetailScreen({
+  product,
+  onBack,
+}: {
+  product: Product
+  onBack: () => void
+}) {
+  return (
+    <div className="min-h-screen bg-[#F5F1E8]">
+
+      {/* Header */}
+      <header className="sticky top-0 z-30 bg-[#F5F1E8]/95 backdrop-blur border-b border-[#E0DBD0]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3">
+          <button onClick={onBack}
+            className="w-9 h-9 rounded-xl bg-white border border-[#E0DBD0] flex items-center justify-center text-[#111111] hover:bg-[#F5F1E8] transition-colors shrink-0">
+            <ArrowLeft />
+          </button>
+          <span className="text-[15px] font-semibold text-[#111111] truncate"
+            style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+            {product.name}
+          </span>
+        </div>
+      </header>
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+        {/* Two-column on desktop */}
+        <div className="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-start">
+
+          {/* Image */}
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-[#ECEAE3] aspect-square mb-6 lg:mb-0">
+            <img src={product.image} alt={product.name}
+              className="w-full h-full object-cover" />
+            {product.status && (
+              <div className="absolute top-4 left-4">
+                <StatusBadge status={product.status} />
+              </div>
+            )}
+          </div>
+
+          {/* Info */}
+          <div className="lg:pt-2">
+            {product.status && (
+              <div className="mb-3">
+                <StatusBadge status={product.status} />
+              </div>
+            )}
+            <h1 className="text-[26px] sm:text-[32px] font-bold leading-tight text-[#111111] mb-2"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              {product.name}
+            </h1>
+            <p className="text-[32px] sm:text-[38px] font-bold text-[#B5502F] mb-6"
+              style={{ fontFamily: 'Inter, sans-serif' }}>
+              {product.price}
+            </p>
+
+            <div className="bg-white rounded-2xl p-4 sm:p-5 border border-[#E8E4DB] mb-6">
+              <h2 className="text-[11px] font-semibold tracking-widest uppercase text-[#8A8580] mb-2"
+                style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                Descripción
+              </h2>
+              <p className="text-[14px] sm:text-[15px] text-[#111111] leading-relaxed"
+                style={{ fontFamily: 'Inter, sans-serif' }}>
+                {product.description}
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2 mb-6 text-[#8A8580]">
+              <TruckIcon size={15} />
+              <span className="text-[13px]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Envío a todo el país · La Escondida, Chaco
+              </span>
+            </div>
+
+            <WhatsAppButton product={product} label="Consultar por WhatsApp" full size="lg" />
+
+            <p className="text-center text-[11px] text-[#8A8580] mt-3"
+              style={{ fontFamily: 'Inter, sans-serif' }}>
+              Te respondemos al instante por WhatsApp
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Root ─────────────────────────────────────────────────────────────────────
+
+export default function App() {
+  const [view, setView] = useState<View>('home')
+  const [selectedCategory, setSelectedCategory] = useState<Category | null>(null)
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+
+  function goToCategory(cat: Category) {
+    setSelectedCategory(cat)
+    setView('category')
+  }
+
+  function goToProduct(product: Product) {
+    setSelectedProduct(product)
+    setView('product')
+  }
+
+  function goBack() {
+    if (view === 'product') {
+      setView('category')
+    } else {
+      setView('home')
+      setSelectedCategory(null)
+    }
+  }
+
+  return (
+    <>
+      {view === 'home' && <HomeScreen onSelectCategory={goToCategory} />}
+      {view === 'category' && selectedCategory && (
+        <CategoryScreen category={selectedCategory} onBack={goBack} onSelectProduct={goToProduct} />
+      )}
+      {view === 'product' && selectedProduct && (
+        <ProductDetailScreen product={selectedProduct} onBack={goBack} />
+      )}
+    </>
   )
 }
