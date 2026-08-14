@@ -351,6 +351,116 @@ const PRODUCTS: Product[] = [
     featured: true,
   },
   {
+    id: 'samsung-s25-ultra',
+    name: 'Samsung Galaxy S25 Ultra 256GB',
+    price: '$ 3.399.999',
+    image: '/Samsung GalaxyS25 Ultra5.avif',
+    images: [
+      '/Samsung GalaxyS25 Ultra5.avif',
+    ],
+    description: 'El nuevo Samsung Galaxy S25 Ultra eleva la experiencia móvil con su procesador Octa-Core de 4.47GHz, 12GB de memoria RAM, pantalla Dynamic AMOLED 2X Quad HD+ a 120Hz con soporte S Pen integrado y un revolucionario sistema de cámaras cuádruple de 200 MP.',
+    features: [
+      {
+        title: 'Potencia & Rendimiento Octa-Core',
+        text: 'Equipado con un procesador Octa-Core que alcanza frecuencias de hasta 4.47GHz combinado con 12GB de RAM, diseñado para multitarea pesada, edición y gaming sin concesiones.',
+      },
+      {
+        title: 'Pantalla Dynamic AMOLED 2X Quad HD+ & S Pen',
+        text: 'Pantalla de 6.9 pulgadas (3120 x 1440) a 120 Hz de tasa de refresco adaptativa. Incluye el icónico S Pen integrado para tomar notas, dibujar y controlar el equipo con precisión.',
+      },
+      {
+        title: 'Cámaras Cuádruples de 200 MP con Video 8K',
+        text: 'Sensor principal de 200 MP con estabilización óptica (OIS), ultra gran angular de 50 MP y doble teleobjetivo de 50 MP + 10 MP con zoom óptico 3x/5x (10x calidad óptica) y zoom digital 100x con grabación de video en UHD 8K@30fps.',
+      },
+      {
+        title: 'Batería de 5000 mAh & Actualizaciones hasta 2032',
+        text: 'Batería de alta densidad para hasta 31 horas de reproducción de video continua. Incluye soporte para Samsung DeX, banda ultraancha UWB y parches de seguridad garantizados por 7 años (hasta enero de 2032).',
+      },
+    ],
+    specGroups: [
+      {
+        category: 'Generales y Procesador',
+        items: [
+          'Peso: 218 g (Factor de forma barra táctil)',
+          'Procesador: Octa-Core (Velocidad de CPU 4.47GHz y 3.5GHz)',
+          'Sistema Operativo: Android',
+          'Dimensiones: 162.8 x 77.6 x 8.2 mm',
+        ],
+      },
+      {
+        category: 'Pantalla',
+        items: [
+          'Tamaño: 6.9" (174.2 mm rectángulo completo) / 6.8" (172.2 mm esquinas redondeadas)',
+          'Tecnología: Dynamic AMOLED 2X',
+          'Resolución: 3120 x 1440 (Quad HD+) a 16M colores',
+          'Tasa Máxima de Refresco: 120 Hz adaptativa',
+          'Soporte S Pen integrado: Sí',
+        ],
+      },
+      {
+        category: 'Almacenamiento y Memoria',
+        items: [
+          'Memoria RAM: 12 GB',
+          'Almacenamiento Interno: 256 GB (222.7 GB disponibles)',
+        ],
+      },
+      {
+        category: 'Cámaras Traseras (Cuádruple)',
+        items: [
+          'Resolución: 200.0 MP + 50.0 MP + 50.0 MP + 10.0 MP (Aperturas F1.7, F3.4, F1.9, F2.4)',
+          'Enfoque Automático y Estabilización Óptica (OIS)',
+          'Zoom: Óptico 3x y 5x, Calidad Óptica 2x y 10x, Digital hasta 100x',
+          'Grabación de Vídeo: UHD 8K (7680 x 4320) @30fps',
+          'Cámara Lenta: 240fps @FHD, 120fps @FHD, 120fps @UHD',
+        ],
+      },
+      {
+        category: 'Cámara Frontal',
+        items: [
+          'Resolución: 12.0 MP (Apertura F2.2) con Enfoque Automático',
+        ],
+      },
+      {
+        category: 'Batería y Autonomía',
+        items: [
+          'Capacidad de Batería: 5000 mAh (típica)',
+          'Tiempo de Reproducción de Video: Hasta 31 Horas',
+        ],
+      },
+      {
+        category: 'Red y Conectividad',
+        items: [
+          'SIM: Dual-SIM (Dual SIM / SIM 1 + eSIM)',
+          'Redes: 5G Sub6, 4G LTE, 3G, 2G',
+          'Conector: USB Tipo C (USB 3.2 Gen 1)',
+          'Wi-Fi: 802.11a/b/g/n/ac/ax/be 2.4GHz+5GHz+6GHz (Wi-Fi 7, Wi-Fi Direct)',
+          'Bluetooth v5.4, NFC, UWB (Banda Ultraancha)',
+          'Localización: GPS, Glonass, Beidou, Galileo, QZSS',
+        ],
+      },
+      {
+        category: 'Audio y Video',
+        items: [
+          'Soporte Estéreo: Sí',
+          'Reproducción de Video: UHD 8K (7680 x 4320) @60fps',
+          'Formatos de Audio: MP3, AAC, OGG, WAV, FLAC, DFF, DSF, APE',
+        ],
+      },
+      {
+        category: 'Sensores y Servicios',
+        items: [
+          'Sensores: Acelerómetro, Barómetro, Sensor de Huella en pantalla, Giroscopio, Sensor Hall, Proximidad',
+          'Soporte Samsung DeX y SmartThings',
+          'Actualización de Seguridad garantizada hasta: 31 de Enero de 2032',
+          'Compatibilidad: Galaxy Ring, Galaxy Buds3 Pro, Galaxy Watch Ultra, Galaxy Watch7',
+        ],
+      },
+    ],
+    status: 'new',
+    category: 'celulares',
+    featured: true,
+  },
+  {
     id: 'iphone-16',
     name: 'iPhone 16',
     price: '$ 2.299.990',
@@ -474,16 +584,6 @@ const PRODUCTS: Product[] = [
         ],
       },
     ],
-    status: 'new',
-    category: 'celulares',
-    featured: true,
-  },
-  {
-    id: 'samsung-s24',
-    name: 'Samsung Galaxy S24 Ultra',
-    price: '$1.480.000',
-    image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&h=600&fit=crop&auto=format',
-    description: 'Samsung Galaxy S24 Ultra 256GB Titanium. Snapdragon 8 Gen 3, pantalla 6.8" AMOLED, S-Pen.',
     status: 'new',
     category: 'celulares',
     featured: true,
@@ -1241,6 +1341,7 @@ function ProductDetailScreen({
     product.storageOptions && product.storageOptions.length > 0 ? product.storageOptions[0] : null
   )
   const [openAccordion, setOpenAccordion] = useState<Record<string, boolean>>({
+    'Generales y Procesador': true,
     'Dimensiones y peso': true,
     'Pantalla': true,
     'Chip': true,
