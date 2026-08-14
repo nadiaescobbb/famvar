@@ -9,6 +9,11 @@ interface ProductSpec {
   value: string
 }
 
+interface StorageOption {
+  size: string
+  price: string
+}
+
 interface Product {
   id: string
   name: string
@@ -20,6 +25,7 @@ interface Product {
   category: string
   featured?: boolean
   specs?: ProductSpec[]
+  storageOptions?: StorageOption[]
 }
 
 interface Category {
@@ -69,14 +75,20 @@ const CATEGORIES: Category[] = [
 const PRODUCTS: Product[] = [
   {
     id: 'iphone-17-pro-max',
-    name: 'iPhone 17 Pro Max 256GB',
-    price: '$1.850.000',
+    name: 'iPhone 17 Pro Max',
+    price: '$ 3.799.990',
     image: '/iphone17promax1.avif',
     images: [
       '/iphone17promax1.avif',
       '/iphone17promax2.avif',
       '/iphone17promax3.avif',
       '/iphone17promax4.avif',
+    ],
+    storageOptions: [
+      { size: '256GB', price: '$ 3.799.990' },
+      { size: '512GB', price: '$ 4.499.990' },
+      { size: '1TB', price: '$ 5.139.990' },
+      { size: '2TB', price: '$ 6.429.990' },
     ],
     description: 'El nuevo iPhone 17 Pro Max redefine la potencia y el diseño. Equipado con el revolucionario chip A19 Pro en arquitectura de 2nm, chasis de titanio ultraligero y el sistema de cámaras Pro más avanzado hasta la fecha con zoom óptico 6x y grabación 4K ProRes a 120 fps. Pantalla Super Retina XDR de 6.9" ProMotion 120Hz con brillo de pico de 3000 nits y Dynamic Island mejorada. Sellado en caja con garantía de fábrica Apple.',
     status: 'new',
@@ -87,7 +99,7 @@ const PRODUCTS: Product[] = [
       { label: 'Procesador', value: 'Chip A19 Pro (2nm) de 6 núcleos con Neural Engine' },
       { label: 'Cámara Principal', value: 'Triple 48 MP (Principal + Ultra Gran Angular + Telefoto 6x)' },
       { label: 'Cámara Frontal', value: '24 MP TrueDepth con autofoco y modo Retrato 4K' },
-      { label: 'Almacenamiento', value: '256 GB NVMe' },
+      { label: 'Opciones de Almacenamiento', value: '256GB / 512GB / 1TB / 2TB NVMe' },
       { label: 'Construcción', value: 'Titanio de grado aeroespacial y vidrio Ceramic Shield II' },
       { label: 'Batería', value: 'Hasta 33 horas de reproducción de video (Carga rápida 50% en 25 min)' },
       { label: 'Conectividad', value: '5G Sub-6GHz, Wi-Fi 7, Bluetooth 5.4, USB-C 3.2 (10Gbps)' },
@@ -293,6 +305,17 @@ function CpuIcon({ size = 16 }: { size?: number }) {
   )
 }
 
+function HardDriveIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="22" y1="12" x2="2" y2="12" />
+      <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
+      <line x1="6" y1="16" x2="6.01" y2="16" />
+      <line x1="10" y1="16" x2="10.01" y2="16" />
+    </svg>
+  )
+}
+
 // ─── Shared Components ───────────────────────────────────────────────────────
 
 function StatusBadge({ status }: { status: Product['status'] }) {
@@ -318,17 +341,21 @@ function StatusBadge({ status }: { status: Product['status'] }) {
 function WhatsAppButton({
   label = 'Consultar por WhatsApp',
   product,
+  customText,
   full = false,
   size = 'md',
 }: {
   label?: string
   product?: Product
+  customText?: string
   full?: boolean
   size?: 'sm' | 'md' | 'lg'
 }) {
-  const msg = product
-    ? `Hola FAMVAR! Me interesa: *${product.name}* (${product.price}). ¿Tienen disponibilidad?`
-    : 'Hola FAMVAR! Quiero hacer una consulta.'
+  const msg = customText
+    ? `Hola FAMVAR! ${customText}`
+    : product
+      ? `Hola FAMVAR! Me interesa: *${product.name}* (${product.price}). ¿Tienen disponibilidad?`
+      : 'Hola FAMVAR! Quiero hacer una consulta.'
   const href = `https://wa.me/5493624076857?text=${encodeURIComponent(msg)}`
   const sizeClasses = {
     sm: 'py-2 px-3 text-xs gap-1.5',
@@ -364,11 +391,19 @@ function ProductCard({ product, onSelect }: { product: Product; onSelect: (p: Pr
           style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
           {product.name}
         </p>
-        <p className="text-[#B5502F] font-bold text-base" style={{ fontFamily: 'Inter, sans-serif' }}>
-          {product.price}
-        </p>
-        <div className="mt-auto" onClick={(e) => e.stopPropagation()}>
-          <WhatsAppButton product={product} label="Consultar" full size="sm" />
+        <div className="mt-auto">
+          {product.storageOptions ? (
+            <p className="text-[11px] text-[#8A8580] mb-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Desde <span className="text-[#B5502F] font-bold text-base">{product.price}</span>
+            </p>
+          ) : (
+            <p className="text-[#B5502F] font-bold text-base" style={{ fontFamily: 'Inter, sans-serif' }}>
+              {product.price}
+            </p>
+          )}
+          <div onClick={(e) => e.stopPropagation()}>
+            <WhatsAppButton product={product} label="Consultar" full size="sm" />
+          </div>
         </div>
       </div>
     </div>
@@ -826,6 +861,11 @@ function ProductDetailScreen({
 }) {
   const gallery = product.images && product.images.length > 0 ? product.images : [product.image]
   const [selectedImg, setSelectedImg] = useState<string>(gallery[0])
+  const [selectedStorage, setSelectedStorage] = useState<StorageOption | null>(
+    product.storageOptions && product.storageOptions.length > 0 ? product.storageOptions[0] : null
+  )
+
+  const activePrice = selectedStorage ? selectedStorage.price : product.price
 
   return (
     <div className="min-h-screen bg-[#F5F1E8]">
@@ -886,12 +926,45 @@ function ProductDetailScreen({
             )}
             <h1 className="text-[26px] sm:text-[34px] font-bold leading-tight text-[#111111] mb-2"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-              {product.name}
+              {product.name} {selectedStorage ? `(${selectedStorage.size})` : ''}
             </h1>
             <p className="text-[32px] sm:text-[38px] font-bold text-[#B5502F] mb-6"
               style={{ fontFamily: 'Inter, sans-serif' }}>
-              {product.price}
+              {activePrice}
             </p>
+
+            {/* Storage Capacity Selector */}
+            {product.storageOptions && product.storageOptions.length > 0 && (
+              <div className="bg-white rounded-2xl p-5 border border-[#E8E4DB] mb-6 shadow-sm">
+                <div className="flex items-center gap-2 mb-3">
+                  <HardDriveIcon size={16} />
+                  <h2 className="text-[12px] font-bold tracking-widest uppercase text-[#111111]"
+                    style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                    Almacenamiento
+                  </h2>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                  {product.storageOptions.map((opt) => (
+                    <button
+                      key={opt.size}
+                      onClick={() => setSelectedStorage(opt)}
+                      className={`py-3 px-3 rounded-xl border text-center transition-all ${selectedStorage?.size === opt.size
+                          ? 'bg-[#111111] text-white border-[#111111] shadow-sm scale-[1.02]'
+                          : 'bg-[#F5F1E8]/50 text-[#111111] border-[#E8E4DB] hover:border-[#B5502F]'
+                        }`}
+                    >
+                      <span className="block text-[14px] font-bold" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                        {opt.size}
+                      </span>
+                      <span className={`block text-[11px] font-semibold mt-0.5 ${selectedStorage?.size === opt.size ? 'text-[#F5C842]' : 'text-[#B5502F]'
+                        }`} style={{ fontFamily: 'Inter, sans-serif' }}>
+                        {opt.price}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Información del producto */}
             <div className="bg-white rounded-2xl p-5 border border-[#E8E4DB] mb-6 shadow-sm">
@@ -912,7 +985,13 @@ function ProductDetailScreen({
               </span>
             </div>
 
-            <WhatsAppButton product={product} label="Consultar por WhatsApp" full size="lg" />
+            <WhatsAppButton
+              customText={selectedStorage ? `Me interesa: *${product.name} ${selectedStorage.size}* (${selectedStorage.price}). ¿Tienen disponibilidad?` : undefined}
+              product={product}
+              label="Consultar por WhatsApp"
+              full
+              size="lg"
+            />
 
             <p className="text-center text-[11px] text-[#8A8580] mt-3"
               style={{ fontFamily: 'Inter, sans-serif' }}>
