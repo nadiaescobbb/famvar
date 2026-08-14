@@ -695,7 +695,7 @@ const PRODUCTS: Product[] = [
   {
     id: 'stanley-classic-hot-coral',
     name: 'Termo Stanley Clásico 950ml Con Manija - Hot Coral',
-    price: 'A pedido por WPP',
+    price: '$ 137.999',
     image: '/STANLEY-coral-1.avif',
     images: [
       '/STANLEY-coral-1.avif',
