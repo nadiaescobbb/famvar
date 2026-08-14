@@ -1,3 +1,29 @@
-import '@tailwindcss/vite'
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
 
-@import "tailwindcss";
+@theme {
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --color-bone: #F5F1E8;
+  --color-warm-black: #111111;
+  --color-terracotta: #B5502F;
+  --color-warm-gray: #8A8580;
+  --color-card: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  background-color: #F5F1E8;
+  font-family: 'Inter', sans-serif;
+  color: #111111;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
