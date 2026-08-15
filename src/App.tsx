@@ -1063,6 +1063,77 @@ const PRODUCTS: Product[] = [
     featured: true,
   },
   {
+    id: 'stanley-mate-system-azul',
+    name: 'Termo Stanley Mate System 1.2 L Azul Metalizado',
+    price: '$ 182.000',
+    image: '/Stanley-Mate-System-azulmetalizado.avif',
+    images: [
+      '/Stanley-Mate-System-azulmetalizado.avif',
+      '/Stanley-Mate-System-azulmetalizado-2.avif',
+    ],
+    description: 'El Termo Stanley Mate System Classic 1.2 L en acabado Azul Metalizado es el compañero ideal para el ritual del mate. Su tapón de alta precisión permite cebar con un flujo continuo y exacto, y su tapa aislada de acero inoxidable funciona como mate. Mantiene el agua caliente o fría hasta por 30 horas.',
+    features: [
+      {
+        title: 'Tapón Cebador de Alta Precisión',
+        text: 'Diseñado especialmente para el ritual del mate, permitiendo un flujo continuo y exacto para controlar mejor la salida de agua en cada cebada.',
+      },
+      {
+        title: 'Tapa de Acero que Funciona como Mate',
+        text: 'Su tapa aislada multifunción de acero inoxidable funciona también como mate práctico para llevar a viajes, facultad o trabajo.',
+      },
+      {
+        title: 'Aislamiento Térmico de 30 Horas',
+        text: 'Doble pared con aislamiento al vacío que mantiene bebidas calientes o frías hasta por 30 horas y con hielo hasta 4 días.',
+      },
+      {
+        title: 'Estructura 100% A Prueba de Fugas',
+        text: 'Fabricado en acero inoxidable 18/8 libre de BPA, apilable, apto para lavavajillas y con garantía oficial Stanley de por vida.',
+      },
+    ],
+    specGroups: [
+      {
+        category: 'Generales y Diseño',
+        items: [
+          'Modelo: Termo Stanley Mate System Classic 1.2 L',
+          'Color / Acabado: Azul Metalizado',
+          'Tipo de Boquilla: Pico cebador de alta precisión',
+          'Tapa / Mate: Tapa de acero inoxidable que funciona como mate',
+        ],
+      },
+      {
+        category: 'Especificaciones Técnicas',
+        items: [
+          'Capacidad: 1.2 Litros',
+          'Material: Acero inoxidable reciclado 18/8 libre de BPA',
+          'Aislamiento: Doble pared con aislamiento al vacío',
+          'Dimensiones: 32,8 cm x 10,8 cm',
+          'Peso: 950 g',
+        ],
+      },
+      {
+        category: 'Rendimiento Térmico',
+        items: [
+          'Mantiene Caliente: Hasta 30 horas',
+          'Mantiene Frío: Hasta 30 horas',
+          'Con Hielo: Hasta 4 días (96 horas)',
+        ],
+      },
+      {
+        category: 'Garantía y Compatibilidad',
+        items: [
+          'A prueba de fugas: Sí',
+          'Apto lavavajillas: Sí',
+          'Apilable: Sí',
+          'Garantía: Garantía de por vida Stanley',
+        ],
+      },
+    ],
+    status: 'new',
+    availability: 'stock',
+    category: 'termos',
+    featured: true,
+  },
+  {
     id: 'stanley-classic-hot-coral',
     name: 'Termo Stanley Clásico 950ml Con Manija - Hot Coral',
     price: '$ 137.999',
