@@ -24,6 +24,11 @@ interface ProductFeature {
   text: string
 }
 
+interface FAQItem {
+  question: string
+  answer: string
+}
+
 interface Product {
   id: string
   name: string
@@ -39,6 +44,7 @@ interface Product {
   specs?: ProductSpec[]
   specGroups?: SpecGroup[]
   storageOptions?: StorageOption[]
+  faqs?: FAQItem[]
 }
 
 interface Category {
@@ -82,6 +88,25 @@ const CATEGORIES: Category[] = [
     label: 'Variedad',
     image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&h=400&fit=crop&auto=format',
     count: 'Productos importados',
+  },
+]
+
+const STANLEY_MATE_SYSTEM_FAQS: FAQItem[] = [
+  {
+    question: '¿El Termo Stanley Mate System 1.2 L sirve especialmente para tomar mate?',
+    answer: 'Sí. El Termo Stanley Mate System 1.2 L está diseñado especialmente para acompañar el ritual del mate. Su tapón de alta precisión permite cebar con un flujo continuo y exacto, ayudando a controlar mejor la salida del agua en cada cebada.',
+  },
+  {
+    question: '¿La tapa del Termo Stanley Mate System se puede usar como mate?',
+    answer: 'Sí. Una de las principales ventajas del Termo Stanley Mate System 1.2 L es que su tapa de acero inoxidable también funciona como mate. Esto lo convierte en una opción práctica para llevar todo lo necesario en un solo producto, ideal para el trabajo, viajes, facultad, plaza o uso diario.',
+  },
+  {
+    question: '¿Cuánto tiempo mantiene caliente el agua el Termo Stanley Mate System 1.2 L?',
+    answer: 'El Termo Stanley Mate System 1.2 L mantiene las bebidas calientes hasta 30 horas, gracias a su doble pared con aislación al vacío. También conserva bebidas frías hasta 30 horas y con hielo hasta 4 días, por lo que puede usarse tanto para mate como para otras bebidas frías o calientes.',
+  },
+  {
+    question: '¿El Termo Stanley Mate System 1.2 L pierde líquido si lo llevo en la mochila?',
+    answer: 'No, el Termo Stanley Mate System 1.2 L está diseñado a prueba de fugas, por lo que se puede transportar con mayor seguridad en mochila, bolso o matera. Además, está fabricado en acero inoxidable reciclado 18/8, es libre de BPA y apto para lavavajillas, lo que facilita su limpieza y uso frecuente.',
   },
 ]
 
@@ -1061,6 +1086,7 @@ const PRODUCTS: Product[] = [
     availability: 'stock',
     category: 'termos',
     featured: true,
+    faqs: STANLEY_MATE_SYSTEM_FAQS,
   },
   {
     id: 'stanley-mate-system-azul',
@@ -1132,6 +1158,7 @@ const PRODUCTS: Product[] = [
     availability: 'stock',
     category: 'termos',
     featured: true,
+    faqs: STANLEY_MATE_SYSTEM_FAQS,
   },
   {
     id: 'stanley-classic-hot-coral',
@@ -2253,6 +2280,57 @@ function ProductDetailScreen({
             </div>
           </div>
         ) : null}
+
+        {/* Preguntas frecuentes */}
+        {product.faqs && product.faqs.length > 0 && (
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E4DB] shadow-sm mt-8">
+            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-[#E8E4DB]">
+              <div className="w-9 h-9 rounded-xl bg-[#B5502F] text-white flex items-center justify-center shrink-0 font-bold text-base">
+                ?
+              </div>
+              <div>
+                <h2 className="text-[18px] sm:text-[20px] font-bold text-[#111111]"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                  Preguntas frecuentes
+                </h2>
+                <p className="text-[12px] text-[#8A8580]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Respuestas a las dudas más comunes sobre {product.name}
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              {product.faqs.map((faq, idx) => {
+                const faqKey = `faq-${idx}`
+                const isOpen = openAccordion[faqKey] ?? false
+                return (
+                  <div key={idx} className="border border-[#E8E4DB] rounded-2xl overflow-hidden bg-[#F5F1E8]/30 transition-all">
+                    <button
+                      onClick={() => toggleAccordion(faqKey)}
+                      className="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-[#F5F1E8]/70 transition-colors"
+                    >
+                      <span className="text-[14px] sm:text-[15px] font-bold text-[#111111] pr-4"
+                        style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                        {faq.question}
+                      </span>
+                      <span className={`transform transition-transform duration-200 text-[#B5502F] shrink-0 ${isOpen ? 'rotate-180' : ''}`}>
+                        <ChevronDownIcon size={20} />
+                      </span>
+                    </button>
+
+                    {isOpen && (
+                      <div className="px-5 pb-5 pt-2 border-t border-[#E8E4DB]/60 bg-white">
+                        <p className="text-[13px] sm:text-[14px] text-[#8A8580] leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                          {faq.answer}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )}
 
       </div>
     </div>
