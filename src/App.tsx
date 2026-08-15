@@ -1233,8 +1233,69 @@ const PRODUCTS: Product[] = [
     category: 'termos',
     featured: true,
   },
-
-
+  {
+    id: 'taza-mezcladora-usb',
+    name: 'Taza Mezcladora Automática con USB',
+    price: '$ 25.320',
+    image: '/Taza-mezcladora-USB-1.avif',
+    images: [
+      '/Taza-mezcladora-USB-1.avif',
+      '/Taza-mezcladora-USB-2.avif',
+      '/Taza-mezcladora-USB-3.avif',
+      '/Taza-mezcladora-USB-4.avif',
+    ],
+    description: 'Taza inteligente con mezclador magnético automático de 380 ml recargable vía USB. Construida con interior de acero inoxidable de grado alimenticio y carcasa exterior de resina ABS térmica. Ideal para preparar café, leche con chocolate, suplementos en polvo, té, matcha o batidos sin necesidad de cucharas.',
+    features: [
+      {
+        title: 'Mezclador Magnético Automático',
+        text: 'Cápsula magnética giratoria de alta velocidad que disuelve instantáneamente café, proteínas, batidos o chocolate sin dejar grumos.',
+      },
+      {
+        title: 'Recarga USB Incluida',
+        text: 'Batería recargable integrada con cable USB incluido. Disfrutá de mezcla rápida en cualquier lugar sin gastar en pilas descartables.',
+      },
+      {
+        title: 'Acero Inoxidable & Carcasa ABS',
+        text: 'Interior en acero inoxidable seguro y duradero + carcasa protectora exterior en ABS aislante táctil (disponible en Blanco o Marrón).',
+      },
+      {
+        title: 'Capacidad de 380 ml & Tamaño Compacto',
+        text: 'Dimensiones portátiles de 13,5 cm de alto x 9,5 cm de ancho. Capacidad de 380 ml perfecta para hogar, oficina o viajes.',
+      },
+    ],
+    specGroups: [
+      {
+        category: 'Generales y Diseño',
+        items: [
+          'Producto: Taza Mezcladora Automática Recargable',
+          'Colores Disponibles: Blanco / Marrón',
+          'Sistema de Mezclado: Mezclador magnético de alta potencia',
+          'Alimentación: Batería recargable vía USB (cable incluido)',
+        ],
+      },
+      {
+        category: 'Especificaciones Técnicas',
+        items: [
+          'Capacidad: 380 ml',
+          'Material Interior: Acero inoxidable de grado alimenticio',
+          'Material Exterior: Carcasa térmica en resina ABS de alta calidad',
+          'Dimensiones: 13,5 cm alto x 9,5 cm ancho',
+        ],
+      },
+      {
+        category: 'Uso y Mantenimiento',
+        items: [
+          'Operación: Botón táctil de encendido/apagado rápido',
+          'Aplicaciones: Café, proteína, batidos, chocolate caliente, matcha, té',
+          'Limpieza: Fácil de lavar con agua (cápsula magnética removible)',
+        ],
+      },
+    ],
+    status: 'new',
+    availability: 'stock',
+    category: 'termos',
+    featured: true,
+  },
 ]
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
