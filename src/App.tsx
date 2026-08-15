@@ -1023,62 +1023,67 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 'stanley-mate-system-violeta',
-    name: 'Termo Stanley Mate System Violeta Metalizado',
+    name: 'Termo Stanley Mate System 1.2 L Violeta Metalizado',
     price: '$ 182.000',
     image: '/Termo-Stanley-violeta1.avif',
     images: [
       '/Termo-Stanley-violeta1.avif',
       '/Termo-Stanley-violeta2.avif',
     ],
-    description: 'El icónico Termo Stanley Mate System de la nueva colección en acabado Violeta Metalizado con tapón giratorio de vertido continuo. Mantiene tus bebidas calientes y frías hasta por 24 horas gracias a la doble pared de acero inoxidable reciclado 18/8 con aislamiento por vacío.',
+    description: 'El Termo Stanley Mate System Classic 1.2 L en acabado Violeta Metalizado es el compañero ideal para el ritual del mate. Su tapón de alta precisión permite cebar con un flujo continuo y exacto, y su tapa aislada de acero inoxidable funciona como mate. Mantiene el agua caliente o fría hasta por 30 horas.',
     features: [
       {
-        title: 'Aislamiento por Vacío de Doble Pared',
-        text: 'Tecnología legendaria Stanley en acero inoxidable reciclado 18/8 que mantiene tus bebidas calientes y frías durante 24 horas completas.',
+        title: 'Tapón Cebador de Alta Precisión',
+        text: 'Diseñado especialmente para el ritual del mate, permitiendo un flujo continuo y exacto para controlar mejor la salida de agua en cada cebada.',
       },
       {
-        title: 'Tapón Giratorio Cebador',
-        text: 'Tapón giratorio para vertido suave y preciso + tapa aislada multifunción que sirve como taza o mate para beber en cualquier aventura.',
+        title: 'Tapa de Acero que Funciona como Mate',
+        text: 'Su tapa aislada multifunción de acero inoxidable funciona también como mate práctico para llevar a viajes, facultad o trabajo.',
       },
       {
-        title: 'Construcción 100% A Prueba de Fugas',
-        text: 'Estructura ultrarresistente diseñada a prueba de fugas, apta para lavavajillas y 100 % libre de BPA.',
+        title: 'Aislamiento Térmico de 30 Horas',
+        text: 'Doble pared con aislamiento al vacío que mantiene bebidas calientes o frías hasta por 30 horas y con hielo hasta 4 días.',
       },
       {
-        title: 'Diseño Compacto & Envío Incluido',
-        text: 'Dimensiones compactas de 30 cm x 9 cm fácil de sostener con una mano (peso 950 g). ¡Incluye envío a toda Argentina desde FAMVAR!',
+        title: 'Estructura 100% A Prueba de Fugas',
+        text: 'Fabricado en acero inoxidable 18/8 libre de BPA, apilable, apto para lavavajillas y con garantía oficial Stanley de por vida.',
       },
     ],
     specGroups: [
       {
         category: 'Generales y Diseño',
         items: [
-          'Colección: Nueva Colección Mate System',
+          'Modelo: Termo Stanley Mate System Classic 1.2 L',
           'Color / Acabado: Violeta Metalizado',
-          'Tapa / Tapón: Tapa aislada (funciona como taza) + Tapón giratorio cebador',
+          'Tipo de Boquilla: Pico cebador de alta precisión',
+          'Tapa / Mate: Tapa de acero inoxidable que funciona como mate',
+        ],
+      },
+      {
+        category: 'Especificaciones Técnicas',
+        items: [
+          'Capacidad: 1.2 Litros',
           'Material: Acero inoxidable reciclado 18/8 libre de BPA',
+          'Aislamiento: Doble pared con aislamiento al vacío',
+          'Dimensiones: 32,8 cm x 10,8 cm',
+          'Peso: 950 g',
         ],
       },
       {
         category: 'Rendimiento Térmico',
         items: [
-          'Mantiene Caliente: Hasta 24 horas',
-          'Mantiene Frío: Hasta 24 horas',
+          'Mantiene Caliente: Hasta 30 horas',
+          'Mantiene Frío: Hasta 30 horas',
+          'Con Hielo: Hasta 4 días (96 horas)',
         ],
       },
       {
-        category: 'Dimensiones y Peso',
-        items: [
-          'Dimensiones: 30 cm x 9 cm',
-          'Peso: 950 g',
-        ],
-      },
-      {
-        category: 'Garantía y Servicios',
+        category: 'Garantía y Compatibilidad',
         items: [
           'A prueba de fugas: Sí',
-          'Apto para lavavajillas: Sí',
-          'Envío incluido: A toda Argentina desde FAMVAR',
+          'Apto lavavajillas: Sí',
+          'Apilable: Sí',
+          'Garantía: Garantía de por vida Stanley',
         ],
       },
     ],
