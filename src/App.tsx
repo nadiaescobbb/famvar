@@ -80,7 +80,7 @@ const CATEGORIES: Category[] = [
   {
     id: 'termos',
     label: 'Termos y vasos',
-    image: 'https://images.unsplash.com/photo-1544568100-847a948585b9?w=600&h=400&fit=crop&auto=format',
+    image: '/termosbanner.avif',
     count: 'Stanley · Tazas automáticas',
   },
   {
