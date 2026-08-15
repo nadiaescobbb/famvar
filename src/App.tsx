@@ -1023,14 +1023,14 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 'stanley-mate-system-violeta',
-    name: 'Termo Stanley Mate System 1.2 L Violeta Metalizado',
+    name: 'Termo Stanley Mate System 1.2 L Wisteria Shine (Púrpura)',
     price: '$ 182.000',
     image: '/Termo-Stanley-violeta1.avif',
     images: [
       '/Termo-Stanley-violeta1.avif',
       '/Termo-Stanley-violeta2.avif',
     ],
-    description: 'El Termo Stanley Mate System Classic 1.2 L en acabado Violeta Metalizado es el compañero ideal para el ritual del mate. Su tapón de alta precisión permite cebar con un flujo continuo y exacto, y su tapa aislada de acero inoxidable funciona como mate. Mantiene el agua caliente o fría hasta por 30 horas.',
+    description: 'El Termo Stanley Mate System Classic 1.2 L en acabado Wisteria Shine (Púrpura) es el compañero ideal para el ritual del mate. Su tapón de alta precisión permite cebar con un flujo continuo y exacto, y su tapa aislada de acero inoxidable funciona como mate. Mantiene el agua caliente o fría hasta por 30 horas.',
     features: [
       {
         title: 'Tapón Cebador de Alta Precisión',
@@ -1054,7 +1054,7 @@ const PRODUCTS: Product[] = [
         category: 'Generales y Diseño',
         items: [
           'Modelo: Termo Stanley Mate System Classic 1.2 L',
-          'Color / Acabado: Violeta Metalizado',
+          'Color / Acabado: Wisteria Shine (Púrpura)',
           'Tipo de Boquilla: Pico cebador de alta precisión',
           'Tapa / Mate: Tapa de acero inoxidable que funciona como mate',
         ],
@@ -1095,14 +1095,14 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 'stanley-mate-system-azul',
-    name: 'Termo Stanley Mate System 1.2 L Azul Metalizado',
+    name: 'Termo Stanley Mate System 1.2 L Marina Shine (Verde Azulado)',
     price: '$ 182.000',
     image: '/Stanley-Mate-System-azulmetalizado.avif',
     images: [
       '/Stanley-Mate-System-azulmetalizado.avif',
       '/Stanley-Mate-System-azulmetalizado-2.avif',
     ],
-    description: 'El Termo Stanley Mate System Classic 1.2 L en acabado Azul Metalizado es el compañero ideal para el ritual del mate. Su tapón de alta precisión permite cebar con un flujo continuo y exacto, y su tapa aislada de acero inoxidable funciona como mate. Mantiene el agua caliente o fría hasta por 30 horas.',
+    description: 'El Termo Stanley Mate System Classic 1.2 L en acabado Marina Shine (Verde Azulado) es el compañero ideal para el ritual del mate. Su tapón de alta precisión permite cebar con un flujo continuo y exacto, y su tapa aislada de acero inoxidable funciona como mate. Mantiene el agua caliente o fría hasta por 30 horas.',
     features: [
       {
         title: 'Tapón Cebador de Alta Precisión',
@@ -1126,7 +1126,7 @@ const PRODUCTS: Product[] = [
         category: 'Generales y Diseño',
         items: [
           'Modelo: Termo Stanley Mate System Classic 1.2 L',
-          'Color / Acabado: Azul Metalizado',
+          'Color / Acabado: Marina Shine (Verde Azulado)',
           'Tipo de Boquilla: Pico cebador de alta precisión',
           'Tapa / Mate: Tapa de acero inoxidable que funciona como mate',
         ],
