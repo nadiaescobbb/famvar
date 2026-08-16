@@ -1464,16 +1464,31 @@ function ProductBadges({ product, inline = false }: { product: Product; inline?:
   const isCelulares = product.category === 'celulares'
   const availability = getEffectiveAvailability(product)
 
+  const containerClasses = inline
+    ? 'flex flex-wrap gap-1.5 items-center'
+    : 'absolute top-2 left-2 flex flex-col items-start gap-1 z-10'
+
+  if (product.status === 'out') {
+    return (
+      <div className={containerClasses}>
+        <span
+          className="text-[10px] font-semibold px-2 py-0.5 rounded-full tracking-wide shadow-sm bg-[#111111] text-white"
+          style={{ fontFamily: 'Inter, sans-serif' }}
+        >
+          A pedido
+        </span>
+      </div>
+    )
+  }
+
   const statusStyles: Record<string, string> = {
     new: 'bg-[#B5502F] text-white',
     used: 'bg-[#8A8580] text-white',
-    out: 'bg-red-600 text-white',
   }
 
   const statusLabels: Record<string, string> = {
     new: isCelulares ? 'Sellado' : 'Nuevo',
     used: 'Usado',
-    out: 'Sin stock',
   }
 
   const availStyles: Record<string, string> = {
@@ -1485,12 +1500,8 @@ function ProductBadges({ product, inline = false }: { product: Product; inline?:
     order: 'A pedido',
   }
 
-  const containerClasses = inline
-    ? 'flex flex-wrap gap-1.5 items-center'
-    : 'absolute top-2 left-2 flex flex-col items-start gap-1 z-10'
-
-  const showStatusBadge = isCelulares || !product.availability || product.status === 'used' || product.status === 'out'
-  const showAvailBadge = isCelulares ? !!availability : !!product.availability
+  const showStatusBadge = isCelulares || !product.availability || product.status === 'used'
+  const showAvailBadge = isCelulares ? !!availability : product.availability === 'stock'
 
   return (
     <div className={containerClasses}>
@@ -1558,8 +1569,13 @@ function ProductCard({ product, onSelect }: { product: Product; onSelect: (p: Pr
       className="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#E8E4DB] flex flex-col cursor-pointer hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200"
       onClick={() => onSelect(product)}
     >
-      <div className="relative w-full aspect-square bg-[#F0EDE6]">
-        <img src={product.image} alt={product.name} className="w-full h-full object-cover" loading="lazy" />
+      <div className="relative w-full aspect-square bg-[#F0EDE6] overflow-hidden flex items-center justify-center">
+        <img
+          src={product.image}
+          alt={product.name}
+          className={`w-full h-full ${product.id === 'taza-mezcladora-usb' ? 'object-contain p-3' : 'object-cover'}`}
+          loading="lazy"
+        />
         <ProductBadges product={product} />
       </div>
       <div className="p-3 flex flex-col gap-2 flex-1">
