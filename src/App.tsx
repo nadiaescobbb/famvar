@@ -1296,6 +1296,94 @@ const PRODUCTS: Product[] = [
     category: 'termos',
     featured: true,
   },
+  {
+    id: 'stanley-classic-1.4l',
+    name: 'Termo Stanley Clásico Asa Plegable 1.4 L',
+    price: '$ 156.000',
+    image: '/Stanley-Classic-1.4L-1.avif',
+    images: [
+      '/Stanley-Classic-1.4L-1.avif',
+      '/Stanley-Classic-1.4L-2.avif',
+    ],
+    description: 'El icónico Termo Stanley Clásico de 1.4 L con asa plegable combina un diseño elegante, construcción ultrarresistente y máxima capacidad térmica. Totalmente a prueba de fugas y capaz de mantener las bebidas calientes durante 40 horas, frías durante 35 horas o con hielo hasta 6 días.',
+    features: [
+      {
+        title: 'Aislamiento Térmico Superior de 40 Horas',
+        text: 'Doble pared de acero con vacío que conserva agua caliente 40 horas, fría 35 horas y con hielo hasta 6 días completas.',
+      },
+      {
+        title: 'Asa Lateral Plegable Integrada',
+        text: 'Formato ergonómico con asa resistente que se pliega para ahorrar espacio y facilitar el transporte en cualquier salida.',
+      },
+      {
+        title: 'Tapón Cebador Picosuave',
+        text: 'Tapón de alta precisión para un vertido fluido sin derrames + tapa de acero aislada multifunción que sirve como taza.',
+      },
+      {
+        title: 'Construcción Inoxidable 18/8 & Libre de BPA',
+        text: 'Pared externa de acero grueso ultrarresistente a golpes, apto para lavavajillas y con garantía oficial de por vida.',
+      },
+    ],
+    specGroups: [
+      {
+        category: 'Generales y Diseño',
+        items: [
+          'Modelo: Termo Stanley Clásico con Asa Plegable 1.4 L',
+          'Tipo de Boquilla: Tapón cebador de precisión',
+          'Tapa / Taza: Tapa aislada multifunción (funciona como taza)',
+          'Asa: Asa lateral plegable reforzada',
+        ],
+      },
+      {
+        category: 'Especificaciones Técnicas',
+        items: [
+          'Capacidad: 1.4 Litros',
+          'Material: Acero inoxidable reciclado 18/8 libre de BPA',
+          'Aislamiento: Doble pared con aislamiento al vacío legendario',
+          'Dimensiones: 35,8 cm x 9,9 cm',
+          'Peso: 910 g',
+        ],
+      },
+      {
+        category: 'Rendimiento Térmico',
+        items: [
+          'Mantiene Caliente: Hasta 40 horas',
+          'Mantiene Frío: Hasta 35 horas',
+          'Con Hielo: Hasta 6 días (144 horas)',
+        ],
+      },
+      {
+        category: 'Garantía y Compatibilidad',
+        items: [
+          'A prueba de fugas: Sí',
+          'Apto lavavajillas: Sí',
+          'Garantía: Garantía de por vida Stanley',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: '¿Para qué tipo de uso conviene el Termo Stanley Clásico con Asa Plegable 1.4 L?',
+        answer: 'El Termo Stanley Clásico con Asa Plegable 1.4 L es ideal para quienes necesitan mayor capacidad y conservación térmica durante muchas horas. Es una excelente opción para mateadas largas, viajes, camping, jornadas de trabajo, actividades al aire libre o para compartir bebidas calientes o frías con más de una persona.',
+      },
+      {
+        question: '¿Cuánto tiempo mantiene caliente el agua el Termo Stanley Clásico 1.4 L?',
+        answer: 'El Termo Stanley Clásico con Asa Plegable 1.4 L mantiene las bebidas calientes hasta 40 horas gracias a su doble pared con aislación al vacío. También conserva bebidas frías hasta 35 horas y con hielo hasta 6 días, por lo que ofrece un alto rendimiento térmico para distintos usos.',
+      },
+      {
+        question: '¿Qué ventaja tiene el asa plegable del Termo Stanley Clásico 1.4 L?',
+        answer: 'El asa plegable facilita el agarre y el transporte del termo, especialmente por tratarse de un modelo de mayor capacidad. Permite llevarlo con más comodidad en salidas, viajes o actividades al aire libre, y al plegarse ayuda a que ocupe menos espacio cuando no se está usando.',
+      },
+      {
+        question: '¿El Termo Stanley Clásico con Asa Plegable 1.4 L pierde líquido?',
+        answer: 'No. El Termo Stanley Clásico con Asa Plegable 1.4 L está diseñado a prueba de fugas, por lo que se puede transportar con mayor seguridad en bolso, mochila, auto o equipo de camping. Además, está fabricado en acero inoxidable reciclado 18/8, es libre de BPA y apto para lavavajillas.',
+      },
+    ],
+    status: 'new',
+    availability: 'stock',
+    category: 'termos',
+    featured: true,
+  },
 ]
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
