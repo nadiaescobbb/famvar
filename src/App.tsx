@@ -1386,8 +1386,8 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 'stanley-quencher-protour-messi',
-    name: 'Vaso Stanley Quencher ProTour Flip Straw 1.18 L',
-    price: '$ 141.000',
+    name: 'Vaso Quencher ProTour Flip Straw Messi x Stanley 1913 1.18 Lts. - CELESTE / DORADO',
+    price: '$ 167.999',
     image: '/Stanley-Quencher-Messi-1.avif',
     images: [
       '/Stanley-Quencher-Messi-1.avif',
@@ -1396,7 +1396,7 @@ const PRODUCTS: Product[] = [
       '/Stanley-Quencher-Messi-4.avif',
       '/Stanley-Quencher-Messi-5.avif',
     ],
-    description: 'El Vaso Stanley Quencher ProTour Flip Straw de 1.18 L (40 oz) llegó para hacer la hidratación diaria más fácil y cómoda. Levantás el sorbete incorporado para tomar y lo cerrás al terminar: sin derrames ni complicaciones. Aislamiento al vacío de doble pared que conserva el agua helada por horas.',
+    description: 'El Vaso Quencher ProTour Flip Straw Messi x Stanley 1913 de 1.18 Lts. en edición Celeste / Dorado llegó para hacer la hidratación diaria más fácil y cómoda. Levantás el sorbete incorporado para tomar y lo cerrás al terminar: sin derrames ni complicaciones. Aislamiento al vacío de doble pared que conserva el agua helada por horas.',
     features: [
       {
         title: 'Sistema ProTour Flip Straw Hermético',
@@ -1419,7 +1419,8 @@ const PRODUCTS: Product[] = [
       {
         category: 'Generales y Diseño',
         items: [
-          'Modelo: Vaso Stanley Quencher ProTour Flip Straw 1.18 L (Edición 1913)',
+          'Modelo: Vaso Quencher ProTour Flip Straw Messi x Stanley 1913 1.18 Lts.',
+          'Color / Acabado: CELESTE / DORADO',
           'Tipo de Boquilla: Flip Straw (Sorbete rebatible hermético)',
           'Tapa: Tapa ProTour bicolor a prueba de derrames',
           'Mango / Agarre: Mango ergonómico con textura antideslizante',
