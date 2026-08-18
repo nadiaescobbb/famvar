@@ -1384,6 +1384,96 @@ const PRODUCTS: Product[] = [
     category: 'termos',
     featured: true,
   },
+  {
+    id: 'stanley-quencher-protour-messi',
+    name: 'Vaso Stanley Quencher ProTour Flip Straw 1.18 L',
+    price: '$ 141.000',
+    image: '/Stanley-Quencher-Messi-1.avif',
+    images: [
+      '/Stanley-Quencher-Messi-1.avif',
+      '/Stanley-Quencher-Messi-2.avif',
+      '/Stanley-Quencher-Messi-3.avif',
+      '/Stanley-Quencher-Messi-4.avif',
+      '/Stanley-Quencher-Messi-5.avif',
+    ],
+    description: 'El Vaso Stanley Quencher ProTour Flip Straw de 1.18 L (40 oz) llegó para hacer la hidratación diaria más fácil y cómoda. Levantás el sorbete incorporado para tomar y lo cerrás al terminar: sin derrames ni complicaciones. Aislamiento al vacío de doble pared que conserva el agua helada por horas.',
+    features: [
+      {
+        title: 'Sistema ProTour Flip Straw Hermético',
+        text: 'Tapa ProTour a prueba de derrames con sorbete abatible incorporado: levantás para tomar y cerrás al instante sin fugas.',
+      },
+      {
+        title: 'Capacidad de 1,18 Litros (40 oz)',
+        text: 'Formato ideal para acompañar largas jornadas de gym, trabajo, facultad o viajes sin necesidad de recargar agua constantemente.',
+      },
+      {
+        title: 'Aislamiento al Vacío de Doble Pared',
+        text: 'Mantiene bebidas frías hasta 11 horas y heladas con hielo hasta 2 días continuos (48 horas) con máxima conservación.',
+      },
+      {
+        title: 'Mango Ergonómico Antideslizante',
+        text: 'Mango con textura suave de agarre seguro para llevarlo cómodamente. Fabricado en acero inoxidable 18/8 apto para lavavajillas.',
+      },
+    ],
+    specGroups: [
+      {
+        category: 'Generales y Diseño',
+        items: [
+          'Modelo: Vaso Stanley Quencher ProTour Flip Straw 1.18 L (Edición 1913)',
+          'Tipo de Boquilla: Flip Straw (Sorbete rebatible hermético)',
+          'Tapa: Tapa ProTour bicolor a prueba de derrames',
+          'Mango / Agarre: Mango ergonómico con textura antideslizante',
+        ],
+      },
+      {
+        category: 'Especificaciones Técnicas',
+        items: [
+          'Capacidad: 1,18 Litros (40 oz)',
+          'Material: Acero inoxidable reciclado 18/8 libre de BPA',
+          'Aislamiento: Doble pared con aislamiento al vacío',
+          'Dimensiones: 27 cm x 14,7 cm',
+          'Peso: 676 g',
+        ],
+      },
+      {
+        category: 'Rendimiento Térmico',
+        items: [
+          'Mantiene Frío: Hasta 11 horas',
+          'Con Hielo: Hasta 2 días (48 horas)',
+        ],
+      },
+      {
+        category: 'Garantía y Compatibilidad',
+        items: [
+          'A prueba de fugas: Sí',
+          'Apto lavavajillas: Sí',
+          'Garantía: Garantía de por vida Stanley',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: '¿Para qué tipo de uso conviene el Vaso Stanley Quencher ProTour Flip Straw 1.18 L?',
+        answer: 'El Vaso Stanley Quencher ProTour Flip Straw 1.18 L es ideal para quienes buscan mantenerse hidratados durante todo el día. Su gran capacidad de 1,18 litros lo hace práctico para llevar al gimnasio, al trabajo, a la facultad, en el auto, de viaje o para acompañar rutinas largas sin tener que recargar agua constantemente.',
+      },
+      {
+        question: '¿El Vaso Stanley Quencher ProTour Flip Straw 1.18 L mantiene el agua fría?',
+        answer: 'Sí. El Vaso Stanley Quencher ProTour Flip Straw 1.18 L mantiene las bebidas frías hasta 11 horas y con hielo hasta 2 días gracias a su doble pared con aislación al vacío. Es una buena opción para quienes quieren agua fría disponible durante muchas horas.',
+      },
+      {
+        question: '¿La tapa ProTour Flip Straw evita derrames?',
+        answer: 'Sí. El Vaso Stanley Quencher ProTour Flip Straw 1.18 L cuenta con tapa ProTour a prueba de derrames y sorbete incorporado. Solo tenés que levantar el sorbete para tomar y cerrarlo cuando terminás, lo que ayuda a evitar derrames y facilita el uso en movimiento.',
+      },
+      {
+        question: '¿El Vaso Stanley Quencher ProTour Flip Straw 1.18 L es cómodo para transportar?',
+        answer: 'Sí. El Vaso Stanley Quencher ProTour Flip Straw 1.18 L tiene manija con textura antideslizante y agarre cómodo, pensada para llevarlo con mayor seguridad durante el día. Además, está fabricado en acero inoxidable reciclado 18/8, es libre de BPA y apto para lavavajillas.',
+      },
+    ],
+    status: 'new',
+    availability: 'stock',
+    category: 'termos',
+    featured: true,
+  },
 ]
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
