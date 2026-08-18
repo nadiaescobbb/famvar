@@ -1167,8 +1167,8 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 'stanley-classic-hot-coral',
-    name: 'Termo Stanley Clásico 950ml Con Manija - Hot Coral',
-    price: '$ 137.999',
+    name: 'Termo Stanley Classic 950ml - Hot Coral',
+    price: '$ 173.150',
     image: '/STANLEY-coral-1.avif',
     images: [
       '/STANLEY-coral-1.avif',
@@ -1298,8 +1298,8 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 'stanley-classic-1.4l',
-    name: 'Termo Stanley Clásico Asa Plegable 1.4 L',
-    price: '$ 156.000',
+    name: 'Termo Stanley Clásico 1.4 Lts Verde',
+    price: '$ 203.750',
     image: '/Stanley-Classic-1.4L-1.avif',
     images: [
       '/Stanley-Classic-1.4L-1.avif',
