@@ -1023,7 +1023,7 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 'stanley-mate-system-violeta',
-    name: 'Termo Stanley Mate System 1.2 L Wisteria Shine (Púrpura)',
+    name: 'Termo Stanley Mate System 1.2L — Wisteria Shine (Púrpura)',
     price: '$ 182.000',
     image: '/Termo-Stanley-violeta1.avif',
     images: [
@@ -1095,7 +1095,7 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 'stanley-mate-system-azul',
-    name: 'Termo Stanley Mate System 1.2 L Marina Shine (Verde Azulado)',
+    name: 'Termo Stanley Mate System 1.2L — Marina Shine (Verde Azulado)',
     price: '$ 182.000',
     image: '/Stanley-Mate-System-azulmetalizado.avif',
     images: [
@@ -1167,7 +1167,7 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 'stanley-classic-hot-coral',
-    name: 'Termo Stanley Classic 950ml - Hot Coral',
+    name: 'Termo Stanley Clásico 950 ml — Hot Coral',
     price: '$ 173.150',
     image: '/STANLEY-coral-1.avif',
     images: [
@@ -1235,7 +1235,7 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 'taza-mezcladora-usb',
-    name: 'Taza Mezcladora Automática con USB',
+    name: 'Taza Mezcladora Automática 380 ml — Recargable USB',
     price: '$ 25.320',
     image: '/Taza-mezcladora-USB-1.avif',
     images: [
@@ -1298,7 +1298,7 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 'stanley-classic-1.4l',
-    name: 'Termo Stanley Clásico 1.4 Lts Verde',
+    name: 'Termo Stanley Clásico 1.4L — Verde',
     price: '$ 203.750',
     image: '/Stanley-Classic-1.4L-1.avif',
     images: [
@@ -1386,7 +1386,7 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 'stanley-quencher-protour-messi',
-    name: 'Vaso Quencher ProTour Flip Straw Messi x Stanley 1913 1.18 Lts. - CELESTE / DORADO',
+    name: 'Vaso Stanley Quencher Messi 1.18L — Celeste / Dorado',
     price: '$ 167.999',
     image: '/Stanley-Quencher-Messi-1.avif',
     images: [
