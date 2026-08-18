@@ -1781,6 +1781,116 @@ function ProductCard({ product, onSelect }: { product: Product; onSelect: (p: Pr
   )
 }
 
+function InstagramHighlightSection() {
+  const highlightUrl = 'https://www.instagram.com/stories/highlights/18357666898190700/'
+
+  return (
+    <section className="pb-10 sm:pb-14">
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E4DB] shadow-sm">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div className="max-w-xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F5F1E8] border border-[#E8E4DB] text-[#B5502F] text-xs font-semibold mb-3">
+              <InstagramIcon size={15} />
+              <span>Clientes & Experiencias Reales</span>
+            </div>
+            <h3
+              className="text-[20px] sm:text-[24px] font-bold text-[#111111] mb-2 leading-tight"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+            >
+              Mirá las entregas y opiniones de nuestros clientes
+            </h3>
+            <p
+              className="text-[14px] text-[#8A8580] leading-relaxed"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
+              Encontrá las fotos de paquetes despachados, equipos entregados y mensajes de agradecimiento directamente en las Historias Destacadas del perfil de Instagram.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+            <a
+              href={highlightUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] text-white font-semibold text-sm px-6 py-3.5 rounded-2xl hover:opacity-95 transition-all shadow-sm active:scale-[0.98]"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
+              <InstagramIcon size={18} />
+              <span>Ver Historias Destacadas en IG</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Highlight Circles Teaser */}
+        <div className="mt-8 pt-6 border-t border-[#E8E4DB] grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <a
+            href={highlightUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-[#F5F1E8]/70 hover:bg-[#F5F1E8] transition-colors border border-[#E8E4DB]/60 group"
+          >
+            <div className="relative w-12 h-12 rounded-full p-[2.5px] bg-gradient-to-tr from-[#FFDC80] via-[#FD1D1D] to-[#833AB4] shrink-0 group-hover:scale-105 transition-transform">
+              <div className="w-full h-full rounded-full bg-[#111111] flex items-center justify-center text-white font-bold text-xs">
+                ⭐
+              </div>
+            </div>
+            <div>
+              <h4 className="text-[13px] font-bold text-[#111111] leading-tight" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                Entregas & Reseñas
+              </h4>
+              <p className="text-[11px] text-[#B5502F] font-medium mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Abrir historias destacadas ↗
+              </p>
+            </div>
+          </a>
+
+          <a
+            href="https://instagram.com/luca.escobar.9250"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-[#F5F1E8]/70 hover:bg-[#F5F1E8] transition-colors border border-[#E8E4DB]/60 group"
+          >
+            <div className="relative w-12 h-12 rounded-full p-[2.5px] bg-gradient-to-tr from-[#FFDC80] via-[#FD1D1D] to-[#833AB4] shrink-0 group-hover:scale-105 transition-transform">
+              <div className="w-full h-full rounded-full bg-[#111111] flex items-center justify-center text-white font-bold text-xs">
+                📸
+              </div>
+            </div>
+            <div>
+              <h4 className="text-[13px] font-bold text-[#111111] leading-tight" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                @luca.escobar.9250
+              </h4>
+              <p className="text-[11px] text-[#8A8580] mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Perfil personal ↗
+              </p>
+            </div>
+          </a>
+
+          <a
+            href="https://instagram.com/famvar.importados"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-[#F5F1E8]/70 hover:bg-[#F5F1E8] transition-colors border border-[#E8E4DB]/60 group"
+          >
+            <div className="relative w-12 h-12 rounded-full p-[2.5px] bg-gradient-to-tr from-[#FFDC80] via-[#FD1D1D] to-[#833AB4] shrink-0 group-hover:scale-105 transition-transform">
+              <div className="w-full h-full rounded-full bg-[#111111] flex items-center justify-center text-white font-bold text-xs">
+                🛍️
+              </div>
+            </div>
+            <div>
+              <h4 className="text-[13px] font-bold text-[#111111] leading-tight" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                @famvar.importados
+              </h4>
+              <p className="text-[11px] text-[#8A8580] mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Catálogo en Instagram ↗
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // ─── Screen: Home ────────────────────────────────────────────────────────────
 
 function HomeScreen({
@@ -2026,6 +2136,9 @@ function HomeScreen({
             ))}
           </div>
         </section>
+
+        {/* Instagram Highlights Section */}
+        <InstagramHighlightSection />
 
         {/* CTA strip */}
         <section className="mb-10 sm:mb-14 bg-[#111111] rounded-3xl px-6 py-8 sm:px-10 sm:py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
