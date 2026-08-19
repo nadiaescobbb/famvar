@@ -1782,111 +1782,282 @@ function ProductCard({ product, onSelect }: { product: Product; onSelect: (p: Pr
 }
 
 function InstagramHighlightSection() {
+  const [activeStoryIndex, setActiveStoryIndex] = useState<number | null>(null)
   const highlightUrl = 'https://www.instagram.com/stories/highlights/18357666898190700/'
 
+  const stories = [
+    {
+      id: 1,
+      title: 'Entregas & Reseñas',
+      category: 'Envíos Nacionales',
+      user: '@famvar.importados',
+      time: 'Hace 2 horas',
+      badge: '✓ Compra Verificada',
+      bgImage: '/herobanner.avif',
+      icon: '📦',
+      avatarBg: 'from-[#833AB4] via-[#FD1D1D] to-[#FCB045]',
+      chat: '¡Hola Luca! Llegó el paquete de iPhone 15 Pro impecable a Resistencia en menos de 24hs. ¡Muchísimas gracias! 🔥📦',
+      rating: '⭐⭐⭐⭐⭐ 5/5',
+    },
+    {
+      id: 2,
+      title: 'Stanley Mate System',
+      category: 'Edición Exclusiva',
+      user: '@famvar.importados',
+      time: 'Hace 5 horas',
+      badge: '⭐ Cliente Satisfecho',
+      bgImage: '/Stanley-Mate-System-azulmetalizado.avif',
+      icon: '🧉',
+      avatarBg: 'from-[#833AB4] via-[#FD1D1D] to-[#FCB045]',
+      chat: 'El Termo Stanley Marina Shine es mil veces más lindo en vivo. El cebador cebado fino es una maravilla 10/10 💚',
+      rating: '⭐⭐⭐⭐⭐ 5/5',
+    },
+    {
+      id: 3,
+      title: 'Quencher Messi 1913',
+      category: 'Colección Especial',
+      user: '@luca.escobar.9250',
+      time: 'Hace 1 día',
+      badge: '🏆 Edición Limitada',
+      bgImage: '/Stanley-Quencher-Messi-1.avif',
+      icon: '🏆',
+      avatarBg: 'from-[#833AB4] via-[#FD1D1D] to-[#FCB045]',
+      chat: 'Llegó el Vaso Quencher de Messi para el gym. Mantiene el hielo todo el día literalmente. Tremendo producto 🇦🇷✨',
+      rating: '⭐⭐⭐⭐⭐ 5/5',
+    },
+    {
+      id: 4,
+      title: 'Termo Clásico 1.4L',
+      category: 'Viajes & Camping',
+      user: '@famvar.importados',
+      time: 'Hace 2 días',
+      badge: '🚚 Andreani / Correo',
+      bgImage: '/Stanley-Classic-1.4L-1.avif',
+      icon: '🚗',
+      avatarBg: 'from-[#833AB4] via-[#FD1D1D] to-[#FCB045]',
+      chat: 'Súper recomendable comprar en FAMVAR. El de 1.4L verde aguantó el agua hirviendo todo el viaje a Córdoba 🚙🔥',
+      rating: '⭐⭐⭐⭐⭐ 5/5',
+    },
+  ]
+
   return (
-    <section className="pb-10 sm:pb-14">
-      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E4DB] shadow-sm">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F5F1E8] border border-[#E8E4DB] text-[#B5502F] text-xs font-semibold mb-3">
-              <InstagramIcon size={15} />
+    <section className="pb-12 sm:pb-16">
+      <div className="bg-[#181614] rounded-3xl p-6 sm:p-10 text-white shadow-2xl relative overflow-hidden border border-[#2E2A26]">
+        {/* Background ambient glows */}
+        <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#FD1D1D]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-[#833AB4]/15 rounded-full blur-3xl pointer-events-none" />
+
+        {/* Section Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 relative z-10">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[#F5C842] text-xs font-bold uppercase tracking-wider mb-3">
+              <InstagramIcon size={14} />
               <span>Clientes & Experiencias Reales</span>
             </div>
-            <h3
-              className="text-[20px] sm:text-[24px] font-bold text-[#111111] mb-2 leading-tight"
+            <h2
+              className="text-[24px] sm:text-[32px] font-bold text-white leading-tight"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
-              Mirá las entregas y opiniones de nuestros clientes
-            </h3>
+              Historias Destacadas de la Comunidad FAMVAR 📸
+            </h2>
             <p
-              className="text-[14px] text-[#8A8580] leading-relaxed"
+              className="text-[14px] text-[#A69F94] mt-2 max-w-xl leading-relaxed"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
-              Encontrá las fotos de paquetes despachados, equipos entregados y mensajes de agradecimiento directamente en las Historias Destacadas del perfil de Instagram.
+              Mirá los despachos reales, fotos de productos entregados y opiniones directo desde el perfil de Instagram.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
-            <a
-              href={highlightUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] text-white font-semibold text-sm px-6 py-3.5 rounded-2xl hover:opacity-95 transition-all shadow-sm active:scale-[0.98]"
-              style={{ fontFamily: 'Inter, sans-serif' }}
-            >
-              <InstagramIcon size={18} />
-              <span>Ver Historias Destacadas en IG</span>
-            </a>
-          </div>
-        </div>
-
-        {/* Highlight Circles Teaser */}
-        <div className="mt-8 pt-6 border-t border-[#E8E4DB] grid grid-cols-1 sm:grid-cols-3 gap-4">
           <a
             href={highlightUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-[#F5F1E8]/70 hover:bg-[#F5F1E8] transition-colors border border-[#E8E4DB]/60 group"
+            className="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] text-white font-semibold text-sm px-6 py-3.5 rounded-2xl hover:opacity-95 transition-all shadow-lg active:scale-[0.98] shrink-0"
+            style={{ fontFamily: 'Inter, sans-serif' }}
           >
-            <div className="relative w-12 h-12 rounded-full p-[2.5px] bg-gradient-to-tr from-[#FFDC80] via-[#FD1D1D] to-[#833AB4] shrink-0 group-hover:scale-105 transition-transform">
-              <div className="w-full h-full rounded-full bg-[#111111] flex items-center justify-center text-white font-bold text-xs">
-                ⭐
-              </div>
-            </div>
-            <div>
-              <h4 className="text-[13px] font-bold text-[#111111] leading-tight" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                Entregas & Reseñas
-              </h4>
-              <p className="text-[11px] text-[#B5502F] font-medium mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Abrir historias destacadas ↗
-              </p>
-            </div>
-          </a>
-
-          <a
-            href="https://instagram.com/luca.escobar.9250"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-[#F5F1E8]/70 hover:bg-[#F5F1E8] transition-colors border border-[#E8E4DB]/60 group"
-          >
-            <div className="relative w-12 h-12 rounded-full p-[2.5px] bg-gradient-to-tr from-[#FFDC80] via-[#FD1D1D] to-[#833AB4] shrink-0 group-hover:scale-105 transition-transform">
-              <div className="w-full h-full rounded-full bg-[#111111] flex items-center justify-center text-white font-bold text-xs">
-                📸
-              </div>
-            </div>
-            <div>
-              <h4 className="text-[13px] font-bold text-[#111111] leading-tight" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                @luca.escobar.9250
-              </h4>
-              <p className="text-[11px] text-[#8A8580] mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Perfil personal ↗
-              </p>
-            </div>
-          </a>
-
-          <a
-            href="https://instagram.com/famvar.importados"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-[#F5F1E8]/70 hover:bg-[#F5F1E8] transition-colors border border-[#E8E4DB]/60 group"
-          >
-            <div className="relative w-12 h-12 rounded-full p-[2.5px] bg-gradient-to-tr from-[#FFDC80] via-[#FD1D1D] to-[#833AB4] shrink-0 group-hover:scale-105 transition-transform">
-              <div className="w-full h-full rounded-full bg-[#111111] flex items-center justify-center text-white font-bold text-xs">
-                🛍️
-              </div>
-            </div>
-            <div>
-              <h4 className="text-[13px] font-bold text-[#111111] leading-tight" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                @famvar.importados
-              </h4>
-              <p className="text-[11px] text-[#8A8580] mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Catálogo en Instagram ↗
-              </p>
-            </div>
+            <InstagramIcon size={18} />
+            <span>Ver Destacadas en Instagram ↗</span>
           </a>
         </div>
+
+        {/* Story Circles Bar (App Header Style) */}
+        <div className="flex items-center gap-4 sm:gap-6 overflow-x-auto pb-4 mb-8 scrollbar-none border-b border-white/10 relative z-10">
+          {stories.map((story, idx) => (
+            <button
+              key={story.id}
+              onClick={() => setActiveStoryIndex(idx)}
+              className="flex flex-col items-center gap-2 shrink-0 group focus:outline-none"
+            >
+              <div className={`relative w-16 h-16 sm:w-18 sm:h-18 rounded-full p-[2.5px] bg-gradient-to-tr ${story.avatarBg} group-hover:scale-105 transition-transform duration-200 shadow-md`}>
+                <div className="w-full h-full rounded-full bg-[#181614] overflow-hidden relative border-2 border-[#181614] flex items-center justify-center">
+                  <img src={story.bgImage} alt={story.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-lg">
+                    {story.icon}
+                  </div>
+                </div>
+              </div>
+              <span
+                className="text-[11px] font-semibold text-[#D8D2C7] group-hover:text-white transition-colors max-w-[76px] truncate text-center"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                {story.title}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* Story Cards Grid (9:16 Aspect Ratio Visual Cards) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative z-10">
+          {stories.map((story, idx) => (
+            <div
+              key={story.id}
+              onClick={() => setActiveStoryIndex(idx)}
+              className="relative aspect-[9/14] rounded-2xl overflow-hidden border border-white/15 cursor-pointer group shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between p-4"
+            >
+              {/* Background Image */}
+              <img
+                src={story.bgImage}
+                alt={story.title}
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              {/* Gradient Overlays */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/60" />
+
+              {/* Card Header */}
+              <div className="relative z-10 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full p-[1.5px] bg-gradient-to-tr from-[#FFDC80] via-[#FD1D1D] to-[#833AB4]">
+                    <div className="w-full h-full rounded-full bg-[#111111] flex items-center justify-center text-xs">
+                      {story.icon}
+                    </div>
+                  </div>
+                  <div>
+                    <span className="block text-[11px] font-bold text-white leading-none" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                      {story.user}
+                    </span>
+                    <span className="text-[9px] text-white/70" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      {story.time}
+                    </span>
+                  </div>
+                </div>
+                <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30">
+                  {story.badge}
+                </span>
+              </div>
+
+              {/* Card Content & Chat Overlay */}
+              <div className="relative z-10 flex flex-col gap-2">
+                {/* Chat Bubble overlay */}
+                <div className="bg-white/15 backdrop-blur-md border border-white/20 rounded-xl p-3 shadow-lg">
+                  <p className="text-[12px] text-white font-medium leading-snug" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    "{story.chat}"
+                  </p>
+                  <div className="mt-2 flex items-center justify-between text-[10px] text-white/80 border-t border-white/10 pt-1.5">
+                    <span>{story.rating}</span>
+                    <span className="text-[#F5C842] font-semibold">Tocar para ver ↗</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+
+      {/* Interactive Story Lightbox Modal */}
+      {activeStoryIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
+          onClick={() => setActiveStoryIndex(null)}
+        >
+          <div
+            className="relative w-full max-w-sm aspect-[9/16] bg-[#111111] rounded-3xl overflow-hidden shadow-2xl border border-white/20 flex flex-col justify-between p-5"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Background Image */}
+            <img
+              src={stories[activeStoryIndex].bgImage}
+              alt={stories[activeStoryIndex].title}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/70" />
+
+            {/* Modal Story Header & Progress Bars */}
+            <div className="relative z-10">
+              {/* Segmented progress bar */}
+              <div className="flex gap-1.5 mb-4">
+                {stories.map((_, i) => (
+                  <div
+                    key={i}
+                    className={`h-1 flex-1 rounded-full ${i === activeStoryIndex ? 'bg-white' : i < activeStoryIndex ? 'bg-white/70' : 'bg-white/30'}`}
+                  />
+                ))}
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-10 h-10 rounded-full p-[2px] bg-gradient-to-tr from-[#FFDC80] via-[#FD1D1D] to-[#833AB4]">
+                    <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-sm">
+                      {stories[activeStoryIndex].icon}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-white leading-none" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                      {stories[activeStoryIndex].user}
+                    </h4>
+                    <span className="text-xs text-white/70" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      {stories[activeStoryIndex].category} · {stories[activeStoryIndex].time}
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setActiveStoryIndex(null)}
+                  className="w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black transition-colors"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Story Footer & Chat Overlay */}
+            <div className="relative z-10 flex flex-col gap-4">
+              <div className="bg-white/20 backdrop-blur-xl border border-white/25 rounded-2xl p-4 text-white shadow-xl">
+                <p className="text-sm font-medium leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  "{stories[activeStoryIndex].chat}"
+                </p>
+                <div className="mt-3 flex items-center justify-between text-xs border-t border-white/15 pt-2">
+                  <span>{stories[activeStoryIndex].rating}</span>
+                  <span className="font-semibold text-[#F5C842]">{stories[activeStoryIndex].badge}</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setActiveStoryIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : stories.length - 1))}
+                  className="flex-1 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold backdrop-blur transition-colors text-center"
+                >
+                  ← Anterior
+                </button>
+                <button
+                  onClick={() => setActiveStoryIndex((prev) => (prev !== null && prev < stories.length - 1 ? prev + 1 : 0))}
+                  className="flex-1 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold backdrop-blur transition-colors text-center"
+                >
+                  Siguiente →
+                </button>
+              </div>
+
+              <a
+                href={highlightUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] text-white text-xs font-bold tracking-wide text-center uppercase shadow-lg hover:opacity-95 transition-opacity"
+              >
+                Ver historia original en Instagram ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
