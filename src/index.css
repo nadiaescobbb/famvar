@@ -4,10 +4,11 @@
 @theme {
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
-  --color-bone: #F5F1E8;
-  --color-warm-black: #111111;
-  --color-terracotta: #B5502F;
-  --color-warm-gray: #8A8580;
+  --color-bone: #F6F7EB;
+  --color-navy: #12253E;
+  --color-warm-black: #12253E;
+  --color-accent: #C1451D;
+  --color-warm-gray: #64748B;
   --color-card: #FFFFFF;
 }
 
@@ -18,9 +19,9 @@
 html, body, #root {
   margin: 0;
   padding: 0;
-  background-color: #F5F1E8;
+  background-color: #F6F7EB;
   font-family: 'Inter', sans-serif;
-  color: #111111;
+  color: #12253E;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
 }
@@ -32,16 +33,16 @@ html, body, #root {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F5F1E8;
+  background: #F6F7EB;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D8D2C5;
+  background: #CBD5E1;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #B5502F;
+  background: #C1451D;
 }
 
 /* Utility to hide scrollbars on tag lists */
