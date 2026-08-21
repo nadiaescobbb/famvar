@@ -1,6 +1,6 @@
 # 📱 FAMVAR — Catálogo Digital & E-Commerce
 
-> Catálogo web moderno, elegante y optimizado para la exhibición de celulares (iPhone, Samsung), accesorios importados, termos Stanley y productos de variedad. Diseñado bajo principios de **Refactoring UI**, arquitectura de color **HSL en Tailwind CSS v4** y conversión rápida hacia WhatsApp.
+> Catálogo web moderno, elegante y optimizado para la exhibición de celulares (iPhone, Samsung), accesorios importados, termos Stanley y productos de variedad. Diseñado bajo una **Arquitectura Senior Enterprise** modular en React 19, custom hook de enrutamiento, **Refactoring UI** y arquitectura de color **HSL en Tailwind CSS v4**.
 
 ![React 19](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)
 ![Vite 8](https://img.shields.io/badge/Vite-8.0-646CFF?logo=vite&logoColor=white)
@@ -17,6 +17,49 @@ La interfaz cuenta con un diseño *Warm Canvas & Navy Slate* con contraste refin
 - **Grilla de Productos**: Badges dinámicos de disponibilidad (`En stock`, `A pedido`, `Sellado`, `Usado`) con jerarquía tipográfica limpia.
 - **Historias Destacadas (Instagram)**: Muestra de testimonios y envíos reales con lightbox modal interactivo.
 - **Ficha Técnica & Acordeones**: Detalle exhaustivo de especificaciones por producto (pantalla, chip, cámaras, batería, etc.).
+
+---
+
+## 🏗️ Arquitectura del Proyecto (Senior Enterprise 100%)
+
+El código ha sido refactorizado y desacoplado siguiendo principios SOLID y diseño por capas:
+
+```text
+famvar/
+├── public/                     # Assets estáticos e imágenes AVIF optimizadas
+├── src/
+│   ├── types/                  # Definiciones e interfaces estáticas de TypeScript
+│   │   └── index.ts
+│   ├── data/                   # Catalogos y datasets estructurados (Categorías, Productos, FAQs)
+│   │   ├── categories.ts
+│   │   └── products.ts
+│   ├── hooks/                  # Custom Hooks reactivos de estado y lógica
+│   │   └── useHashRouter.ts    # Enrutador por Hash reactivo desacoplado
+│   ├── components/             # Jerarquía de componentes reutilizables (Atomic/Feature Design)
+│   │   ├── icons/
+│   │   │   └── Icons.tsx        # Librería de iconos SVG
+│   │   ├── ui/
+│   │   │   ├── ProductBadges.tsx
+│   │   │   └── WhatsAppButton.tsx
+│   │   ├── features/
+│   │   │   ├── ProductCard.tsx
+│   │   │   └── InstagramHighlightSection.tsx
+│   │   └── layout/
+│   │       ├── TopBanner.tsx
+│   │       ├── Header.tsx
+│   │       ├── TrustBadgesBar.tsx
+│   │       └── Footer.tsx
+│   ├── views/                  # Vistas de Pantalla Principales
+│   │   ├── HomeScreen.tsx
+│   │   ├── CategoryScreen.tsx
+│   │   └── ProductDetailScreen.tsx
+│   ├── App.tsx                 # Raíz desacoplada (~30 líneas)
+│   └── index.css               # Estilos globales y tokens HSL @theme
+├── index.html                  # HTML de entrada y Google Fonts (Space Grotesk & Inter)
+├── package.json                # Scripts y dependencias
+├── tsconfig.json               # Configuración de TypeScript
+└── vite.config.ts              # Configuración de Vite con @tailwindcss/vite
+```
 
 ---
 
@@ -46,7 +89,7 @@ Los badges no compiten con la fotografía del producto gracias a tonos suaves en
 
 | Tecnología | Versión | Uso / Función |
 | :--- | :--- | :--- |
-| **React** | 19.0.0 | UI Library & Estado Declarativo |
+| **React** | 19.0.0 | UI Library & Componentes Declarativos |
 | **TypeScript** | 5.7.0 | Tipado Estático Estricto |
 | **Vite** | 8.0.0 | Build Tool & Dev Server Ultra-Rápido |
 | **Tailwind CSS** | 4.0.0 | Utility-First CSS Framework (Vite Plugin) |
@@ -87,24 +130,6 @@ Los badges no compiten con la fotografía del producto gracias a tonos suaves en
    ```bash
    npm run preview
    ```
-
----
-
-## 📂 Estructura del Proyecto
-
-```text
-famvar/
-├── public/                 # Assets estáticos e imágenes AVIF optimizadas
-├── src/
-│   ├── index.css           # Tokens HSL @theme y estilos globales Tailwind v4
-│   ├── main.tsx            # Punto de entrada React 19
-│   ├── vite-env.d.ts       # Tipos de Vite
-│   └── App.tsx             # Monolito principal (Tipos, Datos, Componentes y Pantallas)
-├── index.html              # HTML de entrada y Google Fonts (Space Grotesk & Inter)
-├── package.json            # Scripts y dependencias
-├── tsconfig.json           # Configuración de TypeScript
-└── vite.config.ts          # Configuración de Vite con @tailwindcss/vite
-```
 
 ---
 
