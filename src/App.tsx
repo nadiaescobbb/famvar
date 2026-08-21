@@ -1660,7 +1660,7 @@ function ProductBadges({ product, inline = false }: { product: Product; inline?:
     return (
       <div className={containerClasses}>
         <span
-          className="text-[10px] font-semibold px-2 py-0.5 rounded-full tracking-wide shadow-sm bg-[#12253E] text-[#F6F7EB]"
+          className="bg-badge-order-bg text-badge-order-text font-medium text-xs px-2 py-0.5 rounded-full border border-badge-order-text/15 tracking-wide shadow-sm"
           style={{ fontFamily: 'Inter, sans-serif' }}
         >
           A pedido
@@ -1670,8 +1670,8 @@ function ProductBadges({ product, inline = false }: { product: Product; inline?:
   }
 
   const statusStyles: Record<string, string> = {
-    new: 'bg-[#475569] text-[#F6F7EB]',
-    used: 'bg-[#C1451D] text-[#F6F7EB]',
+    new: 'bg-badge-new-bg text-badge-new-text border border-badge-new-text/15',
+    used: 'bg-badge-used-bg text-badge-used-text border border-badge-used-text/15',
   }
 
   const statusLabels: Record<string, string> = {
@@ -1680,8 +1680,8 @@ function ProductBadges({ product, inline = false }: { product: Product; inline?:
   }
 
   const availStyles: Record<string, string> = {
-    stock: 'bg-emerald-600 text-white',
-    order: 'bg-[#12253E] text-[#F6F7EB]',
+    stock: 'bg-badge-stock-bg text-badge-stock-text border border-badge-stock-text/15',
+    order: 'bg-badge-order-bg text-badge-order-text border border-badge-order-text/15',
   }
   const availLabels: Record<string, string> = {
     stock: 'En stock',
@@ -1695,7 +1695,7 @@ function ProductBadges({ product, inline = false }: { product: Product; inline?:
     <div className={containerClasses}>
       {showStatusBadge && (
         <span
-          className={`text-[10px] font-semibold px-2 py-0.5 rounded-full tracking-wide shadow-sm ${statusStyles[product.status]}`}
+          className={`font-medium text-xs px-2 py-0.5 rounded-full tracking-wide shadow-sm ${statusStyles[product.status]}`}
           style={{ fontFamily: 'Inter, sans-serif' }}
         >
           {statusLabels[product.status]}
@@ -1703,7 +1703,7 @@ function ProductBadges({ product, inline = false }: { product: Product; inline?:
       )}
       {showAvailBadge && availability && (
         <span
-          className={`text-[10px] font-semibold px-2 py-0.5 rounded-full tracking-wide shadow-sm ${availStyles[availability]}`}
+          className={`font-medium text-xs px-2 py-0.5 rounded-full tracking-wide shadow-sm ${availStyles[availability]}`}
           style={{ fontFamily: 'Inter, sans-serif' }}
         >
           {availLabels[availability]}
@@ -1740,8 +1740,8 @@ function WhatsAppButton({
     lg: 'py-4 px-6 text-base gap-2.5',
   }
   const bgClasses = variant === 'accent'
-    ? 'bg-[#C1451D] hover:bg-[#A33816] text-[#F6F7EB]'
-    : 'bg-[#12253E] hover:bg-[#1A3352] text-[#F6F7EB]'
+    ? 'bg-accent hover:bg-accent-hover text-bone'
+    : 'bg-navy hover:bg-navy-hover text-bone'
 
   return (
     <a
@@ -1760,10 +1760,10 @@ function WhatsAppButton({
 function ProductCard({ product, onSelect }: { product: Product; onSelect: (p: Product) => void }) {
   return (
     <div
-      className="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#E2DCD0] flex flex-col cursor-pointer hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200"
+      className="bg-white rounded-2xl overflow-hidden shadow-sm border border-border-subtle flex flex-col cursor-pointer hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200"
       onClick={() => onSelect(product)}
     >
-      <div className="relative w-full aspect-square bg-gradient-to-b from-[#FAF8F3] to-[#F2EDE2] overflow-hidden flex items-center justify-center p-3 border-b border-[#E8E2D5] group">
+      <div className="relative w-full aspect-square bg-gradient-to-b from-[#FAF8F3] to-[#F2EDE2] overflow-hidden flex items-center justify-center p-3 border-b border-border-subtle group">
         <img
           src={product.image}
           alt={product.name}
@@ -1773,17 +1773,17 @@ function ProductCard({ product, onSelect }: { product: Product; onSelect: (p: Pr
         <ProductBadges product={product} />
       </div>
       <div className="p-3 flex flex-col gap-2 flex-1">
-        <p className="text-[13px] font-bold leading-snug text-[#12253E] line-clamp-2"
+        <p className="text-[13px] font-bold leading-snug text-navy line-clamp-2"
           style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
           {product.name}
         </p>
         <div className="mt-auto">
           {product.storageOptions ? (
-            <p className="text-[11px] text-[#64748B] mb-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
-              Desde <span className="text-[#C1451D] font-bold text-base">{product.price}</span>
+            <p className="text-[11px] text-text-muted mb-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Desde <span className="text-navy font-bold text-lg">{product.price}</span>
             </p>
           ) : (
-            <p className="text-[#C1451D] font-bold text-base" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <p className="text-navy font-bold text-lg" style={{ fontFamily: 'Inter, sans-serif' }}>
               {product.price}
             </p>
           )}
@@ -1849,26 +1849,26 @@ function InstagramHighlightSection() {
 
   return (
     <section className="pb-12 sm:pb-16">
-      <div className="bg-[#12253E] rounded-3xl p-6 sm:p-10 text-[#F6F7EB] shadow-2xl relative overflow-hidden border border-[#1A3352]">
+      <div className="bg-navy rounded-3xl p-6 sm:p-10 text-bone shadow-2xl relative overflow-hidden border border-navy-border">
         {/* Background ambient glows */}
-        <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#C1451D]/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-[#1A3352]/50 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-24 -right-24 w-72 h-72 bg-accent/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-navy-border/50 rounded-full blur-3xl pointer-events-none" />
 
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 relative z-10">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[#C1451D] text-xs font-semibold mb-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-accent text-xs font-semibold mb-3">
               <InstagramIcon size={14} />
               <span>Clientes & Experiencias Reales</span>
             </div>
             <h2
-              className="text-[24px] sm:text-[32px] font-bold text-[#F6F7EB] leading-tight"
+              className="text-[24px] sm:text-[32px] font-bold text-bone leading-tight"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
               Historias Destacadas de la Comunidad FAMVAR 📸
             </h2>
             <p
-              className="text-[14px] text-[#F6F7EB]/70 mt-2 max-w-xl leading-relaxed"
+              className="text-[14px] text-bone/70 mt-2 max-w-xl leading-relaxed"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
               Mirá los despachos reales, fotos de productos entregados y opiniones directo desde el perfil de Instagram.
@@ -1908,7 +1908,7 @@ function InstagramHighlightSection() {
               <div className="relative z-10 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-full p-[1.5px] bg-gradient-to-tr from-[#FFDC80] via-[#FD1D1D] to-[#833AB4]">
-                    <div className="w-full h-full rounded-full bg-[#12253E] flex items-center justify-center text-white/90">
+                    <div className="w-full h-full rounded-full bg-navy flex items-center justify-center text-white/90">
                       <UserIcon size={14} />
                     </div>
                   </div>
@@ -1926,18 +1926,18 @@ function InstagramHighlightSection() {
               {/* Card Content & Chat Overlay */}
               <div className="relative z-10 flex flex-col gap-2">
                 {/* Chat Bubble overlay with High-Contrast Dark Backdrop */}
-                <div className="bg-[#12253E]/90 backdrop-blur-xl border border-white/20 rounded-xl p-3.5 shadow-2xl h-[135px] flex flex-col justify-between">
-                  <p className="text-[12px] text-[#F6F7EB] font-medium leading-snug" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <div className="bg-navy/90 backdrop-blur-xl border border-white/20 rounded-xl p-3.5 shadow-2xl h-[135px] flex flex-col justify-between">
+                  <p className="text-[12px] text-bone font-medium leading-snug" style={{ fontFamily: 'Inter, sans-serif' }}>
                     {story.chat}
                   </p>
-                  <div className="mt-2 flex items-center justify-between text-[10px] text-[#F6F7EB]/90 border-t border-white/10 pt-2 shrink-0">
-                    <span className="text-[#C1451D] font-bold">{story.rating}</span>
+                  <div className="mt-2 flex items-center justify-between text-[10px] text-bone/90 border-t border-white/10 pt-2 shrink-0">
+                    <span className="text-accent font-bold">{story.rating}</span>
                     <a
                       href={highlightUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-1 text-[#C1451D] font-bold hover:underline"
+                      className="inline-flex items-center gap-1 text-accent font-bold hover:underline"
                     >
                       <span>Ver en IG ↗</span>
                     </a>
@@ -2059,21 +2059,21 @@ function HomeScreen({
   const featuredProducts = sortProductsByAvailability(PRODUCTS.filter((p) => p.featured))
 
   return (
-    <div className="min-h-screen bg-[#F6F7EB]">
+    <div className="min-h-screen bg-bone">
 
       {/* Top Banner Bar */}
-      <div className="bg-[#12253E] text-[#F6F7EB] text-xs py-2.5 px-4 text-center font-medium flex items-center justify-center gap-2">
+      <div className="bg-navy text-bone text-xs py-2.5 px-4 text-center font-medium flex items-center justify-center gap-2">
         <TruckIcon size={14} />
         <span>Envíos a todo el país desde La Escondida, Chaco</span>
         <span className="hidden sm:inline text-white/30">|</span>
-        <span className="hidden sm:inline text-[#F6F7EB]/80">Atención inmediata por WhatsApp</span>
+        <span className="hidden sm:inline text-bone/80">Atención inmediata por WhatsApp</span>
       </div>
 
       {/* Header */}
-      <header className="sticky top-0 z-30 bg-[#F6F7EB]/95 backdrop-blur border-b border-[#E2DCD0]">
+      <header className="sticky top-0 z-30 bg-bone/95 backdrop-blur border-b border-border-subtle">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14 sm:h-16">
           <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => { window.location.hash = '#/' }}>
-            <span className="text-[20px] sm:text-[22px] font-bold tracking-tight text-[#12253E]"
+            <span className="text-[20px] sm:text-[22px] font-bold tracking-tight text-navy"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               FAMVAR
             </span>
@@ -2083,14 +2083,14 @@ function HomeScreen({
             <nav className="hidden md:flex items-center gap-6 mr-4">
               {CATEGORIES.map((cat) => (
                 <button key={cat.id} onClick={() => onSelectCategory(cat)}
-                  className="text-sm text-[#12253E]/80 hover:text-[#12253E] font-medium transition-colors"
+                  className="text-sm text-navy/80 hover:text-navy font-medium transition-colors"
                   style={{ fontFamily: 'Inter, sans-serif' }}>
                   {cat.label}
                 </button>
               ))}
             </nav>
             <a href="https://wa.me/5493624076857" target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-1.5 bg-[#12253E] hover:bg-[#1A3352] text-[#F6F7EB] text-sm font-semibold px-3.5 py-2 rounded-xl transition-all shadow-sm"
+              className="flex items-center gap-1.5 bg-navy hover:bg-navy-hover text-bone text-sm font-semibold px-3.5 py-2 rounded-xl transition-all shadow-sm"
               style={{ fontFamily: 'Inter, sans-serif' }}>
               <WhatsAppIcon size={16} />
               <span className="hidden sm:inline">Escribinos</span>
@@ -2104,20 +2104,20 @@ function HomeScreen({
         {/* Hero */}
         <section className="pt-10 pb-8 sm:pt-14 sm:pb-10 lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center lg:pt-16 lg:pb-12">
           <div>
-            <h1 className="text-[36px] sm:text-[48px] lg:text-[56px] font-bold leading-[1.1] text-[#12253E] mb-4"
+            <h1 className="text-[36px] sm:text-[48px] lg:text-[56px] font-bold leading-[1.1] text-navy mb-4"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Celulares,<br />
               accesorios y<br />
-              <span className="text-[#C1451D]">mucha variedad.</span>
+              <span className="text-accent">mucha variedad.</span>
             </h1>
-            <p className="text-[15px] sm:text-[16px] text-[#12253E]/80 leading-relaxed mb-6 max-w-md"
+            <p className="text-[15px] sm:text-[16px] text-navy/80 leading-relaxed mb-6 max-w-md"
               style={{ fontFamily: 'Inter, sans-serif' }}>
               iPhone, Samsung, termos Stanley, fundas y más — nuevos, usados y a pedido. Todo con envío desde La Escondida, Chaco.
             </p>
             <div className="flex flex-wrap gap-3">
               <WhatsAppButton label="Consultar ahora" size="lg" variant="accent" />
               <button onClick={() => onSelectCategory(CATEGORIES[0])}
-                className="flex items-center gap-2 border border-[#12253E] text-[#12253E] font-semibold px-6 py-4 rounded-xl text-base hover:bg-[#12253E] hover:text-[#F6F7EB] transition-colors bg-transparent"
+                className="flex items-center gap-2 border border-navy text-navy font-semibold px-6 py-4 rounded-xl text-base hover:bg-navy hover:text-bone transition-colors bg-transparent"
                 style={{ fontFamily: 'Inter, sans-serif' }}>
                 Ver celulares
               </button>
@@ -2125,18 +2125,18 @@ function HomeScreen({
           </div>
 
           {/* Hero image using user custom banner */}
-          <div className="hidden lg:block relative rounded-3xl overflow-hidden aspect-[4/3] bg-[#12253E]">
+          <div className="hidden lg:block relative rounded-3xl overflow-hidden aspect-[4/3] bg-navy">
             <img
               src="/bannerhome.avif"
               alt="FAMVAR Banner Home"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#12253E]/20 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-navy/20 via-transparent to-transparent" />
           </div>
         </section>
 
         {/* Mobile Banner Image */}
-        <div className="lg:hidden mb-8 rounded-2xl overflow-hidden aspect-[16/9] bg-[#12253E]">
+        <div className="lg:hidden mb-8 rounded-2xl overflow-hidden aspect-[16/9] bg-navy">
           <img
             src="/bannerhome.avif"
             alt="FAMVAR Banner Home"
@@ -2145,42 +2145,42 @@ function HomeScreen({
         </div>
 
         {/* Trust Badges Bar */}
-        <section className="mb-10 p-4 sm:p-5 bg-white rounded-2xl border border-[#E2DCD0] shadow-sm grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <section className="mb-10 p-4 sm:p-5 bg-white rounded-2xl border border-border-subtle shadow-sm grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#12253E]/10 text-[#12253E] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-navy/10 text-navy flex items-center justify-center shrink-0">
               <ShieldCheckIcon size={20} />
             </div>
             <div>
-              <h4 className="text-[13px] font-bold text-[#12253E]" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              <h4 className="text-[13px] font-bold text-navy" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 Equipos Garantizados
               </h4>
-              <p className="text-[11px] text-[#64748B]" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <p className="text-[11px] text-text-muted" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Garantía oficial y propia
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-3 border-t sm:border-t-0 sm:border-l border-[#E2DCD0] pt-3 sm:pt-0 sm:pl-4">
-            <div className="w-10 h-10 rounded-xl bg-[#12253E] text-[#F6F7EB] flex items-center justify-center shrink-0">
+          <div className="flex items-center gap-3 border-t sm:border-t-0 sm:border-l border-border-subtle pt-3 sm:pt-0 sm:pl-4">
+            <div className="w-10 h-10 rounded-xl bg-navy text-bone flex items-center justify-center shrink-0">
               <TruckIcon size={20} />
             </div>
             <div>
-              <h4 className="text-[13px] font-bold text-[#12253E]" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              <h4 className="text-[13px] font-bold text-navy" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 Despachos Rápidos
               </h4>
-              <p className="text-[11px] text-[#64748B]" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <p className="text-[11px] text-text-muted" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Correo Argentino / Andreani
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-3 border-t sm:border-t-0 sm:border-l border-[#E2DCD0] pt-3 sm:pt-0 sm:pl-4">
-            <div className="w-10 h-10 rounded-xl bg-[#C1451D] text-white flex items-center justify-center shrink-0">
+          <div className="flex items-center gap-3 border-t sm:border-t-0 sm:border-l border-border-subtle pt-3 sm:pt-0 sm:pl-4">
+            <div className="w-10 h-10 rounded-xl bg-accent text-white flex items-center justify-center shrink-0">
               <CreditCardIcon size={20} />
             </div>
             <div>
-              <h4 className="text-[13px] font-bold text-[#12253E]" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              <h4 className="text-[13px] font-bold text-navy" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 Medios de Pago
               </h4>
-              <p className="text-[11px] text-[#64748B]" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <p className="text-[11px] text-text-muted" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Efectivo / Transferencia
               </p>
             </div>
@@ -2189,7 +2189,7 @@ function HomeScreen({
 
         {/* Category grid */}
         <section className="pb-10 sm:pb-12">
-          <h2 className="text-[13px] font-bold tracking-widest uppercase text-[#12253E] mb-4"
+          <h2 className="text-[13px] font-bold tracking-widest uppercase text-navy mb-4"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
             Categorías
           </h2>
@@ -2198,17 +2198,17 @@ function HomeScreen({
           <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-5 gap-4">
             {CATEGORIES.map((cat) => (
               <button key={cat.id} onClick={() => onSelectCategory(cat)}
-                className="rounded-2xl overflow-hidden relative bg-[#12253E] text-left group"
+                className="rounded-2xl overflow-hidden relative bg-navy text-left group"
                 style={{ aspectRatio: '3/4' }}>
                 <img src={cat.image} alt={cat.label}
                   className="absolute inset-0 w-full h-full object-cover opacity-55 group-hover:opacity-70 group-hover:scale-105 transition-all duration-300" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#12253E]/90 via-[#12253E]/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-3">
-                  <span className="block text-[15px] font-bold text-[#F6F7EB] leading-tight"
+                  <span className="block text-[15px] font-bold text-bone leading-tight"
                     style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                     {cat.label}
                   </span>
-                  <span className="text-[#F6F7EB]/70 text-[10px] mt-0.5 block leading-tight"
+                  <span className="text-bone/70 text-[10px] mt-0.5 block leading-tight"
                     style={{ fontFamily: 'Inter, sans-serif' }}>
                     {cat.count}
                   </span>
@@ -2220,21 +2220,21 @@ function HomeScreen({
           {/* Mobile layout */}
           <div className="md:hidden">
             <button onClick={() => onSelectCategory(CATEGORIES[0])}
-              className="w-full mb-3 rounded-2xl overflow-hidden relative h-44 block text-left group bg-[#12253E]">
+              className="w-full mb-3 rounded-2xl overflow-hidden relative h-44 block text-left group bg-navy">
               <img src={CATEGORIES[0].image} alt={CATEGORIES[0].label}
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#12253E]/90 via-[#12253E]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent" />
               <div className="absolute bottom-0 left-0 p-4">
-                <span className="block text-[22px] font-bold text-[#F6F7EB] leading-tight"
+                <span className="block text-[22px] font-bold text-bone leading-tight"
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                   {CATEGORIES[0].label}
                 </span>
-                <span className="text-[#F6F7EB]/70 text-xs mt-0.5 block"
+                <span className="text-bone/70 text-xs mt-0.5 block"
                   style={{ fontFamily: 'Inter, sans-serif' }}>
                   {CATEGORIES[0].count}
                 </span>
               </div>
-              <div className="absolute top-3 right-3 bg-[#12253E] text-[#F6F7EB] text-[10px] font-bold px-2 py-1 rounded-full border border-white/20"
+              <div className="absolute top-3 right-3 bg-navy text-bone text-[10px] font-bold px-2 py-1 rounded-full border border-white/20"
                 style={{ fontFamily: 'Inter, sans-serif' }}>
                 A pedido
               </div>
@@ -2242,16 +2242,16 @@ function HomeScreen({
             <div className="grid grid-cols-2 gap-3">
               {CATEGORIES.slice(1).map((cat) => (
                 <button key={cat.id} onClick={() => onSelectCategory(cat)}
-                  className="rounded-2xl overflow-hidden relative h-32 text-left bg-[#12253E] group">
+                  className="rounded-2xl overflow-hidden relative h-32 text-left bg-navy group">
                   <img src={cat.image} alt={cat.label}
                     className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-75 transition-opacity duration-200" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#12253E]/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
                   <div className="absolute bottom-0 left-0 p-3">
-                    <span className="block text-[16px] font-bold text-[#F6F7EB] leading-tight"
+                    <span className="block text-[16px] font-bold text-bone leading-tight"
                       style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                       {cat.label}
                     </span>
-                    <span className="text-[#F5F1E8]/60 text-[10px] mt-0.5 block leading-tight"
+                    <span className="text-bone/60 text-[10px] mt-0.5 block leading-tight"
                       style={{ fontFamily: 'Inter, sans-serif' }}>
                       {cat.count}
                     </span>
@@ -2265,7 +2265,7 @@ function HomeScreen({
         {/* Featured Products Section */}
         <section className="pb-10 sm:pb-14">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-[13px] font-semibold tracking-widest uppercase text-[#8A8580]"
+            <h2 className="text-[13px] font-semibold tracking-widest uppercase text-text-muted"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Productos Destacados
             </h2>
@@ -2282,13 +2282,13 @@ function HomeScreen({
         <InstagramHighlightSection />
 
         {/* CTA strip */}
-        <section className="mb-10 sm:mb-14 bg-[#12253E] rounded-3xl px-6 py-8 sm:px-10 sm:py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border border-[#1A3352] shadow-xl">
+        <section className="mb-10 sm:mb-14 bg-navy rounded-3xl px-6 py-8 sm:px-10 sm:py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border border-navy-border shadow-xl">
           <div>
-            <h3 className="text-[20px] sm:text-[24px] font-bold text-[#F6F7EB] mb-1"
+            <h3 className="text-[20px] sm:text-[24px] font-bold text-bone mb-1"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               ¿Buscás algo específico?
             </h3>
-            <p className="text-[#F6F7EB]/80 text-sm sm:text-base"
+            <p className="text-bone/80 text-sm sm:text-base"
               style={{ fontFamily: 'Inter, sans-serif' }}>
               Escribinos y te conseguimos lo que necesitás. Respondemos al instante.
             </p>
@@ -2301,33 +2301,33 @@ function HomeScreen({
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#E2DCD0] bg-[#F6F7EB]">
+      <footer className="border-t border-border-subtle bg-bone">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-10">
             {/* Brand */}
             <div className="lg:col-span-2">
               <div className="flex items-center gap-2 mb-3 cursor-pointer" onClick={() => { window.location.hash = '#/' }}>
-                <span className="font-bold text-[20px] text-[#12253E]"
+                <span className="font-bold text-[20px] text-navy"
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}>FAMVAR</span>
               </div>
-              <p className="text-[14px] text-[#64748B] leading-relaxed max-w-xs"
+              <p className="text-[14px] text-text-muted leading-relaxed max-w-xs"
                 style={{ fontFamily: 'Inter, sans-serif' }}>
                 Celulares nuevos y usados, accesorios y productos 100% importados, con envío a todo el país.
               </p>
             </div>
             {/* Info */}
             <div>
-              <h4 className="text-[12px] font-bold tracking-widest uppercase text-[#12253E] mb-3"
+              <h4 className="text-[12px] font-bold tracking-widest uppercase text-navy mb-3"
                 style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 Contacto
               </h4>
-              <ul className="space-y-2.5 text-[13px] text-[#64748B]"
+              <ul className="space-y-2.5 text-[13px] text-text-muted"
                 style={{ fontFamily: 'Inter, sans-serif' }}>
-                <li className="flex items-center gap-2 text-[#64748B]">
+                <li className="flex items-center gap-2 text-text-muted">
                   <MapPinIcon size={16} />
                   <span>La Escondida, Chaco</span>
                 </li>
-                <li className="flex items-center gap-2 text-[#64748B]">
+                <li className="flex items-center gap-2 text-text-muted">
                   <TruckIcon size={16} />
                   <span>Envíos a todo el país</span>
                 </li>
@@ -2336,7 +2336,7 @@ function HomeScreen({
                     href="https://wa.me/5493624076857?text=Hola%20FAMVAR!%20Quiero%20hacer%20una%20consulta."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-[#12253E] text-[#F6F7EB] text-xs font-semibold px-3.5 py-2 rounded-xl hover:bg-[#1A3352] transition-colors shadow-sm"
+                    className="inline-flex items-center gap-2 bg-navy text-bone text-xs font-semibold px-3.5 py-2 rounded-xl hover:bg-navy-hover transition-colors shadow-sm"
                   >
                     <WhatsAppIcon size={15} />
                     <span>Escribinos por WhatsApp</span>
@@ -2347,7 +2347,7 @@ function HomeScreen({
                     href="https://instagram.com/famvar.importados"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[#64748B] hover:text-[#12253E] transition-colors"
+                    className="inline-flex items-center gap-2 text-text-muted hover:text-navy transition-colors"
                   >
                     <InstagramIcon size={16} />
                     <span>@famvar.importados</span>
@@ -2356,7 +2356,7 @@ function HomeScreen({
                     href="https://instagram.com/luca.escobar.9250"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[#64748B] hover:text-[#12253E] transition-colors"
+                    className="inline-flex items-center gap-2 text-text-muted hover:text-navy transition-colors"
                   >
                     <InstagramIcon size={16} />
                     <span>@luca.escobar.9250</span>
@@ -2366,14 +2366,14 @@ function HomeScreen({
             </div>
             {/* Categories */}
             <div>
-              <h4 className="text-[12px] font-bold tracking-widest uppercase text-[#12253E] mb-3"
+              <h4 className="text-[12px] font-bold tracking-widest uppercase text-navy mb-3"
                 style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 Categorías
               </h4>
               <ul className="space-y-2" style={{ fontFamily: 'Inter, sans-serif' }}>
                 {CATEGORIES.map((cat) => (
                   <li key={cat.id}>
-                    <button onClick={() => onSelectCategory(cat)} className="text-[13px] text-[#64748B] hover:text-[#12253E] transition-colors">
+                    <button onClick={() => onSelectCategory(cat)} className="text-[13px] text-text-muted hover:text-navy transition-colors">
                       {cat.label}
                     </button>
                   </li>
@@ -2383,19 +2383,19 @@ function HomeScreen({
           </div>
 
           {/* Bottom bar */}
-          <div className="pt-6 border-t border-[#E2DCD0] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <p className="text-[12px] text-[#64748B]" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <div className="pt-6 border-t border-border-subtle flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <p className="text-[12px] text-text-muted" style={{ fontFamily: 'Inter, sans-serif' }}>
               © 2025 FAMVAR — Todos los derechos reservados. Diseñado por{' '}
               <a
                 href="https://heytrama.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline hover:text-[#C1451D] transition-colors"
+                className="underline hover:text-accent transition-colors"
               >
                 heytrama
               </a>
             </p>
-            <div className="flex items-center gap-2 text-[#C1451D]">
+            <div className="flex items-center gap-2 text-accent">
               <TruckIcon size={14} />
               <span className="text-[12px] font-semibold" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Envíos a todo el país
@@ -2430,30 +2430,30 @@ function CategoryScreen({
   )
 
   return (
-    <div className="min-h-screen bg-[#F6F7EB]">
+    <div className="min-h-screen bg-bone">
 
       {/* Header */}
-      <header className="sticky top-0 z-30 bg-[#F6F7EB]/95 backdrop-blur border-b border-[#E2DCD0]">
+      <header className="sticky top-0 z-30 bg-bone/95 backdrop-blur border-b border-border-subtle">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex items-center gap-3 mb-3">
             <button onClick={onBack}
-              className="w-9 h-9 rounded-xl bg-white border border-[#E2DCD0] flex items-center justify-center text-[#12253E] hover:bg-[#F6F7EB] transition-colors shrink-0">
+              className="w-9 h-9 rounded-xl bg-white border border-border-subtle flex items-center justify-center text-navy hover:bg-bone transition-colors shrink-0">
               <ArrowLeft />
             </button>
             <div className="flex items-center gap-2 cursor-pointer" onClick={() => { window.location.hash = '#/' }}>
-              <span className="text-[13px] text-[#64748B] font-medium hidden sm:block"
+              <span className="text-[13px] text-text-muted font-medium hidden sm:block"
                 style={{ fontFamily: 'Inter, sans-serif' }}>
                 FAMVAR /
               </span>
             </div>
-            <h1 className="text-[18px] sm:text-[20px] font-bold text-[#12253E]"
+            <h1 className="text-[18px] sm:text-[20px] font-bold text-navy"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               {category.label}
             </h1>
           </div>
           {/* Search */}
           <div className="relative max-w-lg">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#64748B]">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted">
               <SearchIcon />
             </span>
             <input
@@ -2461,7 +2461,7 @@ function CategoryScreen({
               placeholder={`Buscar en ${category.label.toLowerCase()}...`}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-white border border-[#E2DCD0] rounded-xl pl-9 pr-4 py-2.5 text-[14px] text-[#12253E] placeholder:text-[#64748B] outline-none focus:border-[#C1451D] transition-colors"
+              className="w-full bg-white border border-border-subtle rounded-xl pl-9 pr-4 py-2.5 text-[14px] text-navy placeholder:text-text-muted outline-none focus:border-accent transition-colors"
               style={{ fontFamily: 'Inter, sans-serif' }}
             />
           </div>
@@ -2472,26 +2472,26 @@ function CategoryScreen({
 
         {/* Phones disclaimer */}
         {category.isPhones && (
-          <div className="mb-6 bg-[#12253E] rounded-2xl px-5 py-4 flex gap-3 items-start border border-[#1A3352]">
-            <span className="text-[#C1451D] text-xl shrink-0">📱</span>
+          <div className="mb-6 bg-navy rounded-2xl px-5 py-4 flex gap-3 items-start border border-navy-border">
+            <span className="text-accent text-xl shrink-0">📱</span>
             <div>
-              <p className="text-[13px] sm:text-[14px] text-[#F6F7EB]/90 leading-relaxed"
+              <p className="text-[13px] sm:text-[14px] text-bone/90 leading-relaxed"
                 style={{ fontFamily: 'Inter, sans-serif' }}>
-                <span className="font-semibold text-[#F6F7EB]">Tenemos usados en stock, listos para entregar</span> — y conseguimos sellados a pedido. Consultanos por el modelo que buscás, lo tengamos en la grilla o no.
+                <span className="font-semibold text-bone">Tenemos usados en stock, listos para entregar</span> — y conseguimos sellados a pedido. Consultanos por el modelo que buscás, lo tengamos en la grilla o no.
               </p>
             </div>
           </div>
         )}
 
         {/* Product count */}
-        <p className="text-[12px] text-[#64748B] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
+        <p className="text-[12px] text-text-muted mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
           {products.length} producto{products.length !== 1 ? 's' : ''}
           {search && ` para "${search}"`}
         </p>
 
         {/* Grid: 2 cols mobile → 3 tablet → 4 desktop */}
         {products.length === 0 ? (
-          <div className="text-center py-20 text-[#8A8580]" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <div className="text-center py-20 text-text-muted" style={{ fontFamily: 'Inter, sans-serif' }}>
             <p className="text-4xl mb-3">🔍</p>
             <p className="text-sm">No encontramos productos para "{search}"</p>
           </div>
@@ -2546,16 +2546,16 @@ function ProductDetailScreen({
   }
 
   return (
-    <div className="min-h-screen bg-[#F6F7EB]">
+    <div className="min-h-screen bg-bone">
 
       {/* Header */}
-      <header className="sticky top-0 z-30 bg-[#F6F7EB]/95 backdrop-blur border-b border-[#E2DCD0]">
+      <header className="sticky top-0 z-30 bg-bone/95 backdrop-blur border-b border-border-subtle">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3">
           <button onClick={onBack}
-            className="w-9 h-9 rounded-xl bg-white border border-[#E2DCD0] flex items-center justify-center text-[#12253E] hover:bg-[#F6F7EB] transition-colors shrink-0">
+            className="w-9 h-9 rounded-xl bg-white border border-border-subtle flex items-center justify-center text-navy hover:bg-bone transition-colors shrink-0">
             <ArrowLeft />
           </button>
-          <span className="text-[15px] font-semibold text-[#12253E] truncate cursor-pointer"
+          <span className="text-[15px] font-semibold text-navy truncate cursor-pointer"
             onClick={() => { window.location.hash = '#/' }}
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
             {product.name}
@@ -2569,7 +2569,7 @@ function ProductDetailScreen({
 
           {/* Gallery Container */}
           <div className="flex flex-col gap-3 mb-6 lg:mb-0">
-            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-[#E8E4DB] aspect-square shadow-sm">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-border-subtle aspect-square shadow-sm">
               <img src={selectedImg} alt={product.name}
                 className="w-full h-full object-cover transition-all duration-300" />
               {product.status && (
@@ -2584,7 +2584,7 @@ function ProductDetailScreen({
                   <button
                     key={idx}
                     onClick={() => setSelectedImg(imgUrl)}
-                    className={`w-20 h-20 rounded-xl overflow-hidden border-2 bg-white shrink-0 transition-all ${selectedImg === imgUrl ? 'border-[#C1451D] scale-95 shadow-sm' : 'border-[#E8E4DB] opacity-70 hover:opacity-100'
+                    className={`w-20 h-20 rounded-xl overflow-hidden border-2 bg-white shrink-0 transition-all ${selectedImg === imgUrl ? 'border-accent scale-95 shadow-sm' : 'border-border-subtle opacity-70 hover:opacity-100'
                       }`}
                   >
                     <img src={imgUrl} alt={`${product.name} - ${idx + 1}`} className="w-full h-full object-cover" />
@@ -2601,21 +2601,21 @@ function ProductDetailScreen({
                 <ProductBadges product={product} inline />
               </div>
             )}
-            <h1 className="text-[26px] sm:text-[34px] font-bold leading-tight text-[#12253E] mb-2"
+            <h1 className="text-[26px] sm:text-[34px] font-bold leading-tight text-navy mb-2"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               {product.name} {selectedStorage ? `(${selectedStorage.size})` : ''}
             </h1>
-            <p className="text-[32px] sm:text-[38px] font-bold text-[#C1451D] mb-6"
+            <p className="text-[32px] sm:text-[38px] font-bold text-navy mb-6"
               style={{ fontFamily: 'Inter, sans-serif' }}>
               {activePrice}
             </p>
 
             {/* Storage Capacity Selector */}
             {product.storageOptions && product.storageOptions.length > 0 && (
-              <div className="bg-white rounded-2xl p-5 border border-[#E8E4DB] mb-6 shadow-sm">
+              <div className="bg-white rounded-2xl p-5 border border-border-subtle mb-6 shadow-sm">
                 <div className="flex items-center gap-2 mb-3">
                   <HardDriveIcon size={16} />
-                  <h2 className="text-[12px] font-bold tracking-widest uppercase text-[#12253E]"
+                  <h2 className="text-[12px] font-bold tracking-widest uppercase text-navy"
                     style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                     Almacenamiento
                   </h2>
@@ -2626,8 +2626,8 @@ function ProductDetailScreen({
                       key={opt.size}
                       onClick={() => setSelectedStorage(opt)}
                       className={`py-3 px-3 rounded-xl border text-center transition-all ${selectedStorage?.size === opt.size
-                          ? 'bg-[#12253E] text-[#F6F7EB] border-[#12253E] shadow-sm scale-[1.02]'
-                          : 'bg-[#F6F7EB]/50 text-[#12253E] border-[#E8E4DB] hover:border-[#C1451D]'
+                          ? 'bg-navy text-bone border-navy shadow-sm scale-[1.02]'
+                          : 'bg-bone/50 text-navy border-border-subtle hover:border-accent'
                         }`}
                     >
                       <span className="block text-[14px] font-bold" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
@@ -2640,18 +2640,18 @@ function ProductDetailScreen({
             )}
 
             {/* Información del producto (resumen principal) */}
-            <div className="bg-white rounded-2xl p-5 border border-[#E8E4DB] mb-6 shadow-sm">
-              <h2 className="text-[12px] font-bold tracking-widest uppercase text-[#C1451D] mb-2"
+            <div className="bg-white rounded-2xl p-5 border border-border-subtle mb-6 shadow-sm">
+              <h2 className="text-[12px] font-bold tracking-widest uppercase text-accent mb-2"
                 style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 Resumen del Producto
               </h2>
-              <p className="text-[14px] sm:text-[15px] text-[#12253E] leading-relaxed"
+              <p className="text-[14px] sm:text-[15px] text-navy leading-relaxed"
                 style={{ fontFamily: 'Inter, sans-serif' }}>
                 {product.description}
               </p>
             </div>
 
-            <div className="flex items-center gap-2 mb-6 text-[#64748B]">
+            <div className="flex items-center gap-2 mb-6 text-text-muted">
               <TruckIcon size={16} />
               <span className="text-[13px]" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Envío a todo el país · La Escondida, Chaco
@@ -2666,7 +2666,7 @@ function ProductDetailScreen({
               size="lg"
             />
 
-            <p className="text-center text-[11px] text-[#64748B] mt-3"
+            <p className="text-center text-[11px] text-text-muted mt-3"
               style={{ fontFamily: 'Inter, sans-serif' }}>
               Te respondemos al instante por WhatsApp
             </p>
@@ -2675,17 +2675,17 @@ function ProductDetailScreen({
 
         {/* Pilares destacados de Información del Producto */}
         {product.features && product.features.length > 0 && (
-          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E4DB] shadow-sm mb-8">
-            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-[#E8E4DB]">
-              <div className="w-9 h-9 rounded-xl bg-[#C1451D] text-white flex items-center justify-center shrink-0">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-border-subtle shadow-sm mb-8">
+            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-border-subtle">
+              <div className="w-9 h-9 rounded-xl bg-accent text-white flex items-center justify-center shrink-0">
                 <SparklesIcon size={18} />
               </div>
               <div>
-                <h2 className="text-[18px] sm:text-[20px] font-bold text-[#12253E]"
+                <h2 className="text-[18px] sm:text-[20px] font-bold text-navy"
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                   Información del Producto
                 </h2>
-                <p className="text-[12px] text-[#64748B]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <p className="text-[12px] text-text-muted" style={{ fontFamily: 'Inter, sans-serif' }}>
                   Aspectos destacados de diseño, cámaras y potencia
                 </p>
               </div>
@@ -2693,13 +2693,13 @@ function ProductDetailScreen({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {product.features.map((feat, idx) => (
-                <div key={idx} className="bg-[#F6F7EB]/50 p-5 rounded-2xl border border-[#E8E4DB] flex flex-col gap-2">
-                  <h3 className="text-[15px] font-bold text-[#12253E] flex items-center gap-2"
+                <div key={idx} className="bg-bone/50 p-5 rounded-2xl border border-border-subtle flex flex-col gap-2">
+                  <h3 className="text-[15px] font-bold text-navy flex items-center gap-2"
                     style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                    <span className="w-2 h-2 rounded-full bg-[#C1451D]" />
+                    <span className="w-2 h-2 rounded-full bg-accent" />
                     {feat.title}
                   </h3>
-                  <p className="text-[13px] sm:text-[14px] text-[#64748B] leading-relaxed"
+                  <p className="text-[13px] sm:text-[14px] text-text-muted leading-relaxed"
                     style={{ fontFamily: 'Inter, sans-serif' }}>
                     {feat.text}
                   </p>
@@ -2711,17 +2711,17 @@ function ProductDetailScreen({
 
         {/* Especificaciones técnicas (Formato Acordeón) */}
         {product.specGroups && product.specGroups.length > 0 ? (
-          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E4DB] shadow-sm">
-            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-[#E8E4DB]">
-              <div className="w-9 h-9 rounded-xl bg-[#12253E] text-[#F6F7EB] flex items-center justify-center shrink-0">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-border-subtle shadow-sm">
+            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-border-subtle">
+              <div className="w-9 h-9 rounded-xl bg-navy text-bone flex items-center justify-center shrink-0">
                 <CpuIcon size={18} />
               </div>
               <div>
-                <h2 className="text-[18px] sm:text-[20px] font-bold text-[#12253E]"
+                <h2 className="text-[18px] sm:text-[20px] font-bold text-navy"
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                   Especificaciones técnicas
                 </h2>
-                <p className="text-[12px] text-[#64748B]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <p className="text-[12px] text-text-muted" style={{ fontFamily: 'Inter, sans-serif' }}>
                   Ficha técnica oficial y componentes de {product.name}
                 </p>
               </div>
@@ -2731,26 +2731,26 @@ function ProductDetailScreen({
               {product.specGroups.map((group) => {
                 const isOpen = openAccordion[group.category] ?? false
                 return (
-                  <div key={group.category} className="border border-[#E8E4DB] rounded-2xl overflow-hidden bg-[#F6F7EB]/30 transition-all">
+                  <div key={group.category} className="border border-border-subtle rounded-2xl overflow-hidden bg-bone/30 transition-all">
                     <button
                       onClick={() => toggleAccordion(group.category)}
-                      className="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-[#F6F7EB]/70 transition-colors"
+                      className="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-bone/70 transition-colors"
                     >
-                      <span className="text-[15px] font-bold text-[#12253E]"
+                      <span className="text-[15px] font-bold text-navy"
                         style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                         {group.category}
                       </span>
-                      <span className={`transform transition-transform duration-200 text-[#C1451D] ${isOpen ? 'rotate-180' : ''}`}>
+                      <span className={`transform transition-transform duration-200 text-accent ${isOpen ? 'rotate-180' : ''}`}>
                         <ChevronDownIcon size={20} />
                       </span>
                     </button>
 
                     {isOpen && (
-                      <div className="px-5 pb-5 pt-1 border-t border-[#E8E4DB]/60 bg-white">
+                      <div className="px-5 pb-5 pt-1 border-t border-border-subtle/60 bg-white">
                         <ul className="space-y-2.5">
                           {group.items.map((item, i) => (
-                            <li key={i} className="text-[13px] sm:text-[14px] text-[#12253E] leading-relaxed flex items-start gap-2.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#C1451D] mt-2 shrink-0" />
+                            <li key={i} className="text-[13px] sm:text-[14px] text-navy leading-relaxed flex items-start gap-2.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
                               <span style={{ fontFamily: 'Inter, sans-serif' }}>{item}</span>
                             </li>
                           ))}
@@ -2763,17 +2763,17 @@ function ProductDetailScreen({
             </div>
           </div>
         ) : product.specs && product.specs.length > 0 ? (
-          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E4DB] shadow-sm">
-            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-[#E8E4DB]">
-              <div className="w-9 h-9 rounded-xl bg-[#12253E] text-[#F6F7EB] flex items-center justify-center shrink-0">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-border-subtle shadow-sm">
+            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-border-subtle">
+              <div className="w-9 h-9 rounded-xl bg-navy text-bone flex items-center justify-center shrink-0">
                 <CpuIcon size={18} />
               </div>
               <div>
-                <h2 className="text-[18px] sm:text-[20px] font-bold text-[#12253E]"
+                <h2 className="text-[18px] sm:text-[20px] font-bold text-navy"
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                   Especificaciones técnicas
                 </h2>
-                <p className="text-[12px] text-[#64748B]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <p className="text-[12px] text-text-muted" style={{ fontFamily: 'Inter, sans-serif' }}>
                   Detalles y componentes oficiales de {product.name}
                 </p>
               </div>
@@ -2781,12 +2781,12 @@ function ProductDetailScreen({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
               {product.specs.map((spec, idx) => (
-                <div key={idx} className="flex flex-col py-2.5 border-b border-[#F6F7EB] last:border-b-0">
-                  <span className="text-[12px] font-semibold text-[#64748B] uppercase tracking-wider mb-0.5"
+                <div key={idx} className="flex flex-col py-2.5 border-b border-bone last:border-b-0">
+                  <span className="text-[12px] font-semibold text-text-muted uppercase tracking-wider mb-0.5"
                     style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                     {spec.label}
                   </span>
-                  <span className="text-[14px] font-bold text-[#12253E]"
+                  <span className="text-[14px] font-bold text-navy"
                     style={{ fontFamily: 'Inter, sans-serif' }}>
                     {spec.value}
                   </span>
@@ -2798,17 +2798,17 @@ function ProductDetailScreen({
 
         {/* Preguntas frecuentes */}
         {product.faqs && product.faqs.length > 0 && (
-          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E4DB] shadow-sm mt-8">
-            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-[#E8E4DB]">
-              <div className="w-9 h-9 rounded-xl bg-[#C1451D] text-white flex items-center justify-center shrink-0 font-bold text-base">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-border-subtle shadow-sm mt-8">
+            <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-border-subtle">
+              <div className="w-9 h-9 rounded-xl bg-accent text-white flex items-center justify-center shrink-0 font-bold text-base">
                 ?
               </div>
               <div>
-                <h2 className="text-[18px] sm:text-[20px] font-bold text-[#12253E]"
+                <h2 className="text-[18px] sm:text-[20px] font-bold text-navy"
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                   Preguntas frecuentes
                 </h2>
-                <p className="text-[12px] text-[#64748B]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <p className="text-[12px] text-text-muted" style={{ fontFamily: 'Inter, sans-serif' }}>
                   Respuestas a las dudas más comunes sobre {product.name}
                 </p>
               </div>
@@ -2819,23 +2819,23 @@ function ProductDetailScreen({
                 const faqKey = `faq-${idx}`
                 const isOpen = openAccordion[faqKey] ?? false
                 return (
-                  <div key={idx} className="border border-[#E8E4DB] rounded-2xl overflow-hidden bg-[#F6F7EB]/30 transition-all">
+                  <div key={idx} className="border border-border-subtle rounded-2xl overflow-hidden bg-bone/30 transition-all">
                     <button
                       onClick={() => toggleAccordion(faqKey)}
-                      className="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-[#F6F7EB]/70 transition-colors"
+                      className="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-bone/70 transition-colors"
                     >
-                      <span className="text-[14px] sm:text-[15px] font-bold text-[#12253E] pr-4"
+                      <span className="text-[14px] sm:text-[15px] font-bold text-navy pr-4"
                         style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                         {faq.question}
                       </span>
-                      <span className={`transform transition-transform duration-200 text-[#C1451D] shrink-0 ${isOpen ? 'rotate-180' : ''}`}>
+                      <span className={`transform transition-transform duration-200 text-accent shrink-0 ${isOpen ? 'rotate-180' : ''}`}>
                         <ChevronDownIcon size={20} />
                       </span>
                     </button>
 
                     {isOpen && (
-                      <div className="px-5 pb-5 pt-2 border-t border-[#E8E4DB]/60 bg-white">
-                        <p className="text-[13px] sm:text-[14px] text-[#64748B] leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      <div className="px-5 pb-5 pt-2 border-t border-border-subtle/60 bg-white">
+                        <p className="text-[13px] sm:text-[14px] text-text-muted leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
                           {faq.answer}
                         </p>
                       </div>

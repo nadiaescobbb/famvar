@@ -4,12 +4,35 @@
 @theme {
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
-  --color-bone: #F6F7EB;
-  --color-navy: #12253E;
-  --color-warm-black: #12253E;
-  --color-accent: #C1451D;
-  --color-warm-gray: #64748B;
-  --color-card: #FFFFFF;
+
+  /* Escala de Neutros Cálidos / Canvas (Warm Canvas) */
+  --color-bone: hsl(45, 25%, 96%);        /* #F6F7EB estandarizado en HSL */
+  --color-canvas-subtle: hsl(45, 20%, 92%); /* Contenedores secundarios / Inputs */
+  --color-card: hsl(0, 0%, 100%);          /* Superficie blanca de cards */
+  --color-border-subtle: hsl(42, 18%, 86%); /* Bordes suaves de cards */
+  
+  /* Tipografía y Neutros Oscuros (Navy Slate) */
+  --color-navy: hsl(215, 55%, 16%);        /* #12253E - Títulos y cajas oscuras */
+  --color-navy-hover: hsl(215, 50%, 22%);  /* Hover de navy */
+  --color-navy-border: hsl(215, 45%, 24%); /* Bordes de bloques oscuros */
+  --color-text-muted: hsl(215, 14%, 46%);  /* Textos secundarios / Metadata */
+
+  /* Acción de Marca Primaria (Brand Accent) */
+  --color-accent: hsl(15, 75%, 44%);       /* Terracota refinado para CTAs clave */
+  --color-accent-hover: hsl(15, 75%, 38%); /* Hover del acento */
+
+  /* Badges Semánticos con Inversión de Contraste (Flipping the Contrast) */
+  --color-badge-stock-bg: hsl(150, 45%, 93%);
+  --color-badge-stock-text: hsl(150, 65%, 24%);
+  
+  --color-badge-order-bg: hsl(215, 45%, 93%);
+  --color-badge-order-text: hsl(215, 60%, 28%);
+
+  --color-badge-new-bg: hsl(215, 20%, 92%);
+  --color-badge-new-text: hsl(215, 35%, 30%);
+
+  --color-badge-used-bg: hsl(28, 60%, 93%);
+  --color-badge-used-text: hsl(28, 70%, 30%);
 }
 
 * {
@@ -19,9 +42,9 @@
 html, body, #root {
   margin: 0;
   padding: 0;
-  background-color: #F6F7EB;
-  font-family: 'Inter', sans-serif;
-  color: #12253E;
+  background-color: var(--color-bone);
+  font-family: var(--font-body);
+  color: var(--color-navy);
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
 }
@@ -33,16 +56,16 @@ html, body, #root {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F6F7EB;
+  background: var(--color-bone);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: var(--color-border-subtle);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #C1451D;
+  background: var(--color-accent);
 }
 
 /* Utility to hide scrollbars on tag lists */
