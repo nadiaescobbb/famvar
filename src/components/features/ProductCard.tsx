@@ -17,18 +17,18 @@ export function ProductCard({ product, onSelect }: { product: Product; onSelect:
         />
         <ProductBadges product={product} />
       </div>
-      <div className="p-3 flex flex-col gap-2 flex-1">
-        <p className="text-[13px] font-bold leading-snug text-navy line-clamp-2"
+      <div className="p-3.5 flex flex-col gap-2 flex-1">
+        <p className="text-subtle font-medium leading-snug text-navy line-clamp-2"
           style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
           {product.name}
         </p>
         <div className="mt-auto">
           {product.storageOptions ? (
-            <p className="text-[11px] text-text-muted mb-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
-              Desde <span className="text-navy font-bold text-lg">{product.price}</span>
+            <p className="text-micro text-text-muted mb-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Desde <span className="text-navy font-bold text-body-lg">{product.price}</span>
             </p>
           ) : (
-            <p className="text-navy font-bold text-lg" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <p className="text-navy font-bold text-body-lg" style={{ fontFamily: 'Inter, sans-serif' }}>
               {product.price}
             </p>
           )}

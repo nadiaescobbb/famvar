@@ -67,13 +67,13 @@ export function InstagramHighlightSection() {
               <span>Clientes & Experiencias Reales</span>
             </div>
             <h2
-              className="text-[24px] sm:text-[32px] font-bold text-bone leading-tight"
+              className="text-2xl sm:text-h2 font-bold tracking-tight text-bone"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
               Historias Destacadas de la Comunidad FAMVAR 📸
             </h2>
             <p
-              className="text-[14px] text-bone/70 mt-2 max-w-xl leading-relaxed"
+              className="text-subtle text-bone/70 mt-2 max-w-xl leading-relaxed"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
               Mirá los despachos reales, fotos de productos entregados y opiniones directo desde el perfil de Instagram.
@@ -118,10 +118,10 @@ export function InstagramHighlightSection() {
                     </div>
                   </div>
                   <div>
-                    <span className="block text-[11px] font-bold text-white leading-none" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                    <span className="block text-micro font-medium text-white leading-none" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                       {story.user}
                     </span>
-                    <span className="text-[9px] text-white/70" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    <span className="text-micro font-medium text-white/70" style={{ fontFamily: 'Inter, sans-serif' }}>
                       {story.time}
                     </span>
                   </div>
@@ -132,10 +132,10 @@ export function InstagramHighlightSection() {
               <div className="relative z-10 flex flex-col gap-2">
                 {/* Chat Bubble overlay with High-Contrast Dark Backdrop */}
                 <div className="bg-navy/90 backdrop-blur-xl border border-white/20 rounded-xl p-3.5 shadow-2xl h-[135px] flex flex-col justify-between">
-                  <p className="text-[12px] text-bone font-medium leading-snug" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  <p className="text-tag font-medium leading-snug text-bone" style={{ fontFamily: 'Inter, sans-serif' }}>
                     {story.chat}
                   </p>
-                  <div className="mt-2 flex items-center justify-between text-[10px] text-bone/90 border-t border-white/10 pt-2 shrink-0">
+                  <div className="mt-2 flex items-center justify-between text-micro text-bone/90 border-t border-white/10 pt-2 shrink-0">
                     <span className="text-accent font-bold">{story.rating}</span>
                     <a
                       href={highlightUrl}

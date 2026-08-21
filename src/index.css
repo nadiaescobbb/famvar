@@ -5,6 +5,17 @@
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
 
+  /* Escala Tipográfica Modular */
+  --text-micro: 0.6875rem;   /* 11px - Fechas y metadata mínima */
+  --text-tag: 0.75rem;       /* 12px - Badges, contadores y labels uppercase */
+  --text-subtle: 0.875rem;   /* 14px - Títulos de producto y descripciones secundarias */
+  --text-body: 1rem;         /* 16px - Texto base de lectura y botones */
+  --text-body-lg: 1.125rem;  /* 18px - Precios destacados */
+  --text-h3: 1.25rem;        /* 20px - Subtítulos de sección y categorías mobile */
+  --text-h2: 1.75rem;        /* 28px - Encabezados H2 */
+  --text-h1: 2.5rem;         /* 40px - Título Hero mobile */
+  --text-hero: 3.25rem;      /* 52px - Título Hero desktop */
+
   /* Escala de Neutros Cálidos / Canvas (Warm Canvas) */
   --color-bone: hsl(45, 25%, 96%);        /* #F6F7EB estandarizado en HSL */
   --color-canvas-subtle: hsl(45, 20%, 92%); /* Contenedores secundarios / Inputs */

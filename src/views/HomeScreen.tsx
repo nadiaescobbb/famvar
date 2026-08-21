@@ -32,13 +32,13 @@ export function HomeScreen({
         {/* Hero */}
         <section className="pt-10 pb-8 sm:pt-14 sm:pb-10 lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center lg:pt-16 lg:pb-12">
           <div>
-            <h1 className="text-[36px] sm:text-[48px] lg:text-[56px] font-bold leading-[1.1] text-navy mb-4"
+            <h1 className="text-4xl sm:text-5xl lg:text-hero font-bold tracking-tight leading-[1.1] text-navy mb-4"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Celulares,<br />
               accesorios y<br />
               <span className="text-accent">mucha variedad.</span>
             </h1>
-            <p className="text-[15px] sm:text-[16px] text-navy/80 leading-relaxed mb-6 max-w-md"
+            <p className="text-sm sm:text-body text-navy/80 font-normal leading-relaxed mb-6 max-w-md"
               style={{ fontFamily: 'Inter, sans-serif' }}>
               iPhone, Samsung, termos Stanley, fundas y más — nuevos, usados y a pedido. Todo con envío desde La Escondida, Chaco.
             </p>
@@ -77,7 +77,7 @@ export function HomeScreen({
 
         {/* Category grid */}
         <section className="pb-10 sm:pb-12">
-          <h2 className="text-[13px] font-bold tracking-widest uppercase text-navy mb-4"
+          <h2 className="text-tag font-bold tracking-widest uppercase text-text-muted mb-4"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
             Categorías
           </h2>
@@ -92,11 +92,11 @@ export function HomeScreen({
                   className="absolute inset-0 w-full h-full object-cover opacity-55 group-hover:opacity-70 group-hover:scale-105 transition-all duration-300" />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-3">
-                  <span className="block text-[15px] font-bold text-bone leading-tight"
+                  <span className="block text-subtle sm:text-body font-semibold text-bone leading-tight"
                     style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                     {cat.label}
                   </span>
-                  <span className="text-bone/70 text-[10px] mt-0.5 block leading-tight"
+                  <span className="text-micro text-text-muted block leading-tight mt-0.5"
                     style={{ fontFamily: 'Inter, sans-serif' }}>
                     {cat.count}
                   </span>
@@ -117,12 +117,12 @@ export function HomeScreen({
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                   {CATEGORIES[0].label}
                 </span>
-                <span className="text-bone/70 text-xs mt-0.5 block"
+                <span className="text-micro text-text-muted block mt-0.5"
                   style={{ fontFamily: 'Inter, sans-serif' }}>
                   {CATEGORIES[0].count}
                 </span>
               </div>
-              <div className="absolute top-3 right-3 bg-navy text-bone text-[10px] font-bold px-2 py-1 rounded-full border border-white/20"
+              <div className="absolute top-3 right-3 bg-navy text-bone text-tag font-bold px-2 py-1 rounded-full border border-white/20"
                 style={{ fontFamily: 'Inter, sans-serif' }}>
                 A pedido
               </div>
@@ -135,11 +135,11 @@ export function HomeScreen({
                     className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-75 transition-opacity duration-200" />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
                   <div className="absolute bottom-0 left-0 p-3">
-                    <span className="block text-[16px] font-bold text-bone leading-tight"
+                    <span className="block text-subtle font-semibold text-bone leading-tight"
                       style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                       {cat.label}
                     </span>
-                    <span className="text-bone/60 text-[10px] mt-0.5 block leading-tight"
+                    <span className="text-micro text-text-muted block leading-tight mt-0.5"
                       style={{ fontFamily: 'Inter, sans-serif' }}>
                       {cat.count}
                     </span>
@@ -153,7 +153,7 @@ export function HomeScreen({
         {/* Featured Products Section */}
         <section className="pb-10 sm:pb-14">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-[13px] font-semibold tracking-widest uppercase text-text-muted"
+            <h2 className="text-tag font-bold tracking-widest uppercase text-text-muted"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Productos Destacados
             </h2>
@@ -172,11 +172,11 @@ export function HomeScreen({
         {/* CTA strip */}
         <section className="mb-10 sm:mb-14 bg-navy rounded-3xl px-6 py-8 sm:px-10 sm:py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border border-navy-border shadow-xl">
           <div>
-            <h3 className="text-[20px] sm:text-[24px] font-bold text-bone mb-1"
+            <h3 className="text-h3 sm:text-2xl font-bold text-bone mb-1"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               ¿Buscás algo específico?
             </h3>
-            <p className="text-bone/80 text-sm sm:text-base"
+            <p className="text-subtle sm:text-body text-bone/80"
               style={{ fontFamily: 'Inter, sans-serif' }}>
               Escribinos y te conseguimos lo que necesitás. Respondemos al instante.
             </p>
