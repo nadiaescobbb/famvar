@@ -33,7 +33,7 @@ export function CategoryScreen({
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex items-center gap-3 mb-3">
             <button onClick={onBack}
-              className="w-9 h-9 rounded-xl bg-white border border-border-subtle flex items-center justify-center text-navy hover:bg-bone transition-colors shrink-0 cursor-pointer">
+              className="w-11 h-11 min-h-[44px] min-w-[44px] rounded-xl bg-white border border-border-subtle flex items-center justify-center text-navy hover:bg-bone transition-colors shrink-0 cursor-pointer">
               <ArrowLeft />
             </button>
             <div className="flex items-center gap-2 cursor-pointer" onClick={onGoHome}>

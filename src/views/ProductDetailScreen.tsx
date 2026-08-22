@@ -40,7 +40,7 @@ export function ProductDetailScreen({
       <header className="sticky top-0 z-30 bg-bone/95 backdrop-blur border-b border-border-subtle">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3">
           <button onClick={onBack}
-            className="w-9 h-9 rounded-xl bg-white border border-border-subtle flex items-center justify-center text-navy hover:bg-bone transition-colors shrink-0 cursor-pointer">
+            className="w-11 h-11 min-h-[44px] min-w-[44px] rounded-xl bg-white border border-border-subtle flex items-center justify-center text-navy hover:bg-bone transition-colors shrink-0 cursor-pointer">
             <ArrowLeft />
           </button>
           <span className="text-[15px] font-semibold text-navy truncate cursor-pointer"
